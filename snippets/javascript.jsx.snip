@@ -1,0 +1,218 @@
+snippet action
+
+  export const ${1:#:functionName} = (${2:#:params}) => {
+    return (dispatch, getState) => {
+      return {
+        type: ${3:#:actionType},
+        payload: ${4:#:payload}
+      }
+    }
+  }
+
+snippet defreducer
+  const REDUCER_HANDLERS = {
+    [${1:#:actionType}]: (state, action) => {
+      ${0:TARGET}
+    },
+  }
+  const initialState = im.fromJS({
+  });
+
+  export default function asReducer (state = initialState, action) {
+    const handler = REDUCER_HANDLERS[action.type]
+    return handler ? handler(state, action) : state
+  }
+
+snippet reducer
+  [${1:#:actionType}]: (state, action) => {
+    ${0:TARGET}
+  },
+
+
+snippet component
+  import React, { Component } from 'react'
+  import PropTypes            from 'prop-types'
+
+  import './styles.css';
+
+  class ${1:Class} extends Component {
+
+    static propTypes = {
+    }
+
+    static defaultProps = {
+    }
+
+    constructor() {
+      super(...arguments)
+    }
+
+    render() {
+      return(
+        <p>$1${0}</p>
+      )
+    }
+
+  }
+
+  //export default connect(mapStateToProps, mapDispatchToProps)($1)
+  export default $1
+
+snippet mapdisp
+  const mapDispatchToProps = {
+    ${0}
+  }
+
+snippet mapstate
+  const mapStateToProps = (state, ownProps) => {
+    return {
+      ${0}
+    }
+  }
+
+snippet connect
+  export default connect(mapStateToProps, mapDispatchToProps)(${0})
+
+snippet newaction
+  export const ${1:ACTION_NAME} = "$1"
+  export const $1_PENDING   = "$1_PENDING"
+  export const $1_REJECTED  = "$1_REJECTED"
+  export const $1_FULFILLED = "$1_FULFILLED"
+
+snippet imp
+abbr "Import statement"
+  import ${1} from '${2}'
+
+snippet impr
+abbr "Import React"
+  import React from 'react'
+
+snippet imprc
+abbr "Import React and Component"
+  import React, { Component } from 'react'
+
+snippet impp
+abbr "Import PropTypes"
+  import PropTypes from 'prop-types'
+
+snippet imprd
+abbr "Import ReactDOM"
+  import ReactDOM from 'react-dom'
+
+snippet cns
+abbr "Constructor"
+  constructor(props) {
+    super(props)
+    this.state = {
+      ${1}: ${2}
+    }
+  }${3}
+
+snippet cwm
+abbr "ComponentWillMount() {...}"
+  componentWillMount() {
+    ${1}
+  }${2}
+
+snippet ren
+abbr "Render () {...}"
+  render() {
+    return (
+      ${1:<div></div>}
+    )
+  }
+
+snippet cdm
+abbr "ComponentDidMount() {...}"
+  componentDidMount() {
+    ${1}
+  }${2}
+
+snippet cwr
+abbr "ComponentWillReceiveProps() {...}"
+  componentWillReceiveProps(nextProps) {
+    ${1}
+  }${2}
+
+snippet scu
+abbr "shouldComponentUpdate() {...}"
+  shouldComponentUpdate(nextProps, nextState) {
+    ${1}
+  }${2}
+
+snippet cwu
+abbr "componentWillUpdate() {...}"
+  componentWillUpdate(nextProps, nextState) {
+    ${1}
+  }${2}
+
+snippet cdup
+abbr "componentDidUpdate() {...}"
+  componentDidUpdate(prevProps, prevState) {
+    ${1}
+  }${2}
+
+snippet cwun
+  componentWillUnmount() {
+    ${1}
+  }${2}
+
+snippet fup
+abbr "React: forceUpdate(...)"
+  forceUpdate(${1:callback})
+
+snippet sst
+abbr "React: setState({ ... })"
+  this.setState((state, props) => {
+    return { ${1}: ${2} }
+  })
+
+
+snippet scdp
+abbr "React: static defaultProps = { ... }"
+  static defaultProps = {
+    ${1}: ${2}
+  }
+
+snippet cdp
+abbr "React: Class.defaultProps = { ... }"
+  ${1}.defaultProps = {
+    ${2}: ${3}
+  }
+
+snippet scpt
+abbr "React: static propTypes = { ... }"
+  static propTypes = {
+    ${1}: PropTypes.${2:string}
+  }
+
+snippet pt
+abbr "React: propType blank"
+  ${1}: PropTypes.${2:string}
+
+snippet rf
+abbr "React: Stateless Function"
+  const ${1} = ({ ${2} }) => (
+    return (
+      <div>${3}</div>
+    )
+  )
+
+snippet rc
+abbr "React: Class"
+  class ${1} extends Component {
+    render() {
+      return (
+        <div>${2}</div>
+      )
+    }
+  }
+
+snippet props
+abbr "React: this.props."
+  this.props.${1}
+
+snippet state
+abbr "React: this.state."
+  this.state.${1}
+

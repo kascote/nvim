@@ -1,0 +1,23 @@
+snippet rf
+abbr "React: Stateless Function"
+  const ${1} = ({ ${2} }) => (
+    <div>${3}</div>
+  );
+
+snippet sst
+abbr "React: setState({ ... })"
+  this.setState((state, props) => {
+    return { ${1}: ${2} }
+  })
+
+snippet jdw
+abbr "Jest: debug wrapper"
+  console.log(wrapper.debug());
+
+snippet jew
+abbr "Jest: expect wrapper"
+  expect(wrapper.${1}).to${2}
+
+snippet csl
+abbr "console log"
+  console.log(${1})

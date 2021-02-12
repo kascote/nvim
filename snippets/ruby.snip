@@ -1,0 +1,15 @@
+
+snippet     rdebug
+  Rails.logger.debug(${0})
+
+snippet     rerror
+  Rails.logger.error(${0})
+
+snippet     rdsep
+  Rails.logger.debug "*" * 90
+  Rails.logger.debug ${0}
+  Rails.logger.debug "*" * 90
+
+snippet     frozen
+  # frozen_string_literal: true
+
