@@ -10,27 +10,27 @@ local special_buffers = {
 
 -- Mode Prompt Table
 local current_mode = setmetatable({
-      ['n']  = { 'NORMAL', 'StatusLineModeNormal' },
+      ['n']  = { 'NORMAL   ', 'StatusLineModeNormal' },
       ['no'] = { 'N·Operator Pending', 'StatusLineModeNormal' },
-      ['v']  = { 'VISUAL', 'StatusLineModeVisual' },
-      ['V']  = { 'V·Line', 'StatusLineModeVisual' },
-      ['^V'] = { 'V·Block', 'StatusLineModeVisual' },
-      ['s']  = { 'Select', 'StatusLineModeVisual' },
-      ['S']  = { 'S·Line', 'StatusLineModeVisual' },
-      ['^S'] = { 'S·Block', 'StatusLineModeVisual' },
-      ['i']  = { 'INSERT', 'StatusLineModeInsert' },
-      ['ic'] = { 'INSERT', 'StatusLineModeInsert' },
-      ['ix'] = { 'INSERT', 'StatusLineModeInsert' },
-      ['R']  = { 'Replace', 'StatusLineModeReplace' },
+      ['v']  = { 'VISUAL   ', 'StatusLineModeVisual' },
+      ['V']  = { 'V·Line   ', 'StatusLineModeVisual' },
+      ['^V'] = { 'V·Block  ', 'StatusLineModeVisual' },
+      ['s']  = { 'Select   ', 'StatusLineModeVisual' },
+      ['S']  = { 'S·Line   ', 'StatusLineModeVisual' },
+      ['^S'] = { 'S·Block  ', 'StatusLineModeVisual' },
+      ['i']  = { 'INSERT   ', 'StatusLineModeInsert' },
+      ['ic'] = { 'INSERT   ', 'StatusLineModeInsert' },
+      ['ix'] = { 'INSERT   ', 'StatusLineModeInsert' },
+      ['R']  = { 'Replace  ', 'StatusLineModeReplace' },
       ['Rv'] = { 'V·Replace', 'StatusLineModeReplace' },
-      ['c']  = { 'COMMAND', 'StatusLineModeCommand' },
-      ['cv'] = { 'Vim Ex', 'StatusLineModeCommand' },
-      ['ce'] = { 'Ex', 'StatusLineModeCommand' },
-      ['r']  = { 'Prompt', 'StatusLineModeCommand' },
-      ['rm'] = { 'More', 'StatusLineModeCommand' },
-      ['r?'] = { 'Confirm', 'StatusLineModeCommand' },
-      ['!']  = { 'Shell', 'StatusLineModeCommand' },
-      ['t']  = { 'TERMINAL', 'StatusLineModeCommand' }
+      ['c']  = { 'COMMAND  ', 'StatusLineModeCommand' },
+      ['cv'] = { 'Vim Ex   ', 'StatusLineModeCommand' },
+      ['ce'] = { 'Ex       ', 'StatusLineModeCommand' },
+      ['r']  = { 'Prompt   ', 'StatusLineModeCommand' },
+      ['rm'] = { 'More     ', 'StatusLineModeCommand' },
+      ['r?'] = { 'Confirm  ', 'StatusLineModeCommand' },
+      ['!']  = { 'Shell    ', 'StatusLineModeCommand' },
+      ['t']  = { 'TERMINAL ', 'StatusLineModeCommand' }
     }, {
       -- fix weird issues
       __index = function(_, _)
