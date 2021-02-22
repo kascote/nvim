@@ -9,14 +9,17 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     keymaps = {
       init_selection = 'gnn',
-      node_incremental = ".",
+      node_incremental = "grn",
       scope_incremental = "grc",
-      node_decremental = ",",
+      node_decremental = "grm",
     }
   },
   refactor = {
     highlight_definitions = {
       enable = true
+    },
+    highlight_current_scope = {
+        enable = true
     },
     smart_rename = {
       enable = true,
@@ -91,7 +94,13 @@ require'nvim-treesitter.configs'.setup {
       },
     }
   },
-  ensure_installed = {"javascript", "typescript", "ruby", "html", "lua", "json", "jsdoc", "bash", "tsx"}
+  ensure_installed = {"javascript", "typescript", "ruby", "html", "lua", "json", "jsdoc", "bash", "tsx"},
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false -- Whether the query persists across vim sessions
+  }
 }
 
 local patterns = {
