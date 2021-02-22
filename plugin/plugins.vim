@@ -13,6 +13,7 @@ function! PackagerInit() abort
   call packager#add('preservim/nerdtree')                       ", { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
   call packager#add('Xuyuanp/nerdtree-git-plugin')
   call packager#add('nvim-treesitter/nvim-treesitter')
+  call packager#add('nvim-treesitter/playground')
 
   call packager#add('neovim/nvim-lspconfig')
   call packager#add('neovim/nvim-lsp')
@@ -26,7 +27,7 @@ function! PackagerInit() abort
   call packager#add('junegunn/vim-easy-align')
 
   " call packager#add('Shougo/deoplete.nvim',                     { 'do': ':UpdateRemotePlugins' })
-  call packager#add('Shougo/neosnippet')
+  call packager#add('Shougo/neosnippet.vim')
   call packager#add('Shougo/neosnippet-snippets')
   call packager#add('Shougo/context_filetype.vim')
   " call packager#add('Shougo/echodoc.vim',                       {'type': 'opt'})
