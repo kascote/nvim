@@ -19,7 +19,8 @@ nnoremap <silent> <Leader>i :call nfx#utils#preserve("normal gg=G")<cr>
 nnoremap <silent> <Leader><cr> :noh<cr>
 " Remove the Windows ^M
 " nnoremap <silent> <Leader>0 mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-nnoremap <silent> <Leader>x :ZBuffers<CR>
+" nnoremap <silent> <Leader>x :ZBuffers<CR>
+nnoremap <silent> <Leader>x :Telescope buffers<cr>
 nnoremap <silent> <Leader>d :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>r :NERDTreeFind<CR>
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
@@ -28,7 +29,8 @@ nnoremap <silent> <Leader><Leader> :b#<cr>
 "set current window proportions
 nnoremap <silent> <Leader>h :exec "vertical resize " . ((&columns/4)*3)<CR>
 
-nnoremap <Leader>a :ZRg <c-r><c-w>
+" nnoremap <Leader>a :ZRg <c-r><c-w>
+nnoremap <Leader>a :Telescope live_grep<cr>
 " Close the current buffer
 nnoremap <silent> <Leader>w :Bdelete<CR>
 " normal mode mappings
@@ -58,8 +60,8 @@ nmap <Leader>j <Plug>(quickhl-cword-toggle)
 
 nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 nnoremap <silent> <leader>af :ALEFix<cr>
-nnoremap <silent> <leader>an :ALENext<cr>
-nnoremap <silent> <leader>ap :ALEPrevious<cr>
+nnoremap <silent> <leader>an :ALENextWrap<cr>
+nnoremap <silent> <leader>ap :ALEPreviousWrapz<cr>
 
 " how customize virtual text
 " https://gist.github.com/tjdevries/ccbe3b79bd918208f2fa8dfe15b95793
@@ -112,9 +114,12 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 " Visually select the text that was last edited/pasted. From http://vimcasts.org/episodes/bubbling-text/
 nnoremap gV `[v`]
 " FZF fuzy search
-nnoremap <C-p> :FZF<CR>
+" nnoremap <C-p> :FZF<CR>
+nnoremap <C-p> :Telescope find_files<cr>
 
-nnoremap z= :call nfx#spell#FzfSpell()<CR>
+" nnoremap z= :call nfx#spell#FzfSpell()<CR>
+nnoremap z= :Telescope spell_suggest<cr>
+
 
 "--=[ INSERT ]=--------------------------------
 " remap digraphs
