@@ -1,6 +1,6 @@
 augroup ale_load_aucommands
   au!
-  au FileType sh,zsh,bash,html,markdown,vim,lua,javascript,javascriptreact,typescript,scss,css call s:load_ale()
+  au FileType sh,zsh,bash,html,markdown,vim,lua,javascript,javascriptreact,typescript,typescriptreact,scss,css call s:load_ale()
 augroup END
 
 let s:ale_loaded = v:false
@@ -15,9 +15,8 @@ function! s:load_ale() abort
   let s:ale_loaded = v:true
 
   packadd ale
-  nmap <silent> <leader>ak <Plug>(ale_previous_wrap)
-  nmap <silent> <leader>aj <Plug>(ale_next_wrap)
 
+  let g:ale_disable_lsp = 1
   let g:ale_sign_error='•'
   let g:ale_sign_warning='•'
   let g:ale_lint_on_save = 1
@@ -28,11 +27,13 @@ function! s:load_ale() abort
   let g:ale_echo_msg_warning_str = 'W'
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
   let g:ale_linters = {
-    \ 'markdown': ['alex', 'markdownlint', 'proselint', 'write-good', 'vale']
+    \ 'markdown': ['alex', 'markdownlint', 'proselint', 'write-good', 'vale'],
+    \ 'typescriptreact': ['eslint'],
     \}
   let g:ale_fixers = {
     \ 'javascript': ['eslint'],
     \ 'javascriptreact': ['eslint'],
+    \ 'typescriptreact': ['eslint'],
     \}
   let g:ale_warn_about_trailing_whitespace = 1
   let g:ale_set_highlights = 1
