@@ -13,6 +13,7 @@ function! PackagerInit() abort
   call packager#add('preservim/nerdtree')                       ", { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
   call packager#add('Xuyuanp/nerdtree-git-plugin')
   call packager#add('nvim-treesitter/nvim-treesitter')
+  call packager#add('nvim-treesitter/completion-treesitter')
   call packager#add('nvim-treesitter/playground')
 
   call packager#add('neovim/nvim-lspconfig')
@@ -92,36 +93,37 @@ function! PackagerInit() abort
 
   " sintaxs
   call packager#add('digitaltoad/vim-pug')
-  call packager#add('elzr/vim-json')
-  call packager#add('vim-ruby/vim-ruby')
+  " --TS call packager#add('elzr/vim-json')
+  " --TS call packager#add('vim-ruby/vim-ruby')
   call packager#add('slim-template/vim-slim')
-  call packager#add('othree/html5.vim')
-  call packager#add('pangloss/vim-javascript')
-  call packager#add('HerringtonDarkholme/yats.vim') " Plug 'leafgarland/typescript-vim'
+  " --TS call packager#add('othree/html5.vim')
+  " --TS call packager#add('pangloss/vim-javascript')
+  " --TS call packager#add('HerringtonDarkholme/yats.vim') " Plug 'leafgarland/typescript-vim'
   " Plug 'peitalin/vim-jsx-typescript'
-  call packager#add('MaxMEllon/vim-jsx-pretty')
-  call packager#add('Quramy/vim-js-pretty-template')
+  " --TS call packager#add('MaxMEllon/vim-jsx-pretty')
+  " --TS call packager#add('Quramy/vim-js-pretty-template')
   call packager#add('RobertAudi/fish.vim')
   call packager#add('plasticboy/vim-markdown') " 'tpope/vim-markdown'
-  call packager#add('dart-lang/dart-vim-plugin')
-  call packager#add('hail2u/vim-css3-syntax')
-  call packager#add('cakebaker/scss-syntax.vim')
-  call packager#add('euclidianAce/BetterLua.vim')
+  " --TS call packager#add('dart-lang/dart-vim-plugin')
+  " --TS call packager#add('hail2u/vim-css3-syntax')
+  " --TS call packager#add('cakebaker/scss-syntax.vim')
+  " --TS call packager#add('euclidianAce/BetterLua.vim')
 
   " themes
   call packager#add('tjdevries/colorbuddy.vim')
   call packager#add('tjdevries/gruvbuddy.nvim')
   call packager#add('gruvbox-community/gruvbox')
   call packager#add('vigoux/oak')
+  call packager#add('mlopes/vim-farin')
   " call packager#add('logico-dev/typewriter')
   " call packager#add('rakr/vim-one')
   " call packager#add('Rigellute/shades-of-purple.vim')
   " call packager#add('robertmeta/nofrils')
   " call packager#add('ayu-theme/ayu-vim')
   " call packager#add('cideM/yui')
-  call packager#add('srcery-colors/srcery-vim')
-  call packager#add('chriskempson/base16-vim')
-  call packager#add('ayu-theme/ayu-vim')
+  " call packager#add('srcery-colors/srcery-vim')
+  " call packager#add('chriskempson/base16-vim')
+  " call packager#add('ayu-theme/ayu-vim')
 
   " --=[ to review ]=--
   " https://github.com/liuchengxu/vista.vim

@@ -121,7 +121,7 @@ if has("termguicolors")
 endif
 
 
-set guicursor=                                              " do not mess with the cursor size
+" set guicursor=                                              " do not mess with the cursor size
 "}}}
 "---[ Visual Cues ]------------------------------------------------------- {{{
 set showmatch                                               " show matching brackets

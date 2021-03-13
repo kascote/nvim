@@ -4,7 +4,7 @@ local vimLsp = vim.lsp
 local nvim_lsp = require('lspconfig')
 local completion = require('completion')
 local util = require'vim.lsp.util'
-require'treesitter_setup'
+-- require'treesitter_setup'
 
 local function make_on_attach(config)
   return function(client, bufnr)
@@ -88,29 +88,29 @@ end
 
 -- ###########################################################################
 
-local custom_symbol_callback = function(_, _, result, _, bufnr)
-  if not result or vim.tbl_isempty(result) then return end
+-- local custom_symbol_callback = function(_, _, result, _, bufnr)
+--   if not result or vim.tbl_isempty(result) then return end
+--
+--   local items = util.symbols_to_items(result, bufnr)
+--   local items_by_name = {}
+--   for _, item in ipairs(items) do
+--     items_by_name[item.text] = item
+--   end
+--
+--   local opts = vim.fn['fzf#wrap']({
+--       source = vim.tbl_keys(items_by_name),
+--       sink = function() end,
+--       options = {'--prompt', 'Symbol > '},
+--     })
+--   opts.sink = function(item)
+--     local selected = items_by_name[item]
+--     vim.fn.cursor(selected.lnum, selected.col)
+--   end
+--   vim.fn['fzf#run'](opts)
+-- end
 
-  local items = util.symbols_to_items(result, bufnr)
-  local items_by_name = {}
-  for _, item in ipairs(items) do
-    items_by_name[item.text] = item
-  end
-
-  local opts = vim.fn['fzf#wrap']({
-      source = vim.tbl_keys(items_by_name),
-      sink = function() end,
-      options = {'--prompt', 'Symbol > '},
-    })
-  opts.sink = function(item)
-    local selected = items_by_name[item]
-    vim.fn.cursor(selected.lnum, selected.col)
-  end
-  vim.fn['fzf#run'](opts)
-end
-
-vimLsp.callbacks['textDocument/documentSymbol'] = custom_symbol_callback
-vimLsp.callbacks['workspace/symbol'] = custom_symbol_callback
+-- vimLsp.callbacks['textDocument/documentSymbol'] = custom_symbol_callback
+-- vimLsp.callbacks['workspace/symbol'] = custom_symbol_callback
 
 -- ###########################################################################
 -- how customize virtual text

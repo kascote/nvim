@@ -7,7 +7,8 @@
 "
 " command! -nargs=0 LoadLsp call s:load_lsp()
 
-execute 'luafile ' . stdpath('config') . '/lua/lsp.lua'
+" execute 'luafile ' . stdpath('config') . '/lua/lsp.lua'
+execute 'luafile /Users/fernandezn/.config/nvim/lua/lsp.lua'
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
