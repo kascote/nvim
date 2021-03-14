@@ -86,7 +86,7 @@ end
 
 local function buildTabLine(name)
   local pager = formatTabPages()
-  local widthPad = math.ceil(vim.o.columns / 2) - lineDisplay.bufNameLen - lineDisplay.tabPageLen
+  local widthPad = math.ceil(vim.o.columns / 2) - math.ceil(lineDisplay.bufNameLen / 2)- lineDisplay.tabPageLen
   local pad = string.rep(' ', widthPad)
 
   return pager .. pad .. name .. pad
