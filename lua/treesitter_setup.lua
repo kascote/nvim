@@ -100,6 +100,9 @@ require'nvim-treesitter.configs'.setup {
     disable = {},
     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
     persist_queries = false -- Whether the query persists across vim sessions
+  },
+  autotag = {
+    enable = true,
   }
 }
 
@@ -113,11 +116,11 @@ local patterns = {
 }
 
 function _G.custom_statusline()
-return require'nvim-treesitter'.statusline({
-    indicator_size = 80,
-    transform_fn = function(line)
-      for _, p in ipairs(patterns) do line = line:gsub(p, '') end
-      return line
-    end
-  })
+  return require'nvim-treesitter'.statusline({
+      indicator_size = 80,
+      transform_fn = function(line)
+        for _, p in ipairs(patterns) do line = line:gsub(p, '') end
+        return line
+      end
+    })
 end

@@ -125,7 +125,9 @@ nnoremap z= :Telescope spell_suggest<cr>
 " remap digraphs
 inoremap <C-u> <C-k>
 " Make Ctrl+J join lines in insert mode
-inoremap <C-j> <C-o>J
+" inoremap <C-j> <C-o>J
+imap  <c-j> <Plug>(completion_next_source)
+imap  <c-k> <Plug>(completion_prev_source)
 
 inoremap <C-l> <C-R>=AutoPairsReturn()<cr>
 

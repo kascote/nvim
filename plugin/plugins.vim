@@ -20,6 +20,8 @@ function! PackagerInit() abort
   call packager#add('neovim/nvim-lsp')
   call packager#add('nvim-lua/completion-nvim')
   call packager#add('tjdevries/nlua.nvim')
+  call packager#add('windwp/nvim-ts-autotag')
+  call packager#add('glepnir/lspsaga.nvim')
 
   " call packager#add('junegunn/fzf',                             {'do': './install --all && ln -s $(pwd) ~/.fzf', 'type': 'opt'})
   call packager#add('junegunn/fzf',                             {'type': 'opt'})
@@ -126,8 +128,8 @@ function! PackagerInit() abort
   " call packager#add('ayu-theme/ayu-vim')
 
   " --=[ to review ]=--
-  " https://github.com/liuchengxu/vista.vim
   " https://github.com/nvim-lua/lsp-status.nvim
+  " https://github.com/rhysd/git-messenger.vim
 
 endfunction
 

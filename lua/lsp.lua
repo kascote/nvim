@@ -3,8 +3,8 @@ local vimApi = vim.api
 local vimLsp = vim.lsp
 local nvim_lsp = require('lspconfig')
 local completion = require('completion')
-local util = require'vim.lsp.util'
--- require'treesitter_setup'
+-- local util = require'vim.lsp.util'
+require'treesitter_setup'
 
 local function make_on_attach(config)
   return function(client, bufnr)
