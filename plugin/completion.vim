@@ -2,12 +2,13 @@
 let g:completion_enable_snippet = 'Neosnippet'
 let g:completion_chain_complete_list = {
   \  'js': [
-  \    {'complete_items': ['lsp', 'ts', 'snippet']},
+  \    {'complete_items': ['ts', 'lsp', 'snippet']},
   \    {'mode': '<c-p>'},
   \    {'mode': '<c-n>'}
   \  ],
   \  'javascriptreact': [
   \    {'complete_items': ['ts', 'lsp', 'snippet']},
+  \    {'complete_items': ['path']},
   \    {'mode': '<c-p>'},
   \    {'mode': '<c-n>'}
   \  ],
@@ -22,3 +23,4 @@ let g:completion_chain_complete_list = {
   \    {'mode': '<c-n>'}
   \  ]
 \}
+

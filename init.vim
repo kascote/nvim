@@ -24,6 +24,9 @@ let $LOCAL_VIM_PATH=fnamemodify(expand("$MYVIMRC"), ":p:h")
 " % to bounce from do to end etc.
 " runtime macros/matchit.vim
 
+set guicursor=n-v-c:block,i-ci-ve:hor25-iCursor,r-cr:hor20,o:hor50
+  \,a:Cursor
+  \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 " See `:h initialization` for initialization order
 " See `:scriptnames` for a list of all scripts, in evaluation order.

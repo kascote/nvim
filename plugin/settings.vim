@@ -22,7 +22,7 @@ set modeline                                                " Use modeline overr
 set wildcharm=<C-z>                                         " substitute for 'wildchar' (<Tab>) in macros
 set clipboard=unnamedplus
 set updatetime=400
-set noemoji
+set emoji
 
 "let macvim_hig_shift_movement = 1                          " MacVIM shift+arrow-keys behavior (required in .vimrc)
 "}}}
@@ -130,7 +130,8 @@ set hlsearch                                                " highlight searchs
 set incsearch                                               " BUT do highlight as you type you search phrase
 set nolist                                                  " show whitespace
 "set listchars=tab:\>-,trail:.,extends:>,precedes:<,eol:$,nbsp:º " what to show when I hit :set list
-set listchars=tab:\▷┅,trail:•,extends:»,precedes:«,eol:$,nbsp:⦸ " what to show when I hit :set list
+"set listchars=tab:\▷┅,trail:•,extends:»,precedes:«,eol:$,nbsp:⦸ " what to show when I hit :set list
+set listchars=tab:\▷┅,trail:•,extends:…,precedes:…,eol:↲,nbsp:⦸ " what to show when I hit :set list
 set nojoinspaces                                            " don't autoinsert two spaces after '.', '?', '!' for join command
 if has('linebreak')
   let &showbreak='↳ '                                       " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
