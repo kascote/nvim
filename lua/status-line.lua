@@ -3,10 +3,6 @@ local api = vim.api
 local M = {}
 
 local spacer = ' '
-local special_buffers = {
-  ['nerdtree'] = 'NERDTree',
-  ['help'] = 'Help',
-}
 
 -- Mode Prompt Table
 local current_mode = setmetatable({
@@ -133,8 +129,8 @@ function M.activeLine()
   statusline = statusline.."["..ft..spacer..fenc.."]"..spacer
   statusline = statusline.."%*" -- reset highlight group
   statusline = statusline.."%#StatusLineRHS#"
-  statusline = statusline..spacer..'ℓ '..string.format("%04s",line)..'/'..string.format("%-04s",height)..spacer
-  statusline = statusline..spacer..'𝚌 '..string.format("%04s",column)..'/'..string.format("%-04s",width)..spacer
+  statusline = statusline..spacer..'ℓ'..string.format("%03s",line)..'/'..string.format("%-03s",height)..spacer
+  statusline = statusline..spacer..'𝚌'..string.format("%03s",column)..'/'..string.format("%-03s",width-1)..spacer
 
   statusline = statusline.."%*" -- reset highlight group
 
