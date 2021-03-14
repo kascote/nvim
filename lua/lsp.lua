@@ -59,6 +59,9 @@ local function make_on_attach(config)
   end
 end
 
+local sumneko_root_path = vim.fn.stdpath('cache')..'/lua-language-server'
+local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"
+
 local servers = {
   -- solargraph = {
   --   cmd = { "solargraph", "stdio" },
@@ -70,9 +73,28 @@ local servers = {
   -- gopls = {},
   -- rust_analyzer = {},
   sumneko_lua = {
-    cmd = { "/Users/fernandezn/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/bin/macOS/lua-language-server", "-E", "/Users/fernandezn/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/main.lua" },
-    install_dir = "/Users/fernandezn/.cache/nvim/nvim_lsp/sumneko_lua",
-    is_installed = true
+    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+    settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = 'LuaJIT',
+          -- Setup your lua path
+          path = vim.split(package.path, ';'),
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = {'vim'},
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = {
+            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+          },
+        },
+      },
+    },
   },
   dartls = {
     cmd = { "dart", "/usr/local/Cellar/dart-beta/2.12.0-133.7.beta/libexec/bin/snapshots/analysis_server.dart.snapshot", "--lsp" },
