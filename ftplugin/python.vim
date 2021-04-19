@@ -3,4 +3,4 @@ setlocal tabstop=4
 setlocal shiftwidth=4
 setlocal textwidth=79
 setlocal noexpandtab
-setlocal omnifunc=pythoncomplete#Complete
+" setlocal omnifunc=pythoncomplete#Complete

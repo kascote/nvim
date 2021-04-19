@@ -1,2 +1,2 @@
-setlocal omnifunc=javascriptcomplete#CompleteJS
+" setlocal omnifunc=javascriptcomplete#CompleteJS
 

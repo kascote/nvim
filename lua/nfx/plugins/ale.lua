@@ -1,0 +1,36 @@
+-- vim.g.ale_disable_lsp = 1
+-- vim.g.ale_completion_enabled = 0
+-- vim.g.ale_completion_autoimport = 0
+-- vim.g.ale_sign_error='•'
+-- vim.g.ale_sign_warning='•'
+-- vim.g.ale_lint_on_save = 1
+-- vim.g.ale_lint_on_text_changed = 'normal'
+-- vim.g.ale_lint_on_insert_leave = 1
+-- vim.g.ale_lint_on_enter = 1
+-- vim.g.ale_echo_cursor = 0
+-- vim.g.ale_echo_msg_error_str = 'E'
+-- vim.g.ale_echo_msg_warning_str = 'W'
+-- vim.g.ale_echo_msg_format = '[%linter%] %s [%severity%]'
+-- vim.g.ale_linters = {
+--   markdown = {'alex', 'markdownlint', 'proselint', 'write-good', 'vale'};
+--   typescriptreact = {'eslint'};
+-- }
+-- vim.g.ale_fixers = {
+--   javascript = {'eslint'};
+--   javascriptreact = {'eslint'};
+--   typescriptreact = {'eslint'};
+-- }
+-- vim.g.ale_warn_about_trailing_whitespace = 1
+-- vim.g.ale_set_highlights = 1
+-- vim.g.ale_max_signs = -1
+-- vim.g.ale_set_signs = 1
+-- vim.g.ale_set_balloons = 1
+-- vim.g.ale_sign_column_always = 1
+-- vim.g.ale_virtualtext_cursor = 0
+-- vim.g.ale_textlint_use_global = 1
+-- vim.g.ale_alex_use_global = true
+-- vim.g.ale_floating_preview = 1
+-- vim.g.ale_hover_to_preview = 1
+-- vim.g.ale_hover_to_floating_preview = 1
+-- vim.g.ale_detail_to_floating_preview = 1
+-- vim.g.ale_floating_window_border = { '│', '─', '╭', '╮', '╯', '╰' }

@@ -1,0 +1,151 @@
+local u = require('nfx.utils')
+
+u.skm_sn('n', '<Up>',      ':cprevious<CR>')
+u.skm_sn('n', '<Down>',    ':cnext<CR>')
+u.skm_sn('n', '<Left>',    ':cpfile<CR>')
+u.skm_sn('n', '<Right>',   ':cnfile<CR>')
+u.skm_sn('n', '<C-Up>',    ':lprevious<CR>')
+u.skm_sn('n', '<C-Down>',  ':lnext<CR>')
+u.skm_sn('n', '<C-Left>',  ':lpfile<CR>')
+u.skm_sn('n', '<C-Right>', ':lnfile<CR>')
+
+u.skm_sn('n', "'",         "`") -- convenients remaps
+u.skm_sn('n', '<Tab>',     'za') -- Toggle fold at current position.
+
+-- move between windows
+u.skm_sn('n', '<C-h>',     '<C-w>h')
+u.skm_sn('n', '<C-j>',     '<C-w>j')
+u.skm_sn('n', '<C-k>',     '<C-w>k')
+u.skm_sn('n', '<C-l>',     '<C-w>l')
+
+-- Store relative line number jumps in the jumplist if they exceed a threshold.
+u.skm_sn('n', '<expr> k',  [[(v:count > 5 ? "m'" . v:count : '') . 'k']])
+u.skm_sn('n', '<expr> j',  [[(v:count > 5 ? "m'" . v:count : '') . 'j']])
+-- select the last changed/pasted text
+u.skm_sn('n', '<expr> gp', "`[' . strpart(getregtype(), 0, 1) . '`]")
+-- Visually select the text that was last edited/pasted. From http://vimcasts.org/episodes/bubbling-text/
+u.skm_sn('n', 'gV',        '`[v`]')
+u.skm_sn('n', '<C-p>',     '<cmd>lua R("nfx.plugins.telescope")["find_files"]()<CR>')
+u.skm_sn('n', 'z=',        ':Telescope spell_suggest<cr>')
+
+--[[
+        nnoremap <CR> :
+--]]
+
+------------------------------------------------------------------=[ INSERT ]=--
+u.skm_sn('i', '<c-u>', '<C-k>') -- remap digraphs
+u.skm_sn('i', '<c-m>', '<C-o>J') -- join lines in insert mode
+u.skm_s('i', '<c-j>', '<Plug>(completion_next_source)')
+u.skm_s('i', '<c-k>', '<Plug>(completion_prev_source)')
+u.skm_s('i', '<c-f>', '<Plug>(neosnippet_expand_or_jump)')
+u.skm_s('i', '<c-y>', '<Plug>(completion_trigger)')
+
+
+vim.cmd([[
+  inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+]])
+
+------------------------------------------------------------------=[ VISUAL ]=--
+-- vmap <Leader>y "+y
+-- Visual mode mappings.
+u.skm_sn('x', '<C-h>',   '<C-w>h')
+u.skm_sn('x', '<C-j>',   '<C-w>j')
+u.skm_sn('x', '<C-k>',   '<C-w>k')
+u.skm_sn('x', '<C-l>',   '<C-w>l')
+u.skm_sn('v', '<Enter>', ':EasyAlign<cr>')
+
+vim.cmd('xnoremap <C-k> <Plug>(neosnippet_expand_target)')
+
+-----------------------------------------------------------------=[ COMMAND ]=--
+-- Allow saving of files as sudo when I forgot to start vim using sudo.
+u.skm_sn('c', 'w!!', 'w !sudo tee > /dev/null %')
+-- use C-j and C-k for search
+u.skm_n('c', '<c-j>', '<Down>')
+u.skm_n('c', '<c-k>', '<Up>')
+
+u.skm_sn('c', '%H', [[<C-R>=expand('%:h:p')<CR>]])
+u.skm_sn('c', '%T', [[<C-R>=expand('%:t')<CR>]])
+u.skm_sn('c', '%P', [[<C-R>=expand('%:p')<CR>]])
+vim.api.nvim_set_keymap('c', '<c-r><c-r>', '<Plug>(TelescopeFuzzyCommandSearch)', { noremap = false, nowait = true })
+
+------------------------------------------------------------------=[ LEADER ]=--
+u.skm_sn('n', '<Leader>p',        '+p')
+u.skm_sn('n', '<Leader>P',        '+P')
+
+u.skm_sn('n', '<Leader>1',        ':set cursorline!<CR>')
+u.skm_sn('n', '<Leader>2',        ':set cursorcolumn!<CR>')
+u.skm_sn('n', '<Leader>4',        ':!bash')
+u.skm_sn('n', '<Leader>5',        ':set invpaste<CR>')
+u.skm_sn('n', '<Leader>7',        ':set invhlsearch<CR>')
+u.skm_sn('n', '<Leader>8',        ':set invlist<CR>')
+u.skm_sn('n', '<Leader>9',        ':lua require"nfx.utils".cycle_line_numbers()<CR>')
+u.skm_sn('n', '<Leader>i',        ':lua require"nfx.utils".adjust_file_indent()<CR>')
+
+-- Remove hightlights
+u.skm_sn('n', '<Leader><cr>',     ':noh<cr>')
+
+u.skm_sn('n', '<Leader>x',        '<cmd>lua R("nfx.plugins.telescope").buffers()<CR>')
+u.skm_sn('n', '<Leader>a',        ':Telescope live_grep<cr>')
+u.skm_sn('n', '<Leader>tg',       ':Telescope git_files<cr>')
+u.skm_sn('n', '<Leader>ts',       '<cmd>lua R("nfx.plugins.telescope").git_status()<CR>')
+u.skm_sn('n', '<Leader>th',       ':Telescope help_tags<cr>')
+u.skm_sn('n', '<Leader>td',        '<cmd>lua R("nfx.plugins.telescope").todo()<CR>')
+u.skm_sn('n', '<Leader>tl',        '<cmd>lua R("nfx.plugins.telescope").grep_last_search()<CR>')
+
+u.skm_sn('n', '<Leader>d',        ':NvimTreeToggle<CR>')
+u.skm_sn('n', '<Leader>r',        ':NvimTreeFindFile<CR>')
+
+u.skm_sn('n', '<Leader><Leader>', ':b#<cr>')
+
+-- set current window proportions
+u.skm_sn('n', '<Leader>h',        ':exec "vertical resize " . ((&columns/4)*3)<CR>')
+
+u.skm_sn('n', '<Leader>w',        ':Bdelete<CR>')
+
+u.skm_sn('n', '<Leader>gn',       '<cmd>GitGutterNextHunk<cr>')
+u.skm_sn('n', '<Leader>gp',       '<cmd>GitGutterPrevHunk<cr>')
+u.skm_sn('n', '<Leader>gv',       '<cmd>GitGutterPreviewHunk<cr>')
+u.skm_sn('n', '<Leader>ga',       '<cmd>GitGutterStageHunk<cr>')
+u.skm_sn('n', '<Leader>gu',       '<cmd>GitGutterUndoHunk<cr>')
+u.skm_sn('n', '<Leader>gf',       '<cmd>GitGutterFold<cr>')
+u.skm_sn('n', '<Leader>gb',       '<cmd>Gblame<CR>')
+
+vim.cmd('nmap <Leader>m <Plug>(quickhl-manual-this)')
+vim.cmd('xmap <Leader>m <Plug>(quickhl-manual-this)')
+vim.cmd('nmap <Leader>M <Plug>(quickhl-manual-reset)')
+vim.cmd('xmap <Leader>M <Plug>(quickhl-manual-reset)')
+vim.cmd('nmap <Leader>nt <Plug>(quickhl-cword-toggle)')
+
+vim.cmd('nmap <Leader>nn <Plug>(quickhl-manual-goto-next')
+vim.cmd('nmap <Leader>np <Plug>(quickhl-manual-goto-prev')
+
+u.skm_sn('n', '<Leader>af', ':ALEFix<cr>')
+u.skm_sn('n', '<Leader>an', ':ALENextWrap<cr>')
+u.skm_sn('n', '<Leader>ap', ':ALEPreviousWrap<cr>')
+u.skm_sn('n', '<Leader>ad', ':ALEDetail<cr>')
+
+------------------------------------------------------------=[ LOCAL-LEADER ]=--
+-- give the syntax highlight id for the word under the cursor
+u.skm_sn('n', '<LocalLeader>0', ':lua require("nfx.utils").syn_stack()<CR>')
+-- Fix (most) syntax highlighting problems in current buffer (mnemonic: coloring).
+u.skm_sn('n', '<LocalLeader>l', ':nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>')
+u.skm_sn('n', '<LocalLeader>t', '<cmd>lua require("nfx.utils").trim_white_spaces()<CR>')
+u.skm_sn('n', '<LocalLeader>w', ':set wildignore-=*/node_modules/*')
+
+u.skm_sn('n', '<LocalLeader>n', '<cmd>lua R("nfx.plugins.telescope").edit_neovim()<CR>')
+
+u.skm_sn('n', '<LocalLeader>f0', '<cmd>lua vim.wo.foldlevel=0<CR>')
+u.skm_sn('n', '<LocalLeader>f1', '<cmd>lua vim.wo.foldlevel=1<CR>')
+u.skm_sn('n', '<LocalLeader>f2', '<cmd>lua vim.wo.foldlevel=2<CR>')
+u.skm_sn('n', '<LocalLeader>f3', '<cmd>lua vim.wo.foldlevel=3<CR>')
+u.skm_sn('n', '<LocalLeader>f4', '<cmd>lua vim.wo.foldlevel=4<CR>')
+u.skm_sn('n', '<LocalLeader>f5', '<cmd>lua vim.wo.foldlevel=5<CR>')
+u.skm_sn('n', '<LocalLeader>f6', '<cmd>lua vim.wo.foldlevel=6<CR>')
+u.skm_sn('n', '<LocalLeader>f7', '<cmd>lua vim.wo.foldlevel=7<CR>')
+u.skm_sn('n', '<LocalLeader>f8', '<cmd>lua vim.wo.foldlevel=8<CR>')
+u.skm_sn('n', '<LocalLeader>f9', '<cmd>lua vim.wo.foldlevel=9<CR>')
+
+------------------------------------------------------------------=[ SELECT ]=--
+vim.cmd('snoremap<C-k> <Plug>(neosnippet_expand_or_jump)')
+

@@ -1,4 +1,3 @@
-
 highlight! link typescriptVariable            PreProc
 highlight! link typescriptCall                Identifier
 highlight! link typescriptArrowFunc           PreProc

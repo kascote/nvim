@@ -1,6 +1,3 @@
-VimMdLoad
 
-IndentLinesDisable
-
-call nfx#spell#text()
+" call nfx#spell#text()
 

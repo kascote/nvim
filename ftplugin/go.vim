@@ -1,5 +1,3 @@
-VimGoLoad
-
 setlocal completeopt+=noinsert
 setlocal completeopt+=noselect
 
