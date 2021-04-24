@@ -29,6 +29,7 @@ packer.startup(function(use)
   use {'tjdevries/nlua.nvim'}
   use {'windwp/nvim-ts-autotag'}
   use {'glepnir/lspsaga.nvim'}
+  use {'windwp/nvim-autopairs'}
 
   use {'fatih/vim-go'}
   -- use {'tjdevries/express_line.nvim'}
@@ -101,6 +102,7 @@ packer.startup(function(use)
     charlesmallah/lua-profiler
     lewis6991/spellsitter.nvim
     TimUntersberger/neogit
+    windwp/nvim-spectre
 
     https://github.com/liuchengxu/vim-which-key
     https://github.com/vitalk/vim-simple-todo

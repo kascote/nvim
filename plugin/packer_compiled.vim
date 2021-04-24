@@ -77,6 +77,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nlua.nvim"
   },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+  },
   ["nvim-colorizer.lua"] = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
