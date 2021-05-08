@@ -7,7 +7,6 @@ end
 local vim = vim
 local vimApi = vim.api
 -- local vimLsp = vim.lsp
-local completion = require('completion')
 local u = require('nfx.utils')
 -- local util = require'vim.lsp.util'
 require'nfx.plugins.treesitter_setup'
@@ -26,12 +25,20 @@ local set_keymap = function(bufnr)
   u.nnoremap('<Leader>ln', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', { buffer = bufnr })
   u.nnoremap('<Leader>lp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', { buffer = bufnr })
 
-  u.nnoremap('<space>lwa',  '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', { buffer = bufnr })
-  u.nnoremap('<space>lwr',  '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', { buffer = bufnr })
-  u.nnoremap('<space>lwl',  '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', { buffer = bufnr })
+  u.nnoremap('<Leader>lp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', { buffer = bufnr })
 
-  u.nnoremap('<leader>ls', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', { buffer = bufnr })
-  u.nnoremap('<leader>lw', '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', { buffer = bufnr })
+  u.nnoremap('<Leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', { buffer = bufnr })
+  u.nnoremap('<Leader>lwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', { buffer = bufnr })
+  u.nnoremap('<Leader>lwl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', { buffer = bufnr })
+  u.nnoremap('<Leader>lwg', '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_diagnostics()<CR>')
+
+  -- u.nnoremap('<leader>lw', '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', { buffer = bufnr })
+  u.nnoremap('<Leader>lw', '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_symbols()<CR>')
+  -- u.nnoremap('<leader>ls', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', { buffer = bufnr })
+  u.nnoremap('<Leader>ls', '<cmd>lua R("nfx.plugins.telescope").lsp_document_symbols()<CR>')
+
+  u.nnoremap('<Leader>lsg', '<cmd>lua R("nfx.plugins.telescope").lsp_document_diagnostics()<CR>')
+
   u.nnoremap('<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', { buffer = bufnr })
   u.nnoremap('<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<cr>', { buffer = bufnr })
   u.nnoremap('<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', { buffer = bufnr })
@@ -53,7 +60,7 @@ end
 local custom_attach = function(client, bufnr)
   local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
 
-  completion.on_attach()
+  require('completion').on_attach(client, bufnr)
   set_keymap(bufnr)
 
   if vim.tbl_contains({"go", "rust"}, filetype) then
@@ -79,11 +86,10 @@ end
   -- },
 lspconfig.tsserver.setup {
   -- filetypes = { "typescript", "typescriptreact" },
+  -- client.resolved_capabilities.document_formatting = false
+  init_options = { documentFormatting = false },
   on_init = custom_init,
   on_attach = custom_attach,
-  -- before = function(client)
-  --   client.resolved_capabilities.document_formatting = false
-  -- end
 }
 
 lspconfig.vimls.setup {

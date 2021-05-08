@@ -54,11 +54,18 @@ end
 
 --//-------------------------------------------------------------------------
 local gitgutter_summary = function(_, buffer)
-  local ok, res = pcall(vim.api.nvim_buf_get_var, buffer.bufnr, 'gitgutter')
+  -- local ok, res = pcall(vim.api.nvim_buf_get_var, buffer.bufnr, 'gitgutter')
+  -- if ok then
+  --   -- summary format: { added, modified, removed }
+  --   local summary = res.summary
+  --   return summary and string.format("[+%d ~%d -%d]", summary[1], summary[2], summary[3]) or ''
+  -- else
+  --   return ''
+  -- end
+
+  local ok, res = pcall(vim.api.nvim_buf_get_var, buffer.bufnr, 'gitsigns_status')
   if ok then
-    -- summary format: { added, modified, removed }
-    local summary = res.summary
-    return summary and string.format("[+%d ~%d -%d]", summary[1], summary[2], summary[3]) or ''
+    return res
   else
     return ''
   end

@@ -9,8 +9,12 @@ require('telescope').setup {
     winblend = 0,
     preview_cutoff = 120,
     prompt_position = "top",
+    previewer = false,
+    border = true,
+    set_env = { ['COLORTERM'] = 'truecolor' },
+    sorting_strategy = 'ascending',
 
-    layout_strategy = 'horizontal',
+    layout_strategy = 'vertical',
     layout_defaults = {
       horizontal = {
         width_padding = 0.1,
@@ -18,9 +22,10 @@ require('telescope').setup {
         preview_width = 0.6,
       },
       vertical = {
-        width_padding = 0.05,
+        width_padding = 0.15,
         height_padding = 1,
-        preview_height = 0.5,
+        preview_height = 0.4,
+        mirror = true,
       }
     },
   }
@@ -68,6 +73,14 @@ function M.git_status()
   require('telescope.builtin').git_status(opts)
 end
 
+function M.git_files()
+  require('telescope.builtin').git_files()
+end
+
+function M.help_tags()
+  require('telescope.builtin').help_tags()
+end
+
 function M.grep_last_search(opts)
   opts = opts or {}
 
@@ -80,6 +93,22 @@ function M.grep_last_search(opts)
   opts.search = register
 
   require('telescope.builtin').grep_string(opts)
+end
+
+function M.live_grep() 
+  require('telescope.builtin').live_grep()
+end
+
+function M.lsp_workspace_symbols()
+  require('telescope.builtin').lsp_workspace_symbols()
+end
+
+function M.lsp_document_diagnostics()
+  require('telescope.builtin').lsp_document_diagnostics()
+end
+
+function M.lsp_workspace_diagnostics()
+  require('telescope.builtin').lsp_workspace_diagnostics()
 end
 
 return setmetatable({}, {

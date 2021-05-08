@@ -86,10 +86,10 @@ u.skm_sn('n', '<Leader>i',        ':lua require"nfx.utils".adjust_file_indent()<
 u.skm_sn('n', '<Leader><cr>',     ':noh<cr>')
 
 u.skm_sn('n', '<Leader>x',        '<cmd>lua R("nfx.plugins.telescope").buffers()<CR>')
-u.skm_sn('n', '<Leader>a',        ':Telescope live_grep<cr>')
-u.skm_sn('n', '<Leader>tg',       ':Telescope git_files<cr>')
+u.skm_sn('n', '<Leader>a',        '<cmd>lua R("nfx.plugins.telescope").live_grep()<CR>')
+u.skm_sn('n', '<Leader>tg',       '<cmd>lua R("nfx.plugins.telescope").git_files()<CR>')
 u.skm_sn('n', '<Leader>ts',       '<cmd>lua R("nfx.plugins.telescope").git_status()<CR>')
-u.skm_sn('n', '<Leader>th',       ':Telescope help_tags<cr>')
+u.skm_sn('n', '<Leader>th',       '<cmd>lua R("nfx.plugins.telescope").help_tags()<CR>')
 u.skm_sn('n', '<Leader>td',        '<cmd>lua R("nfx.plugins.telescope").todo()<CR>')
 u.skm_sn('n', '<Leader>tl',        '<cmd>lua R("nfx.plugins.telescope").grep_last_search()<CR>')
 
@@ -103,12 +103,13 @@ u.skm_sn('n', '<Leader>h',        ':exec "vertical resize " . ((&columns/4)*3)<C
 
 u.skm_sn('n', '<Leader>w',        ':Bdelete<CR>')
 
-u.skm_sn('n', '<Leader>gn',       '<cmd>GitGutterNextHunk<cr>')
-u.skm_sn('n', '<Leader>gp',       '<cmd>GitGutterPrevHunk<cr>')
-u.skm_sn('n', '<Leader>gv',       '<cmd>GitGutterPreviewHunk<cr>')
-u.skm_sn('n', '<Leader>ga',       '<cmd>GitGutterStageHunk<cr>')
-u.skm_sn('n', '<Leader>gu',       '<cmd>GitGutterUndoHunk<cr>')
-u.skm_sn('n', '<Leader>gf',       '<cmd>GitGutterFold<cr>')
+u.skm_sn('n', '<Leader>gn',       '<cmd>lua require"gitsigns".next_hunk()<CR>')
+u.skm_sn('n', '<Leader>gp',       '<cmd>lua require"gitsigns".prev_hunk()<CR>')
+u.skm_sn('n', '<Leader>gv',       '<cmd>lua require"gitsigns".preview_hunk()<CR>')
+u.skm_sn('n', '<Leader>ga',       '<cmd>lua require"gitsigns".stage_hunk()<CR>')
+u.skm_sn('n', '<Leader>gu',       '<cmd>lua require"gitsigns".reset_hunk()<CR>')
+u.skm_sn('n', '<Leader>gbl',      '<cmd>lua require"gitsigns".blame_line()<CR>')
+-- u.skm_sn('n', '<Leader>gf',       '<cmd>GitGutterFold<cr>')
 u.skm_sn('n', '<Leader>gb',       '<cmd>Gblame<CR>')
 
 vim.cmd('nmap <Leader>m <Plug>(quickhl-manual-this)')

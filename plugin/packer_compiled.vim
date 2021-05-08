@@ -57,6 +57,10 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/opt/fzf.vim"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+  },
   loupe = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/loupe"
@@ -161,10 +165,6 @@ _G.packer_plugins = {
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-fugitive"
-  },
-  ["vim-gitgutter"] = {
-    loaded = true,
-    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
   },
   ["vim-github-colorscheme"] = {
     loaded = true,

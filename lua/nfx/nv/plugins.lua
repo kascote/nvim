@@ -18,6 +18,9 @@ packer.startup(function(use)
 
   -- use {'preservim/nerdtree', cmd = {'NERDTreeToggle', 'NERDTreeFind'}}
   -- use {'Xuyuanp/nerdtree-git-plugin'}
+  use {'nvim-lua/popup.nvim'}
+  use {'nvim-lua/plenary.nvim'}
+
   use {'kyazdani42/nvim-tree.lua'}
   use {'nvim-treesitter/nvim-treesitter'}
   use {'nvim-treesitter/completion-treesitter'}
@@ -49,7 +52,8 @@ packer.startup(function(use)
   use {'tpope/vim-characterize'}
   use {'tpope/vim-ragtag'}
 
-  use {'airblade/vim-gitgutter'}
+  -- use {'airblade/vim-gitgutter'}
+  use {'lewis6991/gitsigns.nvim'}
   use {'wincent/loupe'}
   use {'t9md/vim-quickhl'}
 
@@ -68,8 +72,6 @@ packer.startup(function(use)
   use { 'norcalli/nvim-colorizer.lua'}
   -- use {'t9md/vim-quickhl'}
   -- use {'kana/vim-operator-user'} -- required by vim-quickhl
-  use {'nvim-lua/popup.nvim'}
-  use {'nvim-lua/plenary.nvim'}
   use {'nvim-telescope/telescope.nvim'}
 
   use {'junegunn/fzf.vim',          opt = true}
