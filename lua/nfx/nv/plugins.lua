@@ -79,6 +79,7 @@ packer.startup(function(use)
   use {'majutsushi/tagbar',         opt = true}
   use {'machakann/vim-vimhelplint', opt = true}
   use {'dstein64/vim-startuptime'}
+  use {'liuchengxu/vim-which-key'}
 
   --=[ Syntax ]=--
   use {'plasticboy/vim-markdown'} -- tpope/vim-markdown
@@ -106,7 +107,6 @@ packer.startup(function(use)
     TimUntersberger/neogit
     windwp/nvim-spectre
 
-    https://github.com/liuchengxu/vim-which-key
     https://github.com/vitalk/vim-simple-todo
 
   --]]

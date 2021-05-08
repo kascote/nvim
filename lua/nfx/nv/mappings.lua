@@ -70,6 +70,7 @@ u.skm_sn('c', '%P', [[<C-R>=expand('%:p')<CR>]])
 vim.api.nvim_set_keymap('c', '<c-r><c-r>', '<Plug>(TelescopeFuzzyCommandSearch)', { noremap = false, nowait = true })
 
 ------------------------------------------------------------------=[ LEADER ]=--
+u.skm_sn('n', '00',               ":WhichKey '<Space>'<CR>")
 u.skm_sn('n', '<Leader>p',        '+p')
 u.skm_sn('n', '<Leader>P',        '+P')
 

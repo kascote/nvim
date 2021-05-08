@@ -219,6 +219,10 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/opt/vim-vimhelplint"
+  },
+  ["vim-which-key"] = {
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-which-key"
   }
 }
 
