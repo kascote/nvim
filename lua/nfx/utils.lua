@@ -31,6 +31,10 @@ utils.skm_sn = function (mode, lhs, rhs)
   vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true })
 end
 
+utils.skm_se = function (mode, lhs, rhs)
+  vim.api.nvim_set_keymap(mode, lhs, rhs, { expr = true, noremap = true, silent = true })
+end
+
 utils.skm_s = function (mode, lhs, rhs)
   vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = false, silent = true })
 end

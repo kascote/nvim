@@ -40,14 +40,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/colorbuddy.vim"
   },
-  ["completion-nvim"] = {
-    loaded = true,
-    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/completion-nvim"
-  },
-  ["completion-treesitter"] = {
-    loaded = true,
-    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/completion-treesitter"
-  },
   ["express_line.nvim"] = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/express_line.nvim"
@@ -56,6 +48,10 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/opt/fzf.vim"
+  },
+  ["github_dark.nvim"] = {
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/github_dark.nvim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
@@ -69,14 +65,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
   },
-  ["neosnippet-snippets"] = {
-    loaded = true,
-    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/neosnippet-snippets"
-  },
-  ["neosnippet.vim"] = {
-    loaded = true,
-    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/neosnippet.vim"
-  },
   ["nlua.nvim"] = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nlua.nvim"
@@ -88,6 +76,10 @@ _G.packer_plugins = {
   ["nvim-colorizer.lua"] = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+  },
+  ["nvim-compe"] = {
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-lsp"] = {
     loaded = true,
@@ -219,6 +211,14 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/opt/vim-vimhelplint"
+  },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-vsnip"
+  },
+  ["vim-vsnip-integ"] = {
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ"
   },
   ["vim-which-key"] = {
     loaded = true,

@@ -28,6 +28,16 @@ u.skm_sn('n', 'gV',        '`[v`]')
 u.skm_sn('n', '<C-p>',     '<cmd>lua R("nfx.plugins.telescope")["find_files"]()<CR>')
 u.skm_sn('n', 'z=',        ':Telescope spell_suggest<cr>')
 
+vim.cmd([[
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+]])
+
 --[[
         nnoremap <CR> :
 --]]
@@ -35,11 +45,12 @@ u.skm_sn('n', 'z=',        ':Telescope spell_suggest<cr>')
 ------------------------------------------------------------------=[ INSERT ]=--
 u.skm_sn('i', '<c-u>', '<C-k>') -- remap digraphs
 u.skm_sn('i', '<c-m>', '<C-o>J') -- join lines in insert mode
-u.skm_s('i', '<c-j>', '<Plug>(completion_next_source)')
-u.skm_s('i', '<c-k>', '<Plug>(completion_prev_source)')
-u.skm_s('i', '<c-f>', '<Plug>(neosnippet_expand_or_jump)')
-u.skm_s('i', '<c-y>', '<Plug>(completion_trigger)')
 
+u.skm_se('i', '<C-n>', 'compe#complete()')
+-- u.skm_se('i', '<CR>', "compe#confirm('<CR>')")
+u.skm_se('i', '<C-e>', "compe#close('<C-e>')")
+u.skm_se('i', '<C-f>', "compe#scroll({ 'delta': +4 })")
+u.skm_se('i', '<C-d>', "compe#scroll({ 'delta': -4 })")
 
 vim.cmd([[
   inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -70,7 +81,7 @@ u.skm_sn('c', '%P', [[<C-R>=expand('%:p')<CR>]])
 vim.api.nvim_set_keymap('c', '<c-r><c-r>', '<Plug>(TelescopeFuzzyCommandSearch)', { noremap = false, nowait = true })
 
 ------------------------------------------------------------------=[ LEADER ]=--
-u.skm_sn('n', '00',               ":WhichKey '<Space>'<CR>")
+u.skm_sn('n', '¡¡',               ":WhichKey '<Space>'<CR>")
 u.skm_sn('n', '<Leader>p',        '+p')
 u.skm_sn('n', '<Leader>P',        '+P')
 

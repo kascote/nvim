@@ -60,7 +60,6 @@ end
 local custom_attach = function(client, bufnr)
   local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
 
-  require('completion').on_attach(client, bufnr)
   set_keymap(bufnr)
 
   if vim.tbl_contains({"go", "rust"}, filetype) then
@@ -79,6 +78,16 @@ local custom_attach = function(client, bufnr)
   end
 end
 
+local snippetsCapabilities = vim.lsp.protocol.make_client_capabilities()
+snippetsCapabilities.textDocument.completion.completionItem.snippetSupport = true
+snippetsCapabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
+
   -- lspconfig.solargraph.setup {
   --   cmd = { "solargraph", "stdio" },
   --   filetypes = { "ruby" },
@@ -90,6 +99,7 @@ lspconfig.tsserver.setup {
   init_options = { documentFormatting = false },
   on_init = custom_init,
   on_attach = custom_attach,
+  capabilities = snippetsCapabilities
 }
 
 lspconfig.vimls.setup {

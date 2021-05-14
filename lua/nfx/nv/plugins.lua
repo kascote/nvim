@@ -23,24 +23,25 @@ packer.startup(function(use)
 
   use {'kyazdani42/nvim-tree.lua'}
   use {'nvim-treesitter/nvim-treesitter'}
-  use {'nvim-treesitter/completion-treesitter'}
   use {'nvim-treesitter/playground'}
 
   use {'neovim/nvim-lspconfig'}
   use {'neovim/nvim-lsp'}
-  use {'nvim-lua/completion-nvim'}
+  use {'hrsh7th/nvim-compe'}
   use {'tjdevries/nlua.nvim'}
   use {'windwp/nvim-ts-autotag'}
   use {'glepnir/lspsaga.nvim'}
   use {'windwp/nvim-autopairs'}
+  use {'hrsh7th/vim-vsnip'}
+  use {'hrsh7th/vim-vsnip-integ'}
 
   use {'fatih/vim-go'}
   -- use {'tjdevries/express_line.nvim'}
   use {'~/pvt/dev/express_line.nvim'}
   use {'junegunn/vim-easy-align'}
 
-  use {'Shougo/neosnippet.vim'}
-  use {'Shougo/neosnippet-snippets'}
+  -- use {'Shougo/neosnippet.vim'}
+  -- use {'Shougo/neosnippet-snippets'}
 
   use {'vim-scripts/LargeFile'}
 
@@ -91,6 +92,7 @@ packer.startup(function(use)
   use {'vigoux/oak'}
   use {'mlopes/vim-farin'}
   use {'endel/vim-github-colorscheme'}
+  use {'lewis6991/github_dark.nvim'}
 
   --[[ to review
 
