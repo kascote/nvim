@@ -1,3 +1,5 @@
+finish
+
 let g:oak#palette = {}
 let g:oak#palette.trunk1  = '#0E0701'
 let g:oak#palette.trunk2  = '#342212'

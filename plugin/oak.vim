@@ -1,5 +1,5 @@
 " Last Change: 2021 Jan 27
-set background=dark
+finish
 
 " hi clear
 if exists('syntax_on')

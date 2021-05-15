@@ -36,10 +36,10 @@ augroup END
 
 augroup ft_javascriptreact
   autocmd!
-  autocmd BufNewFile,BufRead *.rb syn matc flagError "console\."
+  autocmd BufNewFile,BufRead *.jsx syn match Error "\<console\>"
 augroup END
 
 augroup ft_javascript
   autocmd!
-  autocmd BufNewFile,BufRead *.rb syn match flagError "\<console\.\>"
+  autocmd BufNewFile,BufRead *.js syn match flagError "\<console\>"
 augroup END

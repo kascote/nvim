@@ -4,8 +4,6 @@ require('nfx/nv/mappings')
 require('nfx/nv/plugins')
 
 require('nfx/plugins/lsp')
-
-require('nfx/plugins/ale')
 require('nfx/plugins/autopairs')
 require('nfx/plugins/completion')
 require('nfx/plugins/gitsigns')
@@ -16,6 +14,8 @@ require('nfx/plugins/tabline')
 -- require('plugins/statusline')
 require('nfx/plugins/status-line2')
 require('nfx/globals')
+
+vim.cmd('colorscheme github_dark')
 
 require('colorizer').setup()
 

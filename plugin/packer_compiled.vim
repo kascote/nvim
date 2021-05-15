@@ -49,10 +49,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/opt/fzf.vim"
   },
-  ["github_dark.nvim"] = {
-    loaded = true,
-    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/github_dark.nvim"
-  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"

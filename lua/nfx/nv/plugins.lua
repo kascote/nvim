@@ -92,7 +92,7 @@ packer.startup(function(use)
   use {'vigoux/oak'}
   use {'mlopes/vim-farin'}
   use {'endel/vim-github-colorscheme'}
-  use {'lewis6991/github_dark.nvim'}
+  -- use {'lewis6991/github_dark.nvim'}
 
   --[[ to review
 

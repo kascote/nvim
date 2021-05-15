@@ -98,8 +98,6 @@ local generator = function()
     status_line = {
       extensions.mode,
       ' ',
-      ale_status,
-      ' ',
       lsp_status,
       ' ',
       gitgutter_summary,

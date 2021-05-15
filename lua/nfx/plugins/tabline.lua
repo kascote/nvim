@@ -73,12 +73,12 @@ local function resolveBufName()
   local label = '%#TabLineModNone#' .. ' '
 
   if modifiedBuffers then
-    label = '%#TabLineMod#' .. '•'
+    label = '%#TabLineMod#' .. '●'
   end
 
   local currentMod = ' '
   if (modifiedCurrent == 1) then
-    currentMod = '%#TabLineModBuf#' .. '•'
+    currentMod = '%#TabLineModBuf#' .. '●'
   end
   lineDisplay.bufNameLen = lineDisplay.bufNameLen + 1
 
