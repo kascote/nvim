@@ -35,13 +35,9 @@ packer.startup(function(use)
   use {'hrsh7th/vim-vsnip'}
   use {'hrsh7th/vim-vsnip-integ'}
 
-  use {'fatih/vim-go'}
-  -- use {'tjdevries/express_line.nvim'}
+  -- use {'fatih/vim-go'}
   use {'~/pvt/dev/express_line.nvim'}
   use {'junegunn/vim-easy-align'}
-
-  -- use {'Shougo/neosnippet.vim'}
-  -- use {'Shougo/neosnippet-snippets'}
 
   use {'vim-scripts/LargeFile'}
 
@@ -53,17 +49,10 @@ packer.startup(function(use)
   use {'tpope/vim-characterize'}
   use {'tpope/vim-ragtag'}
 
-  -- use {'airblade/vim-gitgutter'}
   use {'lewis6991/gitsigns.nvim'}
   use {'wincent/loupe'}
   use {'t9md/vim-quickhl'}
 
-  -- use {
-  --   'w0rp/ale',
-  --   ft = {'sh', 'zsh', 'bash', 'html', 'markdown', 'vim', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'lua'},
-  --   cmd = 'ALEEnable',
-  --   config = 'vim.cmd[[ALEEnable]]'
-  -- }
   use {'tmux-plugins/vim-tmux'}
   use {'christoomey/vim-tmux-navigator'}
   use {'kshenoy/vim-signature'}
@@ -71,8 +60,6 @@ packer.startup(function(use)
   use {'mbbill/undotree'}
 
   use { 'norcalli/nvim-colorizer.lua'}
-  -- use {'t9md/vim-quickhl'}
-  -- use {'kana/vim-operator-user'} -- required by vim-quickhl
   use {'nvim-telescope/telescope.nvim'}
 
   use {'junegunn/fzf.vim',          opt = true}

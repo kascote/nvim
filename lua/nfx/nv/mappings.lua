@@ -38,6 +38,8 @@ imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 ]])
 
+u.skm_sn('n', '--', ':normal gcc<CR>')
+
 --[[
         nnoremap <CR> :
 --]]
