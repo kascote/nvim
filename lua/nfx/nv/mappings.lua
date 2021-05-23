@@ -39,6 +39,7 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 ]])
 
 u.skm_sn('n', '--', ':normal gcc<CR>')
+u.skm_sn('n', 'tt', '<cmd>lua R("nfx.alternate").alternate()<CR>')
 
 --[[
         nnoremap <CR> :
