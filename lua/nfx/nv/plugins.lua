@@ -16,8 +16,6 @@ vim.cmd [=[augroup END]=]
 local packer = require('packer')
 packer.startup(function(use)
 
-  -- use {'preservim/nerdtree', cmd = {'NERDTreeToggle', 'NERDTreeFind'}}
-  -- use {'Xuyuanp/nerdtree-git-plugin'}
   use {'nvim-lua/popup.nvim'}
   use {'nvim-lua/plenary.nvim'}
 

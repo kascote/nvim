@@ -1,3 +1,5 @@
+local utils = require('nfx/utils')
+
 P = function(...)
   local objects = vim.tbl_map(vim.inspect, {...})
   print(unpack(objects))
@@ -12,3 +14,10 @@ if pcall(require, 'plenary') then
   end
 end
 
+local M = {}
+
+function M.gf()
+  utils.includeexpr_js()
+end
+
+_G.nfx = M

@@ -114,4 +114,38 @@ function! s:save_and_exec() abort
 endfunction
 nnoremap <leader><leader>x :call <SID>save_and_exec()<CR>
 --]]
+
+utils.try_suffixes = function (base)
+  for _, ext in ipairs(vim.fn.split(vim.bo.suffixesadd, ',')) do
+    local file = base .. ext
+
+    if vim.fn.filereadable(file) == 1 then
+      vim.cmd(string.format("%s %s", 'edit', file))
+      return true
+    end
+  end
+  return false
+end
+
+utils.includeexpr_js = function()
+  local fname = vim.fn.matchstr(vim.fn.getline('.'), vim.bo.include)
+  local base  = vim.fn.simplify(vim.fn.expand('%:h') .. '/' .. fname)
+  local ext  = vim.fn.fnamemodify(base, ':e')
+
+  -- fname can be blank because the 'include' expresion do not detect
+  -- multi line imports
+  if (ext ~= "" or fname == "") then
+    vim.cmd("normal! gf")
+    return
+  end
+
+  if vim.fn.isdirectory(base) == 1 then
+    if utils.try_suffixes(base .. '/index') then return end
+  end
+
+  if utils.try_suffixes(base) then return end
+  vim.cmd("normal! gf")
+end
+
+
 return utils
