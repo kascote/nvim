@@ -51,32 +51,31 @@ packer.startup(function(use)
   use {'wincent/loupe'}
   use {'t9md/vim-quickhl'}
 
-  use {'tmux-plugins/vim-tmux'}
   use {'christoomey/vim-tmux-navigator'}
   use {'kshenoy/vim-signature'}
   use {'moll/vim-bbye'}
   use {'mbbill/undotree'}
-
-  use { 'norcalli/nvim-colorizer.lua'}
   use {'nvim-telescope/telescope.nvim'}
+  use {'liuchengxu/vim-which-key'}
 
   use {'junegunn/fzf.vim',          opt = true}
   use {'tpope/vim-rails',           opt = true}
   use {'majutsushi/tagbar',         opt = true}
   use {'machakann/vim-vimhelplint', opt = true}
-  use {'dstein64/vim-startuptime'}
-  use {'liuchengxu/vim-which-key'}
+  use {'dstein64/vim-startuptime',  opt = true}
 
   --=[ Syntax ]=--
+  use {'norcalli/nvim-colorizer.lua'}
   use {'plasticboy/vim-markdown'} -- tpope/vim-markdown
+  use {'tmux-plugins/vim-tmux'}
 
   --=[ Themes ]=--
   use {'tjdevries/colorbuddy.vim'}
   -- use {'tjdevries/gruvbuddy.nvim'}
   -- use {'gruvbox-community/gruvbox'}
   use {'vigoux/oak'}
-  use {'mlopes/vim-farin'}
-  use {'endel/vim-github-colorscheme'}
+  -- use {'mlopes/vim-farin'}
+  -- use {'endel/vim-github-colorscheme'}
   -- use {'lewis6991/github_dark.nvim'}
 
   --[[ to review
