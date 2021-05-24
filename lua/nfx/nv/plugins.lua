@@ -87,7 +87,6 @@ packer.startup(function(use)
     junegunn/vim-peekaboo
     rhysd/committia.vim
     alok/notational-fzf-vim
-    lewis6991/gitsigns.nvim
     charlesmallah/lua-profiler
     lewis6991/spellsitter.nvim
     TimUntersberger/neogit

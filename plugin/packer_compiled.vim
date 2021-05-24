@@ -146,17 +146,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-endwise"
   },
-  ["vim-farin"] = {
-    loaded = true,
-    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-farin"
-  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-fugitive"
-  },
-  ["vim-github-colorscheme"] = {
-    loaded = true,
-    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-github-colorscheme"
   },
   ["vim-markdown"] = {
     loaded = true,
@@ -184,8 +176,9 @@ _G.packer_plugins = {
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-signature"
   },
   ["vim-startuptime"] = {
-    loaded = true,
-    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-startuptime"
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/opt/vim-startuptime"
   },
   ["vim-surround"] = {
     loaded = true,
