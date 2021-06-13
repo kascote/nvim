@@ -57,8 +57,10 @@ packer.startup(function(use)
   use {'kshenoy/vim-signature'}
   use {'moll/vim-bbye'}
   use {'mbbill/undotree'}
-  use {'nvim-telescope/telescope.nvim'}
   use {'liuchengxu/vim-which-key'}
+
+  use {'nvim-telescope/telescope.nvim'}
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   use {'junegunn/fzf.vim',          opt = true}
   use {'tpope/vim-rails',           opt = true}
@@ -96,6 +98,7 @@ packer.startup(function(use)
 
     https://github.com/vitalk/vim-simple-todo
     https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    https://github.com/akinsho/flutter-tools.nvim
 
   --]]
 

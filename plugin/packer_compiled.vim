@@ -122,6 +122,10 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/opt/tagbar"
   },
+  ["telescope-fzf-native.nvim"] = {
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/telescope.nvim"
