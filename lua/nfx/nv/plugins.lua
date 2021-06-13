@@ -44,12 +44,14 @@ packer.startup(function(use)
   use {'tpope/vim-repeat'}
   use {'tpope/vim-surround'}
   use {'tpope/vim-fugitive'}
+  use {'tpope/vim-rhubarb'} -- used by vim-fugitive
   use {'tpope/vim-characterize'}
   use {'tpope/vim-ragtag'}
 
   use {'lewis6991/gitsigns.nvim'}
   use {'wincent/loupe'}
   use {'t9md/vim-quickhl'}
+  use {'tyru/open-browser.vim'}
 
   use {'christoomey/vim-tmux-navigator'}
   use {'kshenoy/vim-signature'}
@@ -93,6 +95,7 @@ packer.startup(function(use)
     windwp/nvim-spectre
 
     https://github.com/vitalk/vim-simple-todo
+    https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 
   --]]
 

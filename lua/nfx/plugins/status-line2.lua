@@ -109,7 +109,7 @@ local generator = function()
       ' ',
       buf_enc,
     },
-    tatus_line_nc = {
+    status_line_nc = {
       builtin.file,
       sections.collapse_builtin {
         ' ',

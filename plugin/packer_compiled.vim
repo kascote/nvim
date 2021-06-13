@@ -101,6 +101,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/oak"
   },
+  ["open-browser.vim"] = {
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/open-browser.vim"
+  },
   playground = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/playground"
@@ -170,6 +174,10 @@ _G.packer_plugins = {
   ["vim-repeat"] = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-repeat"
+  },
+  ["vim-rhubarb"] = {
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-rhubarb"
   },
   ["vim-signature"] = {
     loaded = true,
