@@ -3,5 +3,9 @@ setlocal include=\\(\\<require\\s*(\\s*\\\|\\<import\\>\\)[^;\"']*[\"']\\zs[^\"'
 " js plugin set suffixesadd
 " setlocal suffixesadd=.js,.jsx
 
+if expand('%:t') == 'package.json'
+  setlocal completefunc=v:lua.nfx.npm_versions
+endif
+
 nnoremap <buffer> <silent> gf :lua nfx.gf()<CR>
 

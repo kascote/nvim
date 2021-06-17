@@ -1,4 +1,5 @@
 local utils = require('nfx/utils')
+local npm = require('nfx/npm')
 
 P = function(...)
   local objects = vim.tbl_map(vim.inspect, {...})
@@ -18,6 +19,10 @@ local M = {}
 
 function M.gf()
   utils.includeexpr_js()
+end
+
+function M.npm_versions(findstart, base)
+  return npm.lookupPackage(findstart, base)
 end
 
 _G.nfx = M
