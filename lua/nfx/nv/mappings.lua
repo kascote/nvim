@@ -83,6 +83,7 @@ u.skm_sn('c', '%T', [[<C-R>=expand('%:t')<CR>]])
 u.skm_sn('c', '%P', [[<C-R>=expand('%:p')<CR>]])
 vim.api.nvim_set_keymap('c', '<c-r><c-r>', '<Plug>(TelescopeFuzzyCommandSearch)', { noremap = false, nowait = true })
 
+
 ------------------------------------------------------------------=[ LEADER ]=--
 u.skm_sn('n', '¡¡',               ":WhichKey '<Space>'<CR>")
 u.skm_sn('n', '<Leader>p',        '+p')
@@ -140,6 +141,10 @@ u.skm_sn('n', '<Leader>af', ':ALEFix<cr>')
 u.skm_sn('n', '<Leader>an', ':ALENextWrap<cr>')
 u.skm_sn('n', '<Leader>ap', ':ALEPreviousWrap<cr>')
 u.skm_sn('n', '<Leader>ad', ':ALEDetail<cr>')
+
+-- formatter
+u.skm_sn('n', '<Leader>fp', '<cmd>lua require"nfx.formatter".prettier()<CR>')
+u.skm_sn('n', '<Leader>fl', '<cmd>lua require"nfx.formatter".lua()<CR>')
 
 ------------------------------------------------------------=[ LOCAL-LEADER ]=--
 -- give the syntax highlight id for the word under the cursor
