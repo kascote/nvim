@@ -89,7 +89,7 @@ vim.o.splitbelow     = true                   -- open horizontal splits below cu
 vim.o.splitright     = true                   -- open vertical splits to the right of the current window
 vim.wo.signcolumn    = 'yes:2'                -- always show 2 sign columns
 vim.o.showmode       = false                  -- remove last line mode
-vim.o.showtabline    = 2                      -- always enable tablines
+--vim.o.showtabline    = 2                      -- always enable tablines
 vim.o.termguicolors  = true
 
 --= [ Visual Cues ]=--

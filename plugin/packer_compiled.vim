@@ -36,10 +36,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/LargeFile"
   },
-  ["colorbuddy.vim"] = {
-    loaded = true,
-    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/colorbuddy.vim"
-  },
   ["express_line.nvim"] = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/express_line.nvim"
@@ -50,6 +46,7 @@ _G.packer_plugins = {
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/opt/fzf.vim"
   },
   ["gitsigns.nvim"] = {
+    config = { "\27LJ\2\nM\0\0\4\0\5\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\0\0=\3\4\2B\0\2\1K\0\1\0\fkeymaps\1\0\0\nsetup\rgitsigns\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
@@ -57,23 +54,36 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/loupe"
   },
+  ["lsp_signature.nvim"] = {
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
+  },
   ["lspsaga.nvim"] = {
+    config = { "\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24nfx.plugins.lspsaga\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+  },
+  ["lualine.nvim"] = {
+    config = { "\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24nfx.plugins.lualine\frequire\0" },
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
   ["nlua.nvim"] = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nlua.nvim"
   },
   ["nvim-autopairs"] = {
+    config = { "\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
   },
   ["nvim-colorizer.lua"] = {
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
   ["nvim-compe"] = {
+    config = { "\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27nfx.plugins.completion\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
@@ -86,6 +96,7 @@ _G.packer_plugins = {
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
+    config = { "\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25nfx.plugins.nvimtree\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
@@ -96,10 +107,6 @@ _G.packer_plugins = {
   ["nvim-ts-autotag"] = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag"
-  },
-  oak = {
-    loaded = true,
-    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/oak"
   },
   ["open-browser.vim"] = {
     loaded = true,
@@ -129,6 +136,16 @@ _G.packer_plugins = {
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  ["todo-comments.nvim"] = {
+    config = { "\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18todo-comments\frequire\0" },
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/todo-comments.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22nfx.plugins.theme\frequire\0" },
+    loaded = true,
+    path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
   },
   undotree = {
     loaded = true,
@@ -223,6 +240,24 @@ _G.packer_plugins = {
   }
 }
 
+-- Config for: todo-comments.nvim
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
+-- Config for: lspsaga.nvim
+try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24nfx.plugins.lspsaga\frequire\0", "config", "lspsaga.nvim")
+-- Config for: lualine.nvim
+try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24nfx.plugins.lualine\frequire\0", "config", "lualine.nvim")
+-- Config for: nvim-compe
+try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27nfx.plugins.completion\frequire\0", "config", "nvim-compe")
+-- Config for: nvim-tree.lua
+try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25nfx.plugins.nvimtree\frequire\0", "config", "nvim-tree.lua")
+-- Config for: nvim-colorizer.lua
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
+-- Config for: gitsigns.nvim
+try_loadstring("\27LJ\2\nM\0\0\4\0\5\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\0\0=\3\4\2B\0\2\1K\0\1\0\fkeymaps\1\0\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+-- Config for: tokyonight.nvim
+try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22nfx.plugins.theme\frequire\0", "config", "tokyonight.nvim")
+-- Config for: nvim-autopairs
+try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
 END
 
 catch

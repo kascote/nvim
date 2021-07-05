@@ -7,15 +7,15 @@ require('telescope').setup {
     selection_caret = '❯ ',
 
     winblend = 0,
-    preview_cutoff = 120,
-    prompt_position = "top",
     previewer = false,
     border = true,
     set_env = { ['COLORTERM'] = 'truecolor' },
     sorting_strategy = 'ascending',
 
     layout_strategy = 'vertical',
-    layout_defaults = {
+    layout_config = {
+      preview_cutoff = 120,
+      prompt_position = "top",
       horizontal = {
         width_padding = 0.1,
         height_padding = 0.1,
