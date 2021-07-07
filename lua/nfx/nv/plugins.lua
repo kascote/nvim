@@ -152,6 +152,7 @@ packer.startup(function(use)
     https://github.com/jose-elias-alvarez/null-ls.nvim
     https://github.com/lukas-reineke/indent-blankline.nvim
     https://github.com/L3MON4D3/LuaSnip
+    https://github.com/windwp/lsp-fastaction.nvim
 
   --]]
 end)
