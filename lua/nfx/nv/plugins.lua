@@ -28,7 +28,6 @@ packer.startup(function(use)
   use { "nvim-treesitter/playground" }
 
   use { "neovim/nvim-lspconfig" }
-  use { "neovim/nvim-lsp" }
   use {
     "hrsh7th/nvim-compe",
     config = function()
@@ -62,8 +61,8 @@ packer.startup(function(use)
   use {
     "hoob3rt/lualine.nvim",
     config = function()
-      require('nfx.plugins.lualine')
-    end
+      require "nfx.plugins.lualine"
+    end,
   }
 
   -- use {'fatih/vim-go'}
@@ -76,10 +75,7 @@ packer.startup(function(use)
   use { "tpope/vim-endwise" }
   use { "tpope/vim-repeat" }
   use { "tpope/vim-surround" }
-  use { "tpope/vim-fugitive" }
-  use { "tpope/vim-rhubarb" } -- used by vim-fugitive
   use { "tpope/vim-characterize" }
-  use { "tpope/vim-ragtag" }
 
   use {
     "lewis6991/gitsigns.nvim",
@@ -107,6 +103,11 @@ packer.startup(function(use)
   use { "majutsushi/tagbar", opt = true }
   use { "machakann/vim-vimhelplint", opt = true }
   use { "dstein64/vim-startuptime", opt = true }
+  use {
+    "rhysd/git-messenger.vim",
+    opt = true,
+    cmd = "GitMessenger",
+  }
 
   --=[ Syntax ]=--
   use {
@@ -135,8 +136,6 @@ packer.startup(function(use)
 
   --[[ to review
 
-    rhysd/git-messenger.vim
-    nvim-lua/lsp-status.nvim
     tpope/vim-jdaddy
     chaoren/vim-wordmotion
     junegunn/vim-peekaboo
@@ -152,6 +151,7 @@ packer.startup(function(use)
     https://github.com/akinsho/flutter-tools.nvim
     https://github.com/jose-elias-alvarez/null-ls.nvim
     https://github.com/lukas-reineke/indent-blankline.nvim
+    https://github.com/L3MON4D3/LuaSnip
 
   --]]
 end)

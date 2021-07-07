@@ -3,7 +3,7 @@ local api = vim.api
 
 local lineDisplay = {
   bufNameLen = 0,
-  tabPageLen = 0
+  tabPageLen = 0,
 }
 
 local function lsp_progress()
@@ -35,19 +35,19 @@ local function nada()
 end
 
 local function countModified(bufName)
-                                        -- [[ read in reverse order ]]
-  return fn.count(                  -- cound the modified buffers
-    fn.map(                         -- map to an array with the changed values
-      fn.filter(                    -- remove the current buffer from the count
-        fn.filter(                  -- get only the listed buffers
-          fn.copy(                  -- get a copy of the buffer
+  -- [[ read in reverse order ]]
+  return fn.count( -- cound the modified buffers
+    fn.map( -- map to an array with the changed values
+      fn.filter( -- remove the current buffer from the count
+        fn.filter( -- get only the listed buffers
+          fn.copy( -- get a copy of the buffer
             fn.getbufinfo()
           ),
-          'v:val.listed'
+          "v:val.listed"
         ),
         "v:val.name !~ '" .. bufName .. "'"
       ),
-      'v:val.changed'
+      "v:val.changed"
     ),
     1
   ) > 0
@@ -58,12 +58,12 @@ local function formatBufferName(bname)
   local baseName = fn.fnamemodify(bname, ":p:t")
   local label
   local labelRaw
-  if bname == '' then
-    label = ' %#TabLine#(empty) '
-    labelRaw = ' (empty) '
+  if bname == "" then
+    label = " %#TabLine#(empty) "
+    labelRaw = " (empty) "
   else
-    label = ' %#TabLine#' .. basePath .. '/' .. '%#TabLineSel#' .. baseName .. " %*"
-    labelRaw = ' ' .. basePath .. '/' .. baseName .. ' '
+    label = " %#TabLine#" .. basePath .. "/" .. "%#TabLineSel#" .. baseName .. " %*"
+    labelRaw = " " .. basePath .. "/" .. baseName .. " "
   end
 
   -- length of the buffer title
@@ -73,17 +73,17 @@ end
 
 local function filename()
   local bufName = api.nvim_buf_get_name(0)
-  local modifiedCurrent = fn.getbufinfo('%')[1].changed
+  local modifiedCurrent = fn.getbufinfo("%")[1].changed
   local modifiedBuffers = countModified(bufName)
-  local label = '%#TabLineModNone#' .. ' '
+  local label = "%#TabLineModNone#" .. " "
 
   if modifiedBuffers then
-    label = '%#TabLineMod#' .. '●'
+    label = "%#TabLineMod#" .. "●"
   end
 
-  local currentMod = ' '
-  if (modifiedCurrent == 1) then
-    currentMod = '%#TabLineModBuf#' .. '●'
+  local currentMod = " "
+  if modifiedCurrent == 1 then
+    currentMod = "%#TabLineModBuf#" .. "●"
   end
   lineDisplay.bufNameLen = lineDisplay.bufNameLen + 1
 
@@ -91,6 +91,25 @@ local function filename()
 end
 
 vim.cmd [[autocmd User LspProgressUpdate let &ro = &ro]]
+
+local function mydiff()
+  local ok, res = pcall(vim.api.nvim_buf_get_var, 0, "gitsigns_status_dict")
+  local diff = {}
+  if ok then
+    if res.added ~= 0 and res.added ~= nil then
+      table.insert(diff, "%#DiffAdd#+" .. res.added .. " %*")
+    end
+    if res.removed ~= 0 and res.removed ~= nil then
+      table.insert(diff, "%#DiffDelete# -" .. res.removed .. " %*")
+    end
+    if res.changed ~= 0 and res.changed ~= nil then
+      table.insert(diff, "%#DiffChange# ~" .. res.changed .. " %*")
+    end
+    return table.concat(diff, "")
+  else
+    return
+  end
+end
 
 local config = {
   options = {
@@ -104,7 +123,7 @@ local config = {
   sections = {
     lualine_a = { "mode" },
     lualine_b = { { "diagnostics", sources = { "nvim_lsp" } } },
-    lualine_c = { "diff" },
+    lualine_c = { mydiff },
     lualine_x = { nada },
     lualine_y = {},
     lualine_z = { "location" },
@@ -118,9 +137,9 @@ local config = {
     lualine_z = {},
   },
   tabline = {
-    lualine_a = { "branch" },
-    lualine_b = { lsp_progress },
-    lualine_c = { { middle, separator = "" }, { filename } },
+    lualine_a = {},
+    lualine_b = { "branch" },
+    lualine_c = { lsp_progress, { middle, separator = "" }, { filename } },
     lualine_x = { "filetype" },
     lualine_y = { "encoding" },
     lualine_z = {},
