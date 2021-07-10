@@ -66,7 +66,7 @@ packer.startup(function(use)
   }
 
   -- use {'fatih/vim-go'}
-  use { "~/pvt/dev/express_line.nvim" }
+  -- use { "~/pvt/dev/express_line.nvim" }
   use { "junegunn/vim-easy-align" }
 
   use { "vim-scripts/LargeFile" }
