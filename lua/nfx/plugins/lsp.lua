@@ -56,6 +56,7 @@ end
 local custom_init = function(client)
   client.config.flags = client.config.flags or {}
   client.config.flags.allow_incremental_sync = true
+  client.config.flags.debounce_text_changes = 150
 end
 
 --//---------------------------------------------------------------
@@ -90,6 +91,7 @@ snippetsCapabilities.textDocument.completion.completionItem.resolveSupport = {
     'additionalTextEdits',
   }
 }
+
 
   -- lspconfig.solargraph.setup {
   --   cmd = { "solargraph", "stdio" },

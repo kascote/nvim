@@ -38,7 +38,7 @@ imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 ]])
 
-u.skm_sn('n', '--', ':normal gcc<CR>')
+vim.api.nvim_set_keymap("n", "--", "<Plug>kommentary_line_default", {})
 u.skm_sn('n', 'tt', '<cmd>lua R("nfx.alternate").alternate()<CR>')
 
 --[[
@@ -85,7 +85,6 @@ vim.api.nvim_set_keymap('c', '<c-r><c-r>', '<Plug>(TelescopeFuzzyCommandSearch)'
 
 
 ------------------------------------------------------------------=[ LEADER ]=--
-u.skm_sn('n', '¡¡',               ":WhichKey '<Space>'<CR>")
 u.skm_sn('n', '<Leader>p',        '+p')
 u.skm_sn('n', '<Leader>P',        '+P')
 
@@ -106,8 +105,8 @@ u.skm_sn('n', '<Leader>a',        '<cmd>lua R("nfx.plugins.telescope").live_grep
 u.skm_sn('n', '<Leader>tg',       '<cmd>lua R("nfx.plugins.telescope").git_files()<CR>')
 u.skm_sn('n', '<Leader>ts',       '<cmd>lua R("nfx.plugins.telescope").git_status()<CR>')
 u.skm_sn('n', '<Leader>th',       '<cmd>lua R("nfx.plugins.telescope").help_tags()<CR>')
-u.skm_sn('n', '<Leader>td',        '<cmd>lua R("nfx.plugins.telescope").todo()<CR>')
-u.skm_sn('n', '<Leader>tl',        '<cmd>lua R("nfx.plugins.telescope").grep_last_search()<CR>')
+u.skm_sn('n', '<Leader>td',       '<cmd>lua R("nfx.plugins.telescope").todo()<CR>')
+u.skm_sn('n', '<Leader>tl',       '<cmd>lua R("nfx.plugins.telescope").grep_last_search()<CR>')
 
 u.skm_sn('n', '<Leader>d',        ':NvimTreeToggle<CR>')
 u.skm_sn('n', '<Leader>r',        ':NvimTreeFindFile<CR>')
@@ -125,8 +124,7 @@ u.skm_sn('n', '<Leader>gv',       '<cmd>lua require"gitsigns".preview_hunk()<CR>
 u.skm_sn('n', '<Leader>ga',       '<cmd>lua require"gitsigns".stage_hunk()<CR>')
 u.skm_sn('n', '<Leader>gu',       '<cmd>lua require"gitsigns".reset_hunk()<CR>')
 u.skm_sn('n', '<Leader>gbl',      '<cmd>lua require"gitsigns".blame_line()<CR>')
--- u.skm_sn('n', '<Leader>gf',       '<cmd>GitGutterFold<cr>')
-u.skm_sn('n', '<Leader>gb',       '<cmd>Gblame<CR>')
+u.skm_sn('n', '<Leader>gm',       ':GitMessenger<CR>')
 
 vim.cmd('nmap <Leader>m <Plug>(quickhl-manual-this)')
 vim.cmd('xmap <Leader>m <Plug>(quickhl-manual-this)')
@@ -136,11 +134,6 @@ vim.cmd('nmap <Leader>nt <Plug>(quickhl-cword-toggle)')
 
 vim.cmd('nmap <Leader>nn <Plug>(quickhl-manual-goto-next')
 vim.cmd('nmap <Leader>np <Plug>(quickhl-manual-goto-prev')
-
-u.skm_sn('n', '<Leader>af', ':ALEFix<cr>')
-u.skm_sn('n', '<Leader>an', ':ALENextWrap<cr>')
-u.skm_sn('n', '<Leader>ap', ':ALEPreviousWrap<cr>')
-u.skm_sn('n', '<Leader>ad', ':ALEDetail<cr>')
 
 -- formatter
 u.skm_sn('n', '<Leader>fp', '<cmd>lua require"nfx.formatter".prettier()<CR>')
@@ -152,7 +145,7 @@ u.skm_sn('n', '<LocalLeader>0', ':lua require("nfx.utils").syn_stack()<CR>')
 -- Fix (most) syntax highlighting problems in current buffer (mnemonic: coloring).
 u.skm_sn('n', '<LocalLeader>l', ':nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>')
 u.skm_sn('n', '<LocalLeader>t', '<cmd>lua require("nfx.utils").trim_white_spaces()<CR>')
-u.skm_sn('n', '<LocalLeader>w', ':set wildignore-=*/node_modules/*')
+u.skm_sn('n', '<LocalLeader>nn', ':set wildignore-=*/node_modules/*')
 
 u.skm_sn('n', '<LocalLeader>n', '<cmd>lua R("nfx.plugins.telescope").edit_neovim()<CR>')
 
@@ -166,6 +159,8 @@ u.skm_sn('n', '<LocalLeader>f6', '<cmd>lua vim.wo.foldlevel=6<CR>')
 u.skm_sn('n', '<LocalLeader>f7', '<cmd>lua vim.wo.foldlevel=7<CR>')
 u.skm_sn('n', '<LocalLeader>f8', '<cmd>lua vim.wo.foldlevel=8<CR>')
 u.skm_sn('n', '<LocalLeader>f9', '<cmd>lua vim.wo.foldlevel=9<CR>')
+
+u.skm_sn('n', '<LocalLeader>w',               ":WhichKey '<Space>'<CR>")
 
 ------------------------------------------------------------------=[ SELECT ]=--
 vim.cmd('snoremap<C-k> <Plug>(neosnippet_expand_or_jump)')

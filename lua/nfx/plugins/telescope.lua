@@ -56,7 +56,7 @@ function M.todo()
     search_dirs = {todo = '~/pvt/notes'},
     border = true,
     previewer = false,
-    shorthen_path = false
+    path_display = { "tail" }
   }
   require('telescope.builtin').find_files(opts)
 end
@@ -64,13 +64,13 @@ end
 function M.edit_neovim()
   require('telescope.builtin').find_files {
     prompt_title = "~ neovim ~",
-    shorten_path = false,
     cwd = "~/.config/nvim",
 
     layout_strategy = 'horizontal',
     layout_config = {
       preview_width = 0.65,
     },
+    path_display = { "shorten" }
   }
 end
 
@@ -78,13 +78,18 @@ function M.git_status()
   local opts = themes.get_dropdown {
     border = true,
     previewer = false,
-    shorthen_path = false,
+    path_display = { "absolute" }
   }
   require('telescope.builtin').git_status(opts)
 end
 
 function M.git_files()
-  require('telescope.builtin').git_files()
+  local opts = themes.get_dropdown {
+    border = true,
+    previewer = false,
+    path_display = { "absolute" }
+  }
+  require('telescope.builtin').git_files(opts)
 end
 
 function M.help_tags()
@@ -98,9 +103,11 @@ function M.grep_last_search(opts)
   -- -> Subs out the search things
   local register = vim.fn.getreg('/'):gsub('\\<', ''):gsub('\\>', ''):gsub("\\C", ""):gsub("\\v", "")
 
-  opts.shorten_path = true
   opts.word_match = '-w'
   opts.search = register
+  opts.path_display = {
+    "shorten"
+  }
 
   require('telescope.builtin').grep_string(opts)
 end

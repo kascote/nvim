@@ -71,7 +71,6 @@ packer.startup(function(use)
 
   use { "vim-scripts/LargeFile" }
 
-  use { "tpope/vim-commentary" }
   use { "tpope/vim-endwise" }
   use { "tpope/vim-repeat" }
   use { "tpope/vim-surround" }
@@ -99,7 +98,7 @@ packer.startup(function(use)
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
   use { "junegunn/fzf.vim", opt = true }
-  use { "tpope/vim-rails", opt = true }
+  -- use { "tpope/vim-rails", opt = true }
   use { "majutsushi/tagbar", opt = true }
   use { "machakann/vim-vimhelplint", opt = true }
   use { "dstein64/vim-startuptime", opt = true }
@@ -108,6 +107,15 @@ packer.startup(function(use)
     opt = true,
     cmd = "GitMessenger",
   }
+  use({
+    "b3nj5m1n/kommentary",
+    -- opt = true,
+    -- keys = { "gc", "gcc", "--" },
+    config = function()
+      require("nfx.plugins.comments")
+    end,
+  })
+
 
   --=[ Syntax ]=--
   use {
@@ -116,7 +124,13 @@ packer.startup(function(use)
       require("colorizer").setup()
     end,
   }
-  use { "plasticboy/vim-markdown" } -- tpope/vim-markdown
+  use {
+    "plasticboy/vim-markdown",
+    config = function()
+      require "nfx.plugins.markdown"
+    end,
+  } -- tpope/vim-markdown
+
   use { "tmux-plugins/vim-tmux" }
 
   --=[ Themes ]=--
@@ -153,6 +167,10 @@ packer.startup(function(use)
     https://github.com/lukas-reineke/indent-blankline.nvim
     https://github.com/L3MON4D3/LuaSnip
     https://github.com/windwp/lsp-fastaction.nvim
+    https://github.com/mhartington/formatter.nvim
+    https://github.com/vhyrro/neorg
+    https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils
+    https://github.com/lukas-reineke/indent-blankline.nvim
 
   --]]
 end)

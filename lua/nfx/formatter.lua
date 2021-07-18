@@ -60,6 +60,7 @@ local prettier_formatter = function(project_config, filepath)
     "prettier",
     "--config",
     project_config,
+    "-stdin",
     "-stdin-filepath",
     filepath,
     writer = vim.api.nvim_buf_get_lines(0, 0, -1, false),
