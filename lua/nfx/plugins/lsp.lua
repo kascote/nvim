@@ -183,13 +183,15 @@ lspconfig.efm.setup {
   on_init = custom_init,
   on_attach = custom_attach,
   init_options = { documentFormatting = true },
-  filetypes = { "javascript", "javascriptreact", "lua" },
+  filetypes = { "javascript", "javascriptreact", "lua", "typescript", "typescriptreact" },
   settings = {
       rootMarkers = { ".git/" },
       nolintDebounce = '1s',
       languages = {
         javascript = { lsp_js_setup },
         javascriptreact = { lsp_js_setup },
+        typescript = { lsp_js_setup },
+        typescriptreact = { lsp_js_setup },
         lua = {
           {
             formatCommand = 'stylua --config-path /Users/fernandezn/.config/stylua/stylua.toml -',
