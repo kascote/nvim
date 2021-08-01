@@ -150,14 +150,10 @@ packer.startup(function(use)
 
   --[[ to review
 
-    tpope/vim-jdaddy
     chaoren/vim-wordmotion
-    junegunn/vim-peekaboo
-    rhysd/committia.vim
     alok/notational-fzf-vim
     charlesmallah/lua-profiler
     lewis6991/spellsitter.nvim
-    TimUntersberger/neogit
     windwp/nvim-spectre
 
     https://github.com/vitalk/vim-simple-todo
