@@ -3,7 +3,7 @@ require('nfx/nv/settings')
 require('nfx/nv/mappings')
 require('nfx/nv/plugins')
 
-require('nfx/plugins/lsp')
+-- require('nfx/plugins/lsp')
 -- require('nfx/plugins/completion')
 -- require('nfx/plugins/lspsaga')
 -- require('nfx/plugins/neosnippets')

@@ -27,7 +27,21 @@ packer.startup(function(use)
   use { "nvim-treesitter/nvim-treesitter" }
   use { "nvim-treesitter/playground" }
 
-  use { "neovim/nvim-lspconfig" }
+  use {
+    "neovim/nvim-lspconfig",
+    event = "BufReadPre",
+    requires = {
+      "jose-elias-alvarez/null-ls.nvim",
+      "jose-elias-alvarez/nvim-lsp-ts-utils",
+    },
+    wants = {
+      "null-ls.nvim",
+      "nvim-lsp-ts-utils",
+    },
+    config = function()
+      require "nfx.plugins.lsp"
+    end,
+  }
   use {
     "hrsh7th/nvim-compe",
     config = function()
@@ -107,15 +121,14 @@ packer.startup(function(use)
     opt = true,
     cmd = "GitMessenger",
   }
-  use({
+  use {
     "b3nj5m1n/kommentary",
     -- opt = true,
     -- keys = { "gc", "gcc", "--" },
     config = function()
-      require("nfx.plugins.comments")
+      require "nfx.plugins.comments"
     end,
-  })
-
+  }
 
   --=[ Syntax ]=--
   use {
