@@ -232,8 +232,8 @@ vim.cmd('hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646')
 vim.cmd('hi LspReferenceText cterm=bold ctermbg=red guibg=#164646')
 vim.cmd('hi LspReferenceWrite cterm=bold ctermbg=red guibg=#964646')
 
-vim.lsp.handlers["textDocument/hover"] = require('lspsaga.hover').handler
-vim.lsp.diagnostic.show_line_diagnostics = require('lspsaga.diagnostic').show_line_diagnostics
+-- vim.lsp.handlers["textDocument/hover"] = require('lspsaga.hover').handler
+-- vim.lsp.diagnostic.show_line_diagnostics = require('lspsaga.diagnostic').show_line_diagnostics
 
 -- ###########################################################################
 --[[

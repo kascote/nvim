@@ -180,6 +180,8 @@ packer.startup(function(use)
     https://github.com/vhyrro/neorg
     https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils
     https://github.com/lukas-reineke/indent-blankline.nvim
+    https://github.com/ray-x/navigator.lua
+    https://github.com/JoosepAlviste/nvim-ts-context-commentstring
 
   --]]
 end)
