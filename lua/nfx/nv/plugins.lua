@@ -108,7 +108,13 @@ packer.startup(function(use)
   use { "mbbill/undotree" }
   use { "liuchengxu/vim-which-key" }
 
-  use { "nvim-telescope/telescope.nvim" }
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      "nvim-lua/popup.nvim",
+      "nvim-lua/plenary.nvim"
+    }
+  }
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
   use { "junegunn/fzf.vim", opt = true }
@@ -178,10 +184,13 @@ packer.startup(function(use)
     https://github.com/windwp/lsp-fastaction.nvim
     https://github.com/mhartington/formatter.nvim
     https://github.com/vhyrro/neorg
+    https://github.com/kristijanhusak/orgmode.nvim
     https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils
     https://github.com/lukas-reineke/indent-blankline.nvim
     https://github.com/ray-x/navigator.lua
     https://github.com/JoosepAlviste/nvim-ts-context-commentstring
+
+    https://github.com/captainko/ckovim/blob/70d09e50320de74fb3f9b9314e2e9cf70d570f86/lua/cko/plugins/cmp.lua
 
   --]]
 end)

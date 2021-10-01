@@ -11,6 +11,7 @@ require('telescope').setup {
     border = true,
     set_env = { ['COLORTERM'] = 'truecolor' },
     sorting_strategy = 'ascending',
+    file_ignore_patterns = { "node_modules", "dist" },
 
     layout_strategy = 'vertical',
     layout_config = {
