@@ -22,7 +22,7 @@ return {
       import_all_select_source = false,
 
       -- eslint
-      elint_enable_code_actions = true,
+      elint_enable_code_actions = false,
       eslint_enable_disable_comments = true,
       eslint_bin = "eslint_d",
       eslint_config_fallback = nil,

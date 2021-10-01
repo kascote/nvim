@@ -19,7 +19,7 @@ local set_keymap = function(bufnr)
   u.nnoremap('<leader>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', { buffer = bufnr })
   u.nnoremap('<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { buffer = bufnr })
   -- u.nnoremap('<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', { buffer = bufnr })
-  u.nnoremap('<leader>lr', "<cmd>lua require('lspsaga.rename').rename()<CR>", { buffer = bufnr })
+  u.nnoremap('<leader>lr', "<cmd>lua vim.lsp.buf.rename()<CR>", { buffer = bufnr })
   u.nnoremap('<leader>lx', '<cmd>lua vim.lsp.buf.references()<CR>', { buffer = bufnr })
   u.nnoremap('<leader>lq', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { buffer = bufnr })
   -- how customize virtual text
@@ -39,8 +39,7 @@ local set_keymap = function(bufnr)
 
   u.nnoremap('<Leader>lsg', '<cmd>lua R("nfx.plugins.telescope").lsp_document_diagnostics()<CR>')
 
-  -- u.nnoremap('<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', { buffer = bufnr })
-  u.nnoremap('<leader>la', "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", { buffer = bufnr })
+  u.nnoremap('<leader>la', "<cmd>lua vim.lsp.buf.code_action()<CR>", { buffer = bufnr })
   u.nnoremap('<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<cr>', { buffer = bufnr })
   u.nnoremap('<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', { buffer = bufnr })
   u.nnoremap('<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<cr>', { buffer = bufnr })
@@ -49,8 +48,6 @@ local set_keymap = function(bufnr)
   u.nnoremap('<leader>rr', '<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>')
 
   -- u.inoremap('<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { buffer = bufnr })
-  u.inoremap('<c-s>', "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", { buffer = bufnr })
-  u.nnoremap('<c-s>', "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", { buffer = bufnr })
 end
 
 --//---------------------------------------------------------------
@@ -232,9 +229,6 @@ end
 vim.cmd('hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646')
 vim.cmd('hi LspReferenceText cterm=bold ctermbg=red guibg=#164646')
 vim.cmd('hi LspReferenceWrite cterm=bold ctermbg=red guibg=#964646')
-
--- vim.lsp.handlers["textDocument/hover"] = require('lspsaga.hover').handler
--- vim.lsp.diagnostic.show_line_diagnostics = require('lspsaga.diagnostic').show_line_diagnostics
 
 -- ###########################################################################
 --[[

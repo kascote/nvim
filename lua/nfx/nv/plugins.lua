@@ -51,12 +51,6 @@ packer.startup(function(use)
   use { "tjdevries/nlua.nvim" }
   use { "windwp/nvim-ts-autotag" }
   use {
-    "glepnir/lspsaga.nvim",
-    config = function()
-      require "nfx.plugins.lspsaga"
-    end,
-  }
-  use {
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup()
