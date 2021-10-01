@@ -13,12 +13,12 @@ function M.setup()
       nls.builtins.formatting.stylua,
       nls.builtins.formatting.json_tool,
       -- nls.builtins.formatting.eslint,
-      -- nls.builtins.formatting.eslint_d,
+      nls.builtins.formatting.eslint_d,
       -- nls.builtins.diagnostics.shellcheck,
       -- nls.builtins.diagnostics.markdownlint,
       -- nls.builtins.diagnostics.selene,
       nls.builtins.code_actions.gitsigns,
-      -- nls.builtins.diagnostics.eslint
+      nls.builtins.diagnostics.eslint_d
     },
   })
 end

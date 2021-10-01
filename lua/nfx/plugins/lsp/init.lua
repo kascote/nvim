@@ -112,14 +112,6 @@ vimLsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   --   filetypes = { "ruby" },
   --   root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git")
   -- },
-lspconfig.tsserver.setup {
-  -- filetypes = { "typescript", "typescriptreact" },
-  -- client.resolved_capabilities.document_formatting = false
-  init_options = { documentFormatting = false },
-  on_init = custom_init,
-  on_attach = custom_attach,
-  capabilities = snippetsCapabilities
-}
 
 lspconfig.vimls.setup {
   on_init = custom_init,
@@ -143,6 +135,15 @@ require('nfx.plugins.lsp.null-ls').setup()
 lspconfig['null-ls'].setup {
   on_init = custom_init,
   on_attach = custom_attach,
+}
+
+lspconfig.tsserver.setup {
+  -- filetypes = { "typescript", "typescriptreact" },
+  -- client.resolved_capabilities.document_formatting = false
+  init_options = { documentFormatting = false },
+  on_init = custom_init,
+  on_attach = custom_attach,
+  capabilities = snippetsCapabilities
 }
 
 local sumneko_root_path = vim.fn.stdpath('cache')..'/lua-language-server'
