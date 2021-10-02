@@ -146,6 +146,10 @@ u.skm_sn('n', '<LocalLeader>0', ':lua require("nfx.utils").syn_stack()<CR>')
 u.skm_sn('n', '<LocalLeader>l', ':nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>')
 u.skm_sn('n', '<LocalLeader>t', '<cmd>lua require("nfx.utils").trim_white_spaces()<CR>')
 u.skm_sn('n', '<LocalLeader>nn', ':set wildignore-=*/node_modules/*')
+u.skm_sn('n', '<LocalLeader>xx', '<cmd>TroubleToggle<cr>')
+u.skm_sn('n', '<LocalLeader>xq', '<cmd>TroubleToggle quickfix<cr>')
+u.skm_sn('n', '<LocalLeader>xl', '<cmd>TroubleToggle loclist<cr>')
+u.skm_sn('n', '<LocalLeader>xr', '<cmd>TroubleToggle lsp_references<cr>')
 
 u.skm_sn('n', '<LocalLeader>n', '<cmd>lua R("nfx.plugins.telescope").edit_neovim()<CR>')
 

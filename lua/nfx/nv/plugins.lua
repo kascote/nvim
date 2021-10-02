@@ -106,8 +106,8 @@ packer.startup(function(use)
     "nvim-telescope/telescope.nvim",
     requires = {
       "nvim-lua/popup.nvim",
-      "nvim-lua/plenary.nvim"
-    }
+      "nvim-lua/plenary.nvim",
+    },
   }
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
@@ -155,6 +155,16 @@ packer.startup(function(use)
     "folke/tokyonight.nvim",
     config = function()
       require "nfx.plugins.theme"
+    end,
+  }
+  use {
+    "folke/trouble.nvim",
+    -- requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        icons = false,
+        mode = "lsp_workspace_diagnostics",
+      }
     end,
   }
   -- use {'mlopes/vim-farin'}
