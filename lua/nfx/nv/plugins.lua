@@ -94,7 +94,6 @@ packer.startup(function(use)
   }
   use { "wincent/loupe" }
   use { "t9md/vim-quickhl" }
-  use { "tyru/open-browser.vim" }
 
   use { "christoomey/vim-tmux-navigator" }
   use { "kshenoy/vim-signature" }
@@ -113,7 +112,7 @@ packer.startup(function(use)
 
   use { "junegunn/fzf.vim", opt = true }
   -- use { "tpope/vim-rails", opt = true }
-  use { "majutsushi/tagbar", opt = true }
+  -- use { "majutsushi/tagbar", opt = true }
   use { "machakann/vim-vimhelplint", opt = true }
   use { "dstein64/vim-startuptime", opt = true }
   use {
@@ -123,8 +122,6 @@ packer.startup(function(use)
   }
   use {
     "b3nj5m1n/kommentary",
-    -- opt = true,
-    -- keys = { "gc", "gcc", "--" },
     config = function()
       require "nfx.plugins.comments"
     end,
