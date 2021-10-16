@@ -84,15 +84,15 @@ local custom_attach = function(client, bufnr)
   end
 end
 
-local snippetsCapabilities = vim.lsp.protocol.make_client_capabilities()
-snippetsCapabilities.textDocument.completion.completionItem.snippetSupport = true
-snippetsCapabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    'documentation',
-    'detail',
-    'additionalTextEdits',
-  }
-}
+-- local snippetsCapabilities = vim.lsp.protocol.make_client_capabilities()
+-- snippetsCapabilities.textDocument.completion.completionItem.snippetSupport = true
+-- snippetsCapabilities.textDocument.completion.completionItem.resolveSupport = {
+--   properties = {
+--     'documentation',
+--     'detail',
+--     'additionalTextEdits',
+--   }
+-- }
 
 vimLsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vimLsp.diagnostic.on_publish_diagnostics, {
@@ -113,25 +113,28 @@ vimLsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 lspconfig.vimls.setup {
   on_init = custom_init,
   on_attach = custom_attach,
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 }
 
-lspconfig.gopls.setup {
-  on_init = custom_init,
-  on_attach = custom_attach,
-  settings = {
-    gopls = {
-      analyses = {
-        unusedparams = true
-      },
-      staticcheck = true,
-    }
-  }
-}
+-- lspconfig.gopls.setup {
+--   on_init = custom_init,
+--   on_attach = custom_attach,
+--   settings = {
+--     gopls = {
+--       analyses = {
+--         unusedparams = true
+--       },
+--       staticcheck = true,
+--     }
+--   }
+--   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+-- }
 
 require('nfx.plugins.lsp.null-ls').setup()
 lspconfig['null-ls'].setup {
   on_init = custom_init,
   on_attach = custom_attach,
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 }
 
 lspconfig.tsserver.setup {
@@ -140,7 +143,8 @@ lspconfig.tsserver.setup {
   init_options = { documentFormatting = false },
   on_init = custom_init,
   on_attach = custom_attach,
-  capabilities = snippetsCapabilities
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  -- capabilities = snippetsCapabilities
 }
 
 local sumneko_root_path = vim.fn.stdpath('cache')..'/lua-language-server'
@@ -149,6 +153,7 @@ lspconfig.sumneko_lua.setup  {
   on_init = custom_init,
   on_attach = custom_attach,
   cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
   settings = {
     Lua = {
       runtime = {
@@ -176,6 +181,7 @@ lspconfig.sumneko_lua.setup  {
 lspconfig.dartls.setup {
   on_init = custom_init,
   on_attach = custom_attach,
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
   cmd = {
     "dart",
     "/usr/local/opt/dart/libexec/bin/snapshots/analysis_server.dart.snapshot",

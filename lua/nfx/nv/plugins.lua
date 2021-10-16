@@ -42,12 +42,25 @@ packer.startup(function(use)
       require "nfx.plugins.lsp"
     end,
   }
+  use { "hrsh7th/cmp-nvim-lsp" }
+  use { "hrsh7th/cmp-buffer" }
+  use { "hrsh7th/cmp-vsnip" }
+  use { "hrsh7th/vim-vsnip" }
+  use { "hrsh7th/vim-vsnip-integ" }
+  use { "hrsh7th/cmp-path" }
+  use { "hrsh7th/cmp-nvim-lua" }
   use {
-    "hrsh7th/nvim-compe",
+    "hrsh7th/nvim-cmp",
     config = function()
       require "nfx.plugins.completion"
     end,
   }
+  -- use {
+  --   "hrsh7th/nvim-compe",
+  --   config = function()
+  --     require "nfx.plugins.completion"
+  --   end,
+  -- }
   use { "tjdevries/nlua.nvim" }
   use { "windwp/nvim-ts-autotag" }
   use {
@@ -56,8 +69,6 @@ packer.startup(function(use)
       require("nvim-autopairs").setup()
     end,
   }
-  use { "hrsh7th/vim-vsnip" }
-  use { "hrsh7th/vim-vsnip-integ" }
   use { "ray-x/lsp_signature.nvim" }
   use {
     "folke/todo-comments.nvim",

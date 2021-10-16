@@ -1,4 +1,4 @@
-vim.g.nvim_tree_ignore = { '.git', 'node_modules', '.cache' } -- empty by defaul
+vim.g.nvim_tree_ignore = { ".git", "node_modules", ".cache" } -- empty by defaul
 vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_highlight_opened_files = 1
@@ -26,15 +26,18 @@ vim.g.nvim_tree_git_hl = 1
 --   }
 -- }
 
-require'nvim-tree'.setup {
-  lsp_diagnostics     = true,
+require("nvim-tree").setup {
+  diagnostics = {
+    enable = true,
+    -- icons = { hint = "", info = "", warning = "", error = "" },
+  },
   view = {
     width = 40,
-    side = 'left',
+    side = "left",
     auto_resize = false,
     mappings = {
       custom_only = false,
-      list = {}
-    }
-  }
+      list = {},
+    },
+  },
 }
