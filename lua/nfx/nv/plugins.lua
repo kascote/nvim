@@ -175,6 +175,8 @@ packer.startup(function(use)
       }
     end,
   }
+  use "marko-cerovac/material.nvim"
+
   -- use {'mlopes/vim-farin'}
   -- use {'endel/vim-github-colorscheme'}
   -- use {'lewis6991/github_dark.nvim'}
