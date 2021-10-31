@@ -108,8 +108,8 @@ u.skm_sn('n', '<Leader>th',       '<cmd>lua R("nfx.plugins.telescope").help_tags
 u.skm_sn('n', '<Leader>td',       '<cmd>lua R("nfx.plugins.telescope").todo()<CR>')
 u.skm_sn('n', '<Leader>tl',       '<cmd>lua R("nfx.plugins.telescope").grep_last_search()<CR>')
 
-u.skm_sn('n', '<Leader>d',        ':NvimTreeToggle<CR>')
-u.skm_sn('n', '<Leader>r',        ':NvimTreeFindFile<CR>')
+u.skm_sn('n', '<Leader>d',        ':CHADopen<CR>')
+-- u.skm_sn('n', '<Leader>r',        ':NvimTreeFindFile<CR>')
 
 u.skm_sn('n', '<Leader><Leader>', ':b#<cr>')
 

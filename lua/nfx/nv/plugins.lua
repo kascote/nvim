@@ -18,12 +18,19 @@ packer.startup(function(use)
   use { "nvim-lua/popup.nvim" }
   use { "nvim-lua/plenary.nvim" }
 
+  -- use {
+  --   "kyazdani42/nvim-tree.lua",
+  --   config = function()
+  --     require "nfx.plugins.nvimtree"
+  --   end,
+  -- }
+
   use {
-    "kyazdani42/nvim-tree.lua",
-    config = function()
-      require "nfx.plugins.nvimtree"
-    end,
+    "ms-jpq/chadtree",
+    branch = "chad",
+    run = "python3 -m chadtree deps",
   }
+
   use { "nvim-treesitter/nvim-treesitter" }
   use { "nvim-treesitter/playground" }
 
@@ -137,6 +144,20 @@ packer.startup(function(use)
       require "nfx.plugins.comments"
     end,
   }
+  --[[ use {
+    "simrat39/rust-tools.nvim",
+    requires = "neovim/nvim-lspconfig",
+    config = function()
+      require("rust-tools").setup {}
+    end,
+  } ]]
+  use {
+    "vuki656/package-info.nvim",
+    requires = "MunifTanjim/nui.nvim",
+    config = function()
+      require("package-info").setup {}
+    end,
+  }
 
   --=[ Syntax ]=--
   use {
@@ -153,6 +174,7 @@ packer.startup(function(use)
   } -- tpope/vim-markdown
 
   use { "tmux-plugins/vim-tmux" }
+  use { "ruanyl/vim-gh-line" }
 
   --=[ Themes ]=--
   -- use { "tjdevries/colorbuddy.vim" }
@@ -203,8 +225,14 @@ packer.startup(function(use)
     https://github.com/lukas-reineke/indent-blankline.nvim
     https://github.com/ray-x/navigator.lua
     https://github.com/JoosepAlviste/nvim-ts-context-commentstring
+    https://github.com/ms-jpq/chadtree/tree/chad/chadtree
 
     https://github.com/captainko/ckovim/blob/70d09e50320de74fb3f9b9314e2e9cf70d570f86/lua/cko/plugins/cmp.lua
+
+    html cssls jsonls LSPs
+
+    set foldmethod=expr
+    foldexpr=nvim_treesitter#foldexpr()
 
   --]]
 end)

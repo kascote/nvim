@@ -189,6 +189,11 @@ lspconfig.dartls.setup {
   },
 }
 
+-- lspconfig.rust_analyzer.setup {
+--   on_init = custom_init,
+--   on_attach = custom_attach,
+-- }
+
 -- local lsp_js_setup = {
 --   lintCommand = "npx eslint -f visualstudio --stdin --stdin-filename ${INPUT}",
 --   lintIgnoreExitCode = true,
