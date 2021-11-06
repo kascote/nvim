@@ -6,7 +6,9 @@ vim.g.tokyonight_sidebars = {
   "terminal",
   "packer",
   "help",
+  "CHADTree"
 }
+vim.g.tokyonight_transparent_sidebar = true
 
 require("tokyonight").colorscheme()
 

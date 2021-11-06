@@ -144,7 +144,7 @@ local config = {
     lualine_y = { "encoding" },
     lualine_z = {},
   },
-  extensions = { "nvim-tree" },
+  extensions = { "chadtree", "quickfix" },
 }
 
 require("lualine").setup(config)

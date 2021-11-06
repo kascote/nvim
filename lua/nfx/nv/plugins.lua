@@ -29,6 +29,9 @@ packer.startup(function(use)
     "ms-jpq/chadtree",
     branch = "chad",
     run = "python3 -m chadtree deps",
+    config = function()
+      require 'nfx.plugins.chadtree'
+    end
   }
 
   use { "nvim-treesitter/nvim-treesitter" }
