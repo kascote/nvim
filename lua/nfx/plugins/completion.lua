@@ -18,15 +18,26 @@ cmp.setup {
       select = true,
     },
   },
+  -- can configure:
+  -- keyword_length
+  -- priority
+  -- max_item_count
   sources = {
     { name = "nvim_lsp" },
+    { name = "nvim_lua" },
     { name = "vsnip" },
     -- { name = 'luasnip' },
     -- { name = 'ultisnips' },
-    { name = "buffer" },
+    { name = "buffer", keyword_length = 5 },
     { name = "path" },
-    { name = "nvim_lua" },
   },
+  experimental = {
+    native_menu = false,
+    ghost_text = true
+  }
+  -- formatting = {
+  --   format = lsp
+  -- }
 }
 
 vim.g.vsnip_snippet_dir = vim.fn.stdpath "config" .. "/mysnips"
