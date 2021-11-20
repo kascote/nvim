@@ -17,6 +17,13 @@ local packer = require "packer"
 packer.startup(function(use)
   use { "nvim-lua/popup.nvim" }
   use { "nvim-lua/plenary.nvim" }
+  use { "rcarriga/nvim-notify" }
+  use {
+    "antoinemadec/FixCursorHold.nvim",
+    run = function()
+      vim.g.curshold_updatime = 1000
+    end,
+  }
 
   -- use {
   --   "kyazdani42/nvim-tree.lua",
