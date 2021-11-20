@@ -17,7 +17,6 @@ local packer = require "packer"
 packer.startup(function(use)
   use { "nvim-lua/popup.nvim" }
   use { "nvim-lua/plenary.nvim" }
-  use { "rcarriga/nvim-notify" }
   use {
     "antoinemadec/FixCursorHold.nvim",
     run = function()
@@ -70,6 +69,26 @@ packer.startup(function(use)
     "hrsh7th/nvim-cmp",
     config = function()
       require "nfx.plugins.completion"
+    end,
+  }
+  use {
+    "rcarriga/nvim-notify",
+    config = function()
+      vim.notify = require "notify"
+    end,
+  }
+  use { "elianiva/telescope-npm.nvim" }
+  use {
+    "ruifm/gitlinker.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("gitlinker").setup()
+    end,
+  }
+  use {
+    "ThePrimeagen/harpoon",
+    config = function()
+      require("harpoon").setup()
     end,
   }
   -- use {
@@ -247,6 +266,7 @@ packer.startup(function(use)
     https://github.com/JoosepAlviste/nvim-ts-context-commentstring
     https://github.com/ms-jpq/chadtree/tree/chad/chadtree
     https://github.com/numToStr/Comment.nvim
+    https://github.com/AckslD/nvim-neoclip.lua
 
     https://github.com/folke/zen-mode.nvim
 
