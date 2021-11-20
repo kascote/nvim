@@ -1,0 +1,12 @@
+{
+  "Test template": {
+    "prefix": ["test"],
+    "body": [
+      "describe('${1}', () => {",
+      "\tit('${2}', () => {",
+      "\t})",
+      "})",
+    ],
+    "description": "Test template."
+  }
+}

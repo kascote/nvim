@@ -94,6 +94,9 @@ require'nvim-treesitter.configs'.setup {
       },
     }
   },
+  context_commentstring = {
+    enable = true
+  },  
   NONO_ensure_installed = {"javascript", "typescript", "ruby", "html", "lua", "json", "jsdoc", "bash", "tsx"},
   playground = {
     enable = true,

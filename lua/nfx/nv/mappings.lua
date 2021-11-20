@@ -49,12 +49,6 @@ u.skm_sn('n', 'tt', '<cmd>lua R("nfx.alternate").alternate()<CR>')
 u.skm_sn('i', '<c-u>', '<C-k>') -- remap digraphs
 u.skm_sn('i', '<c-m>', '<C-o>J') -- join lines in insert mode
 
-u.skm_se('i', '<C-n>', 'compe#complete()')
--- u.skm_se('i', '<CR>', "compe#confirm('<CR>')")
-u.skm_se('i', '<C-e>', "compe#close('<C-e>')")
-u.skm_se('i', '<C-f>', "compe#scroll({ 'delta': +4 })")
-u.skm_se('i', '<C-d>', "compe#scroll({ 'delta': -4 })")
-
 vim.cmd([[
   inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
   inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -167,5 +161,4 @@ u.skm_sn('n', '<LocalLeader>f9', '<cmd>lua vim.wo.foldlevel=9<CR>')
 u.skm_sn('n', '<LocalLeader>w',               ":WhichKey '<Space>'<CR>")
 
 ------------------------------------------------------------------=[ SELECT ]=--
-vim.cmd('snoremap<C-k> <Plug>(neosnippet_expand_or_jump)')
 

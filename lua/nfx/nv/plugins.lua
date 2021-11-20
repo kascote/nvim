@@ -30,8 +30,8 @@ packer.startup(function(use)
     branch = "chad",
     run = "python3 -m chadtree deps",
     config = function()
-      require 'nfx.plugins.chadtree'
-    end
+      require "nfx.plugins.chadtree"
+    end,
   }
 
   use { "nvim-treesitter/nvim-treesitter" }
@@ -115,6 +115,16 @@ packer.startup(function(use)
   }
   use { "wincent/loupe" }
   use { "t9md/vim-quickhl" }
+  use {
+    "onsails/lspkind-nvim",
+    config = function()
+      require("lspkind").init {}
+    end,
+  }
+  use { "nanotee/luv-vimdocs" }
+  use { "milisims/nvim-luaref" }
+
+  use { "JoosepAlviste/nvim-ts-context-commentstring" }
 
   use { "christoomey/vim-tmux-navigator" }
   use { "kshenoy/vim-signature" }
@@ -229,6 +239,9 @@ packer.startup(function(use)
     https://github.com/ray-x/navigator.lua
     https://github.com/JoosepAlviste/nvim-ts-context-commentstring
     https://github.com/ms-jpq/chadtree/tree/chad/chadtree
+    https://github.com/numToStr/Comment.nvim
+
+    https://github.com/folke/zen-mode.nvim
 
     https://github.com/captainko/ckovim/blob/70d09e50320de74fb3f9b9314e2e9cf70d570f86/lua/cko/plugins/cmp.lua
 
