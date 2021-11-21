@@ -14,40 +14,40 @@ require'nfx.plugins.treesitter_setup'
 
 --//---------------------------------------------------------------
 local set_keymap = function(bufnr)
-  u.nnoremap('<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { buffer = bufnr })
-  u.nnoremap('<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', { buffer = bufnr })
-  u.nnoremap('<leader>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', { buffer = bufnr })
-  u.nnoremap('<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { buffer = bufnr })
-  -- u.nnoremap('<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', { buffer = bufnr })
-  u.nnoremap('<leader>lr', "<cmd>lua vim.lsp.buf.rename()<CR>", { buffer = bufnr })
-  u.nnoremap('<leader>lx', '<cmd>lua vim.lsp.buf.references()<CR>', { buffer = bufnr })
-  u.nnoremap('<leader>lq', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { buffer = bufnr })
+  u.remap('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { buffer = bufnr })
+  u.remap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', { buffer = bufnr })
+  u.remap('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', { buffer = bufnr })
+  u.remap('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { buffer = bufnr })
+  -- u.remap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', { buffer = bufnr })
+  u.remap('n', '<leader>lr', "<cmd>lua vim.lsp.buf.rename()<CR>", { buffer = bufnr })
+  u.remap('n', '<leader>lx', '<cmd>lua vim.lsp.buf.references()<CR>', { buffer = bufnr })
+  u.remap('n', '<leader>lq', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { buffer = bufnr })
   -- how customize virtual text
   -- https://gist.github.com/tjdevries/ccbe3b79bd918208f2fa8dfe15b95793
-  u.nnoremap('<Leader>ln', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', { buffer = bufnr })
-  u.nnoremap('<Leader>lp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', { buffer = bufnr })
+  u.remap('n', '<Leader>ln', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', { buffer = bufnr })
+  u.remap('n', '<Leader>lp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', { buffer = bufnr })
 
-  u.nnoremap('<Leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', { buffer = bufnr })
-  u.nnoremap('<Leader>lwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', { buffer = bufnr })
-  u.nnoremap('<Leader>lwl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', { buffer = bufnr })
-  u.nnoremap('<Leader>lwg', '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_diagnostics()<CR>')
+  u.remap('n', '<Leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', { buffer = bufnr })
+  u.remap('n', '<Leader>lwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', { buffer = bufnr })
+  u.remap('n', '<Leader>lwl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', { buffer = bufnr })
+  u.remap('n', '<Leader>lwg', '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_diagnostics()<CR>')
 
-  -- u.nnoremap('<leader>lw', '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', { buffer = bufnr })
-  u.nnoremap('<Leader>lw', '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_symbols()<CR>')
-  -- u.nnoremap('<leader>ls', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', { buffer = bufnr })
-  u.nnoremap('<Leader>ls', '<cmd>lua R("nfx.plugins.telescope").lsp_document_symbols()<CR>')
+  -- u.remap('n', '<leader>lw', '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', { buffer = bufnr })
+  u.remap('n', '<Leader>lw', '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_symbols()<CR>')
+  -- u.remap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', { buffer = bufnr })
+  u.remap('n', '<Leader>ls', '<cmd>lua R("nfx.plugins.telescope").lsp_document_symbols()<CR>')
 
-  u.nnoremap('<Leader>lsg', '<cmd>lua R("nfx.plugins.telescope").lsp_document_diagnostics()<CR>')
+  u.remap('n', '<Leader>lsg', '<cmd>lua R("nfx.plugins.telescope").lsp_document_diagnostics()<CR>')
 
-  u.nnoremap('<leader>la', "<cmd>lua vim.lsp.buf.code_action()<CR>", { buffer = bufnr })
-  u.nnoremap('<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<cr>', { buffer = bufnr })
-  u.nnoremap('<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', { buffer = bufnr })
-  u.nnoremap('<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<cr>', { buffer = bufnr })
-  u.nnoremap('K',          '<cmd>lua vim.lsp.buf.hover()<CR>', { buffer = bufnr })
-  u.nnoremap('<leader>s',  '<cmd>lua vim.lsp.buf.signature_help()<CR>', { buffer = bufnr })
-  u.nnoremap('<leader>rr', '<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>')
+  u.remap('n', '<leader>la', "<cmd>lua vim.lsp.buf.code_action()<CR>", { buffer = bufnr })
+  u.remap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<cr>', { buffer = bufnr })
+  u.remap('n', '<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', { buffer = bufnr })
+  u.remap('n', '<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<cr>', { buffer = bufnr })
+  u.remap('n', 'K',          '<cmd>lua vim.lsp.buf.hover()<CR>', { buffer = bufnr })
+  u.remap('n', '<leader>s',  '<cmd>lua vim.lsp.buf.signature_help()<CR>', { buffer = bufnr })
+  u.remap('n', '<leader>rr', '<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>')
 
-  -- u.inoremap('<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { buffer = bufnr })
+  -- u.remap('i', <c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { buffer = bufnr })
 end
 
 --//---------------------------------------------------------------
@@ -72,7 +72,6 @@ local custom_attach = function(client, bufnr)
    require("nfx.plugins.lsp.ts-utils").setup(client)
   end
 
-  -- vimApi.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
 
   if client.resolved_capabilities.document_highlight then

@@ -8,44 +8,16 @@ local _line_numbers_sequence = {
   ['11'] = 'set norelativenumber | set number'
 }
 
-utils.nnoremap = function(key, cmd, options)
-  utils.remap('n', key, cmd, options)
-end
-
-utils.inoremap = function(key, cmd, options)
-  utils.remap('i', key, cmd, options)
-end
-
 utils.remap = function(mode, key, cmd, options)
-  local opts = vim.tbl_extend('force', { silent = true } , options or {}, { noremap = true })
+  local opts = vim.tbl_extend('force', { silent = true, noremap = true } , options or {})
   if opts.buffer then
     local bufnr = opts.buffer
     opts.buffer = nil
     vim.api.nvim_buf_set_keymap(bufnr, mode, utils.termcodes(key), cmd, opts)
   else
-    vim.api.nvim_set_keymap(mode, utils.termcodes(key), cmd, opts)
+    --vim.api.nvim_set_keymap(mode, utils.termcodes(key), cmd, opts)
+    vim.api.nvim_set_keymap(mode, key, cmd, opts)
   end
-end
-
-utils.skm_sn = function (mode, lhs, rhs)
-  vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true })
-end
-
-utils.skm_se = function (mode, lhs, rhs)
-  vim.api.nvim_set_keymap(mode, lhs, rhs, { expr = true, noremap = true, silent = true })
-end
-
-utils.skm_s = function (mode, lhs, rhs)
-  vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = false, silent = true })
-end
-
-utils.skm_n = function (mode, lhs, rhs)
-  vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = false })
-end
-
-
-utils.skm_buf_sn = function(bufnr, mode, lhs, rhs)
-  return vim.api.nvim_buf_set_keymap( bufnr, mode, lhs, rhs, { noremap = true, silent = true })
 end
 
 utils.termcodes = function(str)

@@ -1,9 +1,9 @@
 --  require('nfx/nv/colors')
 require('nfx/nv/settings')
+require('nfx/globals')
 require('nfx/nv/mappings')
 require('nfx/nv/plugins')
 
-require('nfx/globals')
 
 -- vim.g.tokyonight_style='night'
 -- vim.cmd('colorscheme tokyonight')

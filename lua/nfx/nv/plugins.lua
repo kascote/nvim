@@ -31,14 +31,14 @@ packer.startup(function(use)
   --   end,
   -- }
 
-  use {
-    "ms-jpq/chadtree",
-    branch = "chad",
-    run = "python3 -m chadtree deps",
-    config = function()
-      require "nfx.plugins.chadtree"
-    end,
-  }
+  -- use {
+  --   "ms-jpq/chadtree",
+  --   branch = "chad",
+  --   run = "python3 -m chadtree deps",
+  --   config = function()
+  --     require "nfx.plugins.chadtree"
+  --   end,
+  -- }
 
   use { "nvim-treesitter/nvim-treesitter" }
   use { "nvim-treesitter/playground" }
@@ -77,7 +77,6 @@ packer.startup(function(use)
       vim.notify = require "notify"
     end,
   }
-  use { "elianiva/telescope-npm.nvim" }
   use {
     "ruifm/gitlinker.nvim",
     requires = "nvim-lua/plenary.nvim",
@@ -158,6 +157,8 @@ packer.startup(function(use)
   use { "mbbill/undotree" }
   use { "liuchengxu/vim-which-key" }
 
+  use { "nvim-telescope/telescope-file-browser.nvim" }
+  use { "elianiva/telescope-npm.nvim" }
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
