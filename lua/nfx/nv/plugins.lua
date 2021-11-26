@@ -146,8 +146,14 @@ packer.startup(function(use)
 
   use { "JoosepAlviste/nvim-ts-context-commentstring" }
 
+
   use { "christoomey/vim-tmux-navigator" }
-  use { "kshenoy/vim-signature" }
+  use {
+    "chentau/marks.nvim",
+    config = function()
+      require'marks'.setup({})
+    end
+  } -- replaces "kshenoy/vim-signature"
   use { "moll/vim-bbye" }
   use { "mbbill/undotree" }
   use { "liuchengxu/vim-which-key" }
@@ -211,13 +217,9 @@ packer.startup(function(use)
   } -- tpope/vim-markdown
 
   use { "tmux-plugins/vim-tmux" }
-  use { "ruanyl/vim-gh-line" }
+  -- use { "ruanyl/vim-gh-line" }
 
   --=[ Themes ]=--
-  -- use { "tjdevries/colorbuddy.vim" }
-  -- use {'tjdevries/gruvbuddy.nvim'}
-  -- use {'gruvbox-community/gruvbox'}
-  -- use { "vigoux/oak" }
   use {
     "folke/tokyonight.nvim",
     config = function()
