@@ -1,6 +1,7 @@
 local has_lsp, lspconfig = pcall(require, 'lspconfig')
 -- local _, lspconfig_util = pcall(require, 'lspconfig.util')
 if not has_lsp then
+  vim.notify('missing lspconfig', vim.log.levels.WARN)
   return
 end
 
@@ -129,13 +130,6 @@ lspconfig.vimls.setup {
 --   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 -- }
 
-require('nfx.plugins.lsp.null-ls').setup()
-lspconfig['null-ls'].setup {
-  on_init = custom_init,
-  on_attach = custom_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-}
-
 lspconfig.tsserver.setup {
   -- filetypes = { "typescript", "typescriptreact" },
   -- client.resolved_capabilities.document_formatting = false
@@ -187,6 +181,14 @@ lspconfig.dartls.setup {
     "--lsp"
   },
 }
+
+-- require('nfx.plugins.lsp.null-ls').setup()
+lspconfig['null-ls'].setup {
+  on_init = custom_init,
+  on_attach = custom_attach,
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+}
+
 
 -- lspconfig.rust_analyzer.setup {
 --   on_init = custom_init,

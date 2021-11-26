@@ -7,11 +7,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
 end
 
-vim.cmd [=[packadd packer.nvim]=]
-vim.cmd [=[augroup nfxPlugins]=]
-vim.cmd [=[  au!]=]
-vim.cmd [=[  autocmd BufWritePost plugins.lua PackerCompile]=]
-vim.cmd [=[augroup END]=]
+vim.cmd([[
+  packadd packer.nvim
+  augroup nfxPlugins
+    au!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
 
 local packer = require "packer"
 packer.startup(function(use)
@@ -42,22 +44,21 @@ packer.startup(function(use)
 
   use { "nvim-treesitter/nvim-treesitter" }
   use { "nvim-treesitter/playground" }
-
   use {
     "neovim/nvim-lspconfig",
+    commit = "767f863b65b535d1ef235495ebda52237ddd4452",
     event = "BufReadPre",
-    requires = {
-      "jose-elias-alvarez/null-ls.nvim",
-      "jose-elias-alvarez/nvim-lsp-ts-utils",
-    },
-    wants = {
-      "null-ls.nvim",
-      "nvim-lsp-ts-utils",
-    },
     config = function()
       require "nfx.plugins.lsp"
     end,
   }
+
+  use { "jose-elias-alvarez/nvim-lsp-ts-utils"}
+  use { 
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
+  }
+
   use { "hrsh7th/cmp-nvim-lsp" }
   use { "hrsh7th/cmp-buffer" }
   use { "hrsh7th/cmp-vsnip" }
@@ -72,10 +73,10 @@ packer.startup(function(use)
     end,
   }
   use {
-    "rcarriga/nvim-notify",
-    config = function()
-      vim.notify = require "notify"
-    end,
+   "rcarriga/nvim-notify",
+   config = function()
+     vim.notify = require "notify"
+   end,
   }
   use {
     "ruifm/gitlinker.nvim",
@@ -90,12 +91,6 @@ packer.startup(function(use)
       require("harpoon").setup()
     end,
   }
-  -- use {
-  --   "hrsh7th/nvim-compe",
-  --   config = function()
-  --     require "nfx.plugins.completion"
-  --   end,
-  -- }
   use { "tjdevries/nlua.nvim" }
   use { "windwp/nvim-ts-autotag" }
   use {
@@ -178,12 +173,14 @@ packer.startup(function(use)
     opt = true,
     cmd = "GitMessenger",
   }
+
   use {
     "b3nj5m1n/kommentary",
     config = function()
       require "nfx.plugins.comments"
     end,
   }
+
   --[[ use {
     "simrat39/rust-tools.nvim",
     requires = "neovim/nvim-lspconfig",
@@ -254,7 +251,6 @@ packer.startup(function(use)
     https://github.com/vitalk/vim-simple-todo
     https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     https://github.com/akinsho/flutter-tools.nvim
-    https://github.com/jose-elias-alvarez/null-ls.nvim
     https://github.com/lukas-reineke/indent-blankline.nvim
     https://github.com/L3MON4D3/LuaSnip
     https://github.com/windwp/lsp-fastaction.nvim
