@@ -268,6 +268,7 @@ packer.startup(function(use)
     https://github.com/ms-jpq/chadtree/tree/chad/chadtree
     https://github.com/numToStr/Comment.nvim
     https://github.com/AckslD/nvim-neoclip.lua
+    https://github.com/chentau/marks.nvim
 
     https://github.com/folke/zen-mode.nvim
 
