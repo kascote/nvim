@@ -1,9 +1,11 @@
 local has_lsp, lspconfig = pcall(require, 'lspconfig')
--- local _, lspconfig_util = pcall(require, 'lspconfig.util')
+
 if not has_lsp then
   vim.notify('missing lspconfig', vim.log.levels.WARN)
   return
 end
+
+local lspconfig_util = require "lspconfig.util"
 
 local vim = vim
 local vimApi = vim.api
@@ -142,34 +144,53 @@ lspconfig.tsserver.setup {
 
 local sumneko_root_path = vim.fn.stdpath('cache')..'/lua-language-server'
 local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"
-lspconfig.sumneko_lua.setup  {
+-- lspconfig.sumneko_lua.setup  {
+--   on_init = custom_init,
+--   on_attach = custom_attach,
+--   cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+--   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+--   settings = {
+--     Lua = {
+--       runtime = {
+--         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+--         version = 'LuaJIT',
+--         -- Setup your lua path
+--         path = vim.split(package.path, ';'),
+--       },
+--       diagnostics = {
+--         -- Get the language server to recognize the `vim` global
+--         globals = {'vim', 'dump'},
+--       },
+--       workspace = {
+--         -- Make the server aware of Neovim runtime files
+--         library = {
+--           [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+--           [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+--           [vim.fn.expand('~/.config/nvim/lua')] = true,
+--         },
+--       },
+--     },
+--   },
+-- }
+
+require("nlua.lsp.nvim").setup(lspconfig, {
   on_init = custom_init,
   on_attach = custom_attach,
-  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = vim.split(package.path, ';'),
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim', 'dump'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = {
-          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-          [vim.fn.expand('~/.config/nvim/lua')] = true,
-        },
-      },
-    },
-  },
-}
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+
+  root_dir = function(fname)
+    if string.find(vim.fn.fnamemodify(fname, ":p"), ".config/nvim/") then
+      return vim.fn.expand "~/.config/nvim/"
+    end
+
+    return lspconfig_util.find_git_ancestor(fname) or lspconfig_util.path.dirname(fname)
+  end,
+
+  globals = {'P', 'R', 'RELOAD'},
+})
+
+
 
 lspconfig.dartls.setup {
   on_init = custom_init,
