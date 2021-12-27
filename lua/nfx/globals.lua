@@ -34,4 +34,3 @@ end
 function nfx._execute(id, args)
   nfx._store[id](args)
 end
-

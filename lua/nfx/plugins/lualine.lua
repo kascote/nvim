@@ -122,7 +122,7 @@ local config = {
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { { "diagnostics", sources = { "nvim_lsp" } } },
+    lualine_b = { { "diagnostics", sources = { "nvim_diagnostic" } } },
     lualine_c = { mydiff },
     lualine_x = { nada },
     lualine_y = {},

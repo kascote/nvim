@@ -19,6 +19,7 @@ local packer = require "packer"
 packer.startup(function(use)
   use { "nvim-lua/popup.nvim" }
   use { "nvim-lua/plenary.nvim" }
+  -- https://github.com/neovim/neovim/issues/12587
   use {
     "antoinemadec/FixCursorHold.nvim",
     run = function()
@@ -26,27 +27,10 @@ packer.startup(function(use)
     end,
   }
 
-  -- use {
-  --   "kyazdani42/nvim-tree.lua",
-  --   config = function()
-  --     require "nfx.plugins.nvimtree"
-  --   end,
-  -- }
-
-  -- use {
-  --   "ms-jpq/chadtree",
-  --   branch = "chad",
-  --   run = "python3 -m chadtree deps",
-  --   config = function()
-  --     require "nfx.plugins.chadtree"
-  --   end,
-  -- }
-
   use { "nvim-treesitter/nvim-treesitter" }
   use { "nvim-treesitter/playground" }
   use {
     "neovim/nvim-lspconfig",
-    commit = "767f863b65b535d1ef235495ebda52237ddd4452",
     event = "BufReadPre",
     config = function()
       require "nfx.plugins.lsp"
@@ -115,7 +99,6 @@ packer.startup(function(use)
   }
 
   -- use {'fatih/vim-go'}
-  -- use { "~/pvt/dev/express_line.nvim" }
   use { "junegunn/vim-easy-align" }
 
   use { "vim-scripts/LargeFile" }
@@ -146,17 +129,25 @@ packer.startup(function(use)
 
   use { "JoosepAlviste/nvim-ts-context-commentstring" }
 
-
-  use { "christoomey/vim-tmux-navigator" }
   use {
     "chentau/marks.nvim",
     config = function()
       require'marks'.setup({})
     end
-  } -- replaces "kshenoy/vim-signature"
+  }
   use { "moll/vim-bbye" }
   use { "mbbill/undotree" }
-  use { "liuchengxu/vim-which-key" }
+  use { "folke/which-key.nvim" }
+  use {
+    "folke/trouble.nvim",
+    -- requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        icons = false,
+        mode = "workspace_diagnostics",
+      }
+    end,
+  }
 
   use { "nvim-telescope/telescope-file-browser.nvim" }
   use { "elianiva/telescope-npm.nvim" }
@@ -171,7 +162,6 @@ packer.startup(function(use)
 
   use { "junegunn/fzf.vim", opt = true }
   -- use { "tpope/vim-rails", opt = true }
-  -- use { "majutsushi/tagbar", opt = true }
   use { "machakann/vim-vimhelplint", opt = true }
   use { "dstein64/vim-startuptime", opt = true }
   use {
@@ -187,13 +177,6 @@ packer.startup(function(use)
     end,
   }
 
-  --[[ use {
-    "simrat39/rust-tools.nvim",
-    requires = "neovim/nvim-lspconfig",
-    config = function()
-      require("rust-tools").setup {}
-    end,
-  } ]]
   use {
     "vuki656/package-info.nvim",
     requires = "MunifTanjim/nui.nvim",
@@ -216,24 +199,12 @@ packer.startup(function(use)
     end,
   } -- tpope/vim-markdown
 
-  use { "tmux-plugins/vim-tmux" }
-  -- use { "ruanyl/vim-gh-line" }
 
   --=[ Themes ]=--
   use {
     "folke/tokyonight.nvim",
     config = function()
       require "nfx.plugins.theme"
-    end,
-  }
-  use {
-    "folke/trouble.nvim",
-    -- requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup {
-        icons = false,
-        mode = "lsp_workspace_diagnostics",
-      }
     end,
   }
   use "marko-cerovac/material.nvim"
@@ -250,24 +221,14 @@ packer.startup(function(use)
     lewis6991/spellsitter.nvim
     windwp/nvim-spectre
 
-    https://github.com/vitalk/vim-simple-todo
     https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     https://github.com/akinsho/flutter-tools.nvim
     https://github.com/lukas-reineke/indent-blankline.nvim
     https://github.com/L3MON4D3/LuaSnip
-    https://github.com/windwp/lsp-fastaction.nvim
-    https://github.com/mhartington/formatter.nvim
     https://github.com/vhyrro/neorg
-    https://github.com/kristijanhusak/orgmode.nvim
-    https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils
-    https://github.com/lukas-reineke/indent-blankline.nvim
     https://github.com/ray-x/navigator.lua
-    https://github.com/JoosepAlviste/nvim-ts-context-commentstring
-    https://github.com/ms-jpq/chadtree/tree/chad/chadtree
     https://github.com/numToStr/Comment.nvim
     https://github.com/AckslD/nvim-neoclip.lua
-    https://github.com/chentau/marks.nvim
-
     https://github.com/folke/zen-mode.nvim
 
     https://github.com/captainko/ckovim/blob/70d09e50320de74fb3f9b9314e2e9cf70d570f86/lua/cko/plugins/cmp.lua

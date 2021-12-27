@@ -37,16 +37,16 @@ cmp.setup {
     ghost_text = true,
   },
   formatting = {
-    format = lspkind.cmp_format { 
+    format = lspkind.cmp_format {
       with_text = true,
       maxwidth = 50,
       menu = {
-        buffer = '[buf]',
-        nvim_lsp = '[LSP]',
-        nvim_lua = '[api]',
-        path = '[path]',
-        vsnip = '[vsnip]',
-      }
+        buffer = "[buf]",
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[api]",
+        path = "[path]",
+        vsnip = "[vsnip]",
+      },
     },
   },
   sorting = {

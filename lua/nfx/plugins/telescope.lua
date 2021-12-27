@@ -183,9 +183,10 @@ function M.file_browser()
 end
 
 function M.file_browser_relative()
-  require("telescope").extensions.file_browser.file_browser({
-    path = vim.fn.expand('%:h')
-  })
+  -- vim.api.nvim_buf_get_name(0)
+  -- vim.fn.expand('%:h')
+  -- vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':h')
+  require("telescope").extensions.file_browser.file_browser({ path = vim.fn.expand('%:h') })
 end
 
 return setmetatable({}, {
