@@ -2,6 +2,7 @@
 require('nfx/nv/settings')
 require('nfx/globals')
 require('nfx/nv/mappings')
+require('nfx/nv/mappings2')
 require('nfx/nv/plugins')
 
 
@@ -22,3 +23,4 @@ require('nfx/nv/plugins')
 --]]
 -- vim.cmd('set nofixendofline')
 -- vim.cmd('set noeol')
+

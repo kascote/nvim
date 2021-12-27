@@ -1,56 +1,94 @@
-local has_lsp, lspconfig = pcall(require, 'lspconfig')
-
+local has_lsp, lspconfig = pcall(require, "lspconfig")
 if not has_lsp then
-  vim.notify('missing lspconfig', vim.log.levels.WARN)
+  vim.notify("missing lspconfig", vim.log.levels.WARN)
   return
 end
 
+local wk = require "which-key"
 local lspconfig_util = require "lspconfig.util"
 
 local vim = vim
 local vimApi = vim.api
 local vimLsp = vim.lsp
-local u = require('nfx.utils')
+local u = require "nfx.utils"
 -- local util = require'vim.lsp.util'
-require'nfx.plugins.treesitter_setup'
--- vim.lsp.set_log_level("debug")
+require "nfx.plugins.treesitter_setup"
+-- vim.lsp.set_log_level "debug"
 
 --//---------------------------------------------------------------
 local set_keymap = function(bufnr)
-  u.remap('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { buffer = bufnr })
-  u.remap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', { buffer = bufnr })
-  u.remap('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', { buffer = bufnr })
-  u.remap('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { buffer = bufnr })
-  -- u.remap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', { buffer = bufnr })
-  u.remap('n', '<leader>lr', "<cmd>lua vim.lsp.buf.rename()<CR>", { buffer = bufnr })
-  u.remap('n', '<leader>lx', '<cmd>lua vim.lsp.buf.references()<CR>', { buffer = bufnr })
-  u.remap('n', '<leader>lq', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { buffer = bufnr })
-  -- how customize virtual text
-  -- https://gist.github.com/tjdevries/ccbe3b79bd918208f2fa8dfe15b95793
-  u.remap('n', '<Leader>ln', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', { buffer = bufnr })
-  u.remap('n', '<Leader>lp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', { buffer = bufnr })
+  wk.register({
+    l = {
+      name = "LSP",
+      D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "search Declarations" },
+      d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "search Definitions" },
+      i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "search Implementations" },
+      t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "search Type Definitions" },
+      r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename identifier" },
+      x = { "<cmd>lua vim.lsp.buf.references()<cr>", "search References" },
+      q = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>", "show Diagnostics on current line" },
+      n = { "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Goto Next Diagnostic" },
+      p = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Goto previous Diagnostic" },
+      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Show Code Actions" },
+      f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format current file" },
+      c = { "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", "Show Incoming calls" },
+      o = { "<cmd>lua vim.lsp.buf.outgoing_calls()<cr>", "Show Outgoing calls" },
+      s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Show Signature Help" },
+      wa = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", "Add Workspace folder" },
+      wr = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", "Remove Workspace folder" },
+      wl = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", "Show workspace folders" },
+      wg = { '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_diagnostics()<cr>', "Show workspace diagnostics" },
+      ws = { '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_symbols()<cr>', "Show Workspace Symbols" },
+      ds = { '<cmd>lua R("nfx.plugins.telescope").lsp_document_symbols()<cr>', "Show Document Symbols" },
+      dd = { '<cmd>lua R("nfx.plugins.telescope").lsp_document_diagnostics()<cr>', "Show Document Diagnostics" },
+      rr = {
+        "<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>",
+        "Stop Clients and restart LSP",
+      },
+    },
+    K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "toggle Hover on current identifier" },
+  }, {
+    mode = "n", -- NORMAL mode
+    prefix = "<leader>",
+    buffer = bufnr, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = true, -- use `nowait` when creating keymaps
+  })
+  -- u.remap('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { buffer = bufnr })
+  -- u.remap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', { buffer = bufnr })
+  -- u.remap('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', { buffer = bufnr })
+  -- u.remap('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { buffer = bufnr })
+  -- -- u.remap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', { buffer = bufnr })
+  -- u.remap('n', '<leader>lr', "<cmd>lua vim.lsp.buf.rename()<CR>", { buffer = bufnr })
+  -- u.remap('n', '<leader>lx', '<cmd>lua vim.lsp.buf.references()<CR>', { buffer = bufnr })
+  -- u.remap('n', '<leader>lq', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { buffer = bufnr })
+  -- -- how customize virtual text
+  -- -- https://gist.github.com/tjdevries/ccbe3b79bd918208f2fa8dfe15b95793
+  -- u.remap('n', '<Leader>ln', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', { buffer = bufnr })
+  -- u.remap('n', '<Leader>lp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', { buffer = bufnr })
 
-  u.remap('n', '<Leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', { buffer = bufnr })
-  u.remap('n', '<Leader>lwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', { buffer = bufnr })
-  u.remap('n', '<Leader>lwl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', { buffer = bufnr })
-  u.remap('n', '<Leader>lwg', '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_diagnostics()<CR>')
+  -- u.remap('n', '<Leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', { buffer = bufnr })
+  -- u.remap('n', '<Leader>lwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', { buffer = bufnr })
+  -- u.remap('n', '<Leader>lwl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', { buffer = bufnr })
+  -- u.remap('n', '<Leader>lwg', '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_diagnostics()<CR>')
 
-  -- u.remap('n', '<leader>lw', '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', { buffer = bufnr })
-  u.remap('n', '<Leader>lw', '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_symbols()<CR>')
-  -- u.remap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', { buffer = bufnr })
-  u.remap('n', '<Leader>ls', '<cmd>lua R("nfx.plugins.telescope").lsp_document_symbols()<CR>')
+  -- -- u.remap('n', '<leader>lw', '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', { buffer = bufnr })
+  -- u.remap('n', '<Leader>lw', '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_symbols()<CR>')
+  -- -- u.remap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', { buffer = bufnr })
+  -- u.remap('n', '<Leader>ls', '<cmd>lua R("nfx.plugins.telescope").lsp_document_symbols()<CR>')
 
-  u.remap('n', '<Leader>lsg', '<cmd>lua R("nfx.plugins.telescope").lsp_document_diagnostics()<CR>')
+  -- u.remap('n', '<Leader>lsg', '<cmd>lua R("nfx.plugins.telescope").lsp_document_diagnostics()<CR>')
 
-  u.remap('n', '<leader>la', "<cmd>lua vim.lsp.buf.code_action()<CR>", { buffer = bufnr })
-  u.remap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<cr>', { buffer = bufnr })
-  u.remap('n', '<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', { buffer = bufnr })
-  u.remap('n', '<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<cr>', { buffer = bufnr })
-  u.remap('n', 'K',          '<cmd>lua vim.lsp.buf.hover()<CR>', { buffer = bufnr })
-  u.remap('n', '<leader>s',  '<cmd>lua vim.lsp.buf.signature_help()<CR>', { buffer = bufnr })
-  u.remap('n', '<leader>rr', '<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>')
+  -- u.remap('n', '<leader>la', "<cmd>lua vim.lsp.buf.code_action()<CR>", { buffer = bufnr })
+  -- u.remap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<cr>', { buffer = bufnr })
+  -- u.remap('n', '<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', { buffer = bufnr })
+  -- u.remap('n', '<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<cr>', { buffer = bufnr })
+  -- u.remap('n', 'K',          '<cmd>lua vim.lsp.buf.hover()<CR>', { buffer = bufnr })
+  -- u.remap('n', '<leader>s',  '<cmd>lua vim.lsp.buf.signature_help()<CR>', { buffer = bufnr })
+  -- u.remap('n', '<leader>rr', '<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>')
 
-  -- u.remap('i', <c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { buffer = bufnr })
+  -- -- u.remap('i', <c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { buffer = bufnr })
 end
 
 --//---------------------------------------------------------------
@@ -62,27 +100,27 @@ end
 
 --//---------------------------------------------------------------
 local custom_attach = function(client, bufnr)
-  local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+  local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
 
   set_keymap(bufnr)
-  require'lsp_signature'.on_attach()
+  require("lsp_signature").on_attach()
 
-  if vim.tbl_contains({"go", "rust"}, filetype) then
+  if vim.tbl_contains({ "go", "rust" }, filetype) then
     vim.cmd [[autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting_sync()]]
   end
 
   if client.name == "typescript" or client.name == "tsserver" then
-   require("nfx.plugins.lsp.ts-utils").setup(client)
+    require("nfx.plugins.lsp.ts-utils").setup(client)
   end
 
-  vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
+  vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
   if client.resolved_capabilities.document_highlight then
-    vimApi.nvim_command('augroup lsp_document_highlight')
-    vimApi.nvim_command(' autocmd! * <buffer>')
-    vimApi.nvim_command(' autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()')
-    vimApi.nvim_command(' autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()')
-    vimApi.nvim_command('augroup END')
+    vimApi.nvim_command "augroup lsp_document_highlight"
+    vimApi.nvim_command " autocmd! * <buffer>"
+    vimApi.nvim_command " autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()"
+    vimApi.nvim_command " autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()"
+    vimApi.nvim_command "augroup END"
   end
 end
 
@@ -96,26 +134,23 @@ end
 --   }
 -- }
 
-vimLsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vimLsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    virtual_text = false,
-    signs = true,
-    update_in_insert = true,
-  }
-)
+vimLsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vimLsp.diagnostic.on_publish_diagnostics, {
+  underline = true,
+  virtual_text = false,
+  signs = true,
+  update_in_insert = true,
+})
 
-
-  -- lspconfig.solargraph.setup {
-  --   cmd = { "solargraph", "stdio" },
-  --   filetypes = { "ruby" },
-  --   root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git")
-  -- },
+-- lspconfig.solargraph.setup {
+--   cmd = { "solargraph", "stdio" },
+--   filetypes = { "ruby" },
+--   root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git")
+-- },
 
 lspconfig.vimls.setup {
   on_init = custom_init,
   on_attach = custom_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 }
 
 -- lspconfig.gopls.setup {
@@ -138,12 +173,12 @@ lspconfig.tsserver.setup {
   init_options = { documentFormatting = false },
   on_init = custom_init,
   on_attach = custom_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
   -- capabilities = snippetsCapabilities
 }
 
-local sumneko_root_path = vim.fn.stdpath('cache')..'/lua-language-server'
-local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"
+local sumneko_root_path = vim.fn.stdpath "cache" .. "/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
 -- lspconfig.sumneko_lua.setup  {
 --   on_init = custom_init,
 --   on_attach = custom_attach,
@@ -176,8 +211,8 @@ local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"
 require("nlua.lsp.nvim").setup(lspconfig, {
   on_init = custom_init,
   on_attach = custom_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 
   root_dir = function(fname)
     if string.find(vim.fn.fnamemodify(fname, ":p"), ".config/nvim/") then
@@ -187,29 +222,41 @@ require("nlua.lsp.nvim").setup(lspconfig, {
     return lspconfig_util.find_git_ancestor(fname) or lspconfig_util.path.dirname(fname)
   end,
 
-  globals = {'P', 'R', 'RELOAD'},
+  globals = { "P", "R", "RELOAD" },
 })
-
-
 
 lspconfig.dartls.setup {
   on_init = custom_init,
   on_attach = custom_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
   cmd = {
     "dart",
     "/usr/local/opt/dart/libexec/bin/snapshots/analysis_server.dart.snapshot",
-    "--lsp"
+    "--lsp",
+  },
+  settings = {
+    dart = {
+      lineLength = 120,
+    }
   },
 }
 
--- require('nfx.plugins.lsp.null-ls').setup()
-lspconfig['null-ls'].setup {
+-- require("null-ls").config({
+--     sources = {
+--         require("null-ls").builtins.formatting.stylua,
+--         require("null-ls").builtins.completion.spell,
+--     },
+-- })
+-- require("lspconfig")["null-ls"].setup({
+--     on_attach = custom_attach,
+-- })
+
+require "nfx.plugins.lsp.null-ls"
+require("lspconfig")["null-ls"].setup {
   on_init = custom_init,
   on_attach = custom_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 }
-
 
 -- lspconfig.rust_analyzer.setup {
 --   on_init = custom_init,
@@ -259,9 +306,9 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
-vim.cmd('hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646')
-vim.cmd('hi LspReferenceText cterm=bold ctermbg=red guibg=#164646')
-vim.cmd('hi LspReferenceWrite cterm=bold ctermbg=red guibg=#964646')
+vim.cmd "hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646"
+vim.cmd "hi LspReferenceText cterm=bold ctermbg=red guibg=#164646"
+vim.cmd "hi LspReferenceWrite cterm=bold ctermbg=red guibg=#964646"
 
 -- ###########################################################################
 --[[

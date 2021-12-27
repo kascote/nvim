@@ -9,8 +9,7 @@ local u = require('nfx.utils')
 -- u.remap('n', '<C-Left>',  ':lpfile<CR>')
 -- u.remap('n', '<C-Right>', ':lnfile<CR>')
 
--- u.remap('n', "'",         "`") -- convenients remaps
-
+u.remap('n', "'",         "`") -- convenients remaps
 -- u.remap('n', '<Tab>',     'za') -- Toggle fold at current position.
 
 -- move between windows
@@ -45,6 +44,11 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 -- u.remap('i', '<c-u>', '<C-k>') -- remap digraphs
 -- u.remap('i', '<c-j>', '<C-o>J') -- join lines in insert mode
 
+vim.cmd([[
+  inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+]])
+
 ------------------------------------------------------------------=[ VISUAL ]=--
 -- vmap <Leader>y "+y
 -- Visual mode mappings.
@@ -59,9 +63,9 @@ u.remap('c', '<c-k>', '<Up>', { silent = false})
 u.remap('c', '<c-h>', '<Left>', { silent = false})
 u.remap('c', '<c-l>', '<Right>', { silent = false})
 
-u.remap('c', '$h', [[<C-R>=expand('%:h:p')<CR><space>]])
-u.remap('c', '$t', [[<C-R>=expand('%:t')<CR>]])
-u.remap('c', '$p', [[<C-R>=expand('%:p')<CR>]])
+u.remap('c', '%H', [[<C-R>=expand('%:h:p')<CR><space>]])
+u.remap('c', '%T', [[<C-R>=expand('%:t')<CR>]])
+u.remap('c', '%P', [[<C-R>=expand('%:p')<CR>]])
 u.remap('c', '<c-r><c-r>', '<Plug>(TelescopeFuzzyCommandSearch)', { noremap = false, nowait = true })
 
 ------------------------------------------------------------------=[ LEADER ]=--
