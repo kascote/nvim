@@ -7,13 +7,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
 end
 
-vim.cmd([[
+vim.cmd [[
   packadd packer.nvim
   augroup nfxPlugins
     au!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
-]])
+]]
 
 local packer = require "packer"
 packer.startup(function(use)
@@ -27,8 +27,20 @@ packer.startup(function(use)
     end,
   }
 
-  use { "nvim-treesitter/nvim-treesitter" }
-  use { "nvim-treesitter/playground" }
+  use {
+    {
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
+      config = function()
+        require "nfx.plugins.treesitter_setup"
+      end,
+    },
+    { "nvim-treesitter/playground", after = "nvim-treesitter" },
+    { "nvim-treesitter/nvim-treesitter-refactor", after = "nvim-treesitter" },
+    { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
+    { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
+  }
+
   use {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
@@ -37,31 +49,35 @@ packer.startup(function(use)
     end,
   }
 
-  use { "jose-elias-alvarez/nvim-lsp-ts-utils"}
-  use { 
+  use { "jose-elias-alvarez/nvim-lsp-ts-utils" }
+  use {
     "jose-elias-alvarez/null-ls.nvim",
-    requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
+    requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   }
 
-  use { "hrsh7th/cmp-nvim-lsp" }
-  use { "hrsh7th/cmp-buffer" }
-  use { "hrsh7th/cmp-vsnip" }
-  use { "hrsh7th/vim-vsnip" }
-  use { "hrsh7th/vim-vsnip-integ" }
-  use { "hrsh7th/cmp-path" }
-  use { "hrsh7th/cmp-nvim-lua" }
   use {
-    "hrsh7th/nvim-cmp",
+    {
+      "hrsh7th/nvim-cmp",
+      config = function()
+        require "nfx.plugins.completion"
+      end,
+    },
+    { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
+    { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+    { "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
+    { "hrsh7th/vim-vsnip", after = "nvim-cmp" },
+    { "hrsh7th/vim-vsnip-integ", after = "nvim-cmp" },
+    { "hrsh7th/cmp-path", after = "nvim-cmp" },
+    { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
+  }
+
+  use {
+    "rcarriga/nvim-notify",
     config = function()
-      require "nfx.plugins.completion"
+      vim.notify = require "notify"
     end,
   }
-  use {
-   "rcarriga/nvim-notify",
-   config = function()
-     vim.notify = require "notify"
-   end,
-  }
+
   use {
     "ruifm/gitlinker.nvim",
     requires = "nvim-lua/plenary.nvim",
@@ -76,11 +92,12 @@ packer.startup(function(use)
     end,
   }
   use { "tjdevries/nlua.nvim" }
-  use { "windwp/nvim-ts-autotag" }
   use {
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup()
+      -- Integration w/ nvim-cmp
+      require("cmp").event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
     end,
   }
   use { "ray-x/lsp_signature.nvim" }
@@ -127,13 +144,11 @@ packer.startup(function(use)
   use { "nanotee/luv-vimdocs" }
   use { "milisims/nvim-luaref" }
 
-  use { "JoosepAlviste/nvim-ts-context-commentstring" }
-
   use {
     "chentau/marks.nvim",
     config = function()
-      require'marks'.setup({})
-    end
+      require("marks").setup {}
+    end,
   }
   use { "moll/vim-bbye" }
   use { "mbbill/undotree" }
@@ -198,7 +213,6 @@ packer.startup(function(use)
       require "nfx.plugins.markdown"
     end,
   } -- tpope/vim-markdown
-
 
   --=[ Themes ]=--
   use {

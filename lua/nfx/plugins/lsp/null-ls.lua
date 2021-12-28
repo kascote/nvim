@@ -1,4 +1,5 @@
 local nls = require "null-ls"
+local U = require('nfx.plugins.lsp.utils')
 
 nls.setup {
   debounce = 250,
@@ -19,8 +20,13 @@ nls.setup {
   },
   debug = false,
   log = {
-    enable = true,
-    level = "trace",
+    enable = false,
+    level = "error", -- trace
     use_console = "async",
   },
+  on_attach = function(client, buff)
+    U.custom_attach(client, buff)
+    U.set_keymap(buff)
+  end,
+  capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 }

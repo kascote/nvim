@@ -1,39 +1,38 @@
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup {
   highlight = {
     enable = true,
   },
   indent = {
-    enable = true
+    enable = true,
   },
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = 'gnn',
+      init_selection = "gnn",
       node_incremental = "grn",
       scope_incremental = "grc",
       node_decremental = "grm",
-    }
+    },
   },
   refactor = {
-    highlight_definitions = {
-      enable = true
-    },
-    highlight_current_scope = {
-        enable = true
-    },
+    highlight_definitions = { enable = true },
+    highlight_current_scope = { enable = false },
     smart_rename = {
       enable = true,
       keymaps = {
-        smart_rename = "grr"
-      }
+        smart_rename = "grr",
+      },
     },
     navigation = {
       enable = true,
       keymaps = {
         goto_definition = "gnd",
-        list_definitions = "gnD"
-      }
-    }
+        list_definitions = "gnD",
+        list_definitions_toc = "gO",
+        goto_next_usage = "<a-*>",
+        goto_previous_usage = "<a-#>",
+      },
+    },
   },
   textobjects = {
     enable = true,
@@ -55,8 +54,8 @@ require'nvim-treesitter.configs'.setup {
         ["as"] = "@statement.outer",
         ["ad"] = "@comment.outer",
         ["am"] = "@call.outer",
-        ["im"] = "@call.inner"
-      }
+        ["im"] = "@call.inner",
+      },
     },
     swap = {
       enable = true,
@@ -92,22 +91,22 @@ require'nvim-treesitter.configs'.setup {
         ["<Leader>y"] = "@function.outer",
         ["<Leader>Y"] = "@class.outer",
       },
-    }
+    },
   },
   context_commentstring = {
-    enable = true
-  },  
-  NONO_ensure_installed = {"javascript", "typescript", "ruby", "html", "lua", "json", "jsdoc", "bash", "tsx"},
+    enable = true,
+  },
+  NONO_ensure_installed = { "javascript", "typescript", "ruby", "html", "lua", "json", "jsdoc", "bash", "tsx" },
   playground = {
     enable = true,
     disable = {},
     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false -- Whether the query persists across vim sessions
+    persist_queries = false, -- Whether the query persists across vim sessions
   },
   autotag = {
     enable = true,
-  }
+  },
 }
 
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'nvim_treesitter#foldexpr()' -- vim.api.nvim_eval('nvim_treesitter#foldexpr()')
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()" -- vim.api.nvim_eval('nvim_treesitter#foldexpr()')

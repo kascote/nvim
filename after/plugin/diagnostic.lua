@@ -9,6 +9,7 @@ vim.diagnostic.config {
 
   -- options for floating windows:
   float = {
+    source = "always",
     show_header = true,
   },
 
