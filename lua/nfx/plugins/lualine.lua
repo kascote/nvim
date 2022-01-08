@@ -9,7 +9,7 @@ local lineDisplay = {
 local function lsp_progress()
   local messages = vim.lsp.util.get_progress_messages()
   if #messages == 0 then
-    return
+    return ''
   end
   local status = {}
   for _, msg in pairs(messages) do
@@ -107,7 +107,7 @@ local function mydiff()
     end
     return table.concat(diff, "")
   else
-    return
+    return ''
   end
 end
 
@@ -116,8 +116,8 @@ local config = {
     theme = "tokyonight",
     -- section_separators = { "", "" },
     -- component_separators = { "", "" },
-    section_separators = { "", "" },
-    component_separators = { "", "" },
+    section_separators = { left = "", right = "" },
+    component_separators = { left = "", right = "" },
     icons_enabled = true,
   },
   sections = {
@@ -139,7 +139,7 @@ local config = {
   tabline = {
     lualine_a = {},
     lualine_b = { "branch" },
-    lualine_c = { lsp_progress, { middle, separator = "" }, { filename } },
+    lualine_c = { { lsp_progress, separator = "" }, { middle, separator = "" }, { filename } },
     lualine_x = { "filetype" },
     lualine_y = { "encoding" },
     lualine_z = {},

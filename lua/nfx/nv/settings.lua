@@ -89,7 +89,7 @@ G.shortmess      = G.shortmess + 't'      -- truncate file messages at start
 O.fillchars      = { eob = '~', vert = "│", stl = ' ', stlnc = ' ' }
 G.winminheight   = 0                      -- The minimal height of a window, when its not the current window.
 O.linebreak      = true                   -- wrap long lines at characters in 'breakat'
-G.title          = true                   -- set terminal title
+G.title          = false                   -- set terminal title
 G.titlestring    = '%<%t'                 -- set titlestring to show filename only
 G.titlelen       = 10
 G.virtualedit    = 'block'                -- allow cursor to move where there is no text in visual block mode
