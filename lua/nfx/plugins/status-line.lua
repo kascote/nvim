@@ -86,13 +86,13 @@ function M.lspStatus(bufId)
   -- print(bufId, vim.tbl_isempty(vim.lsp.buf_get_clients(bufId)))
   if not vim.tbl_isempty(vim.lsp.buf_get_clients(bufId)) then
     sl = sl .. '%#StatuslineLow#lsp:['
-    sl = sl .. vim.fn.printf('%%#StatusLineLspInfo#%%{luaeval("vim.lsp.diagnostic.get_count(%d, [[Information]]) or 0")}', bufId)
+    sl = sl .. vim.fn.printf('%%#StatusLineLspInfo#%%{luaeval("vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO }) or 0")}', bufId)
     sl = sl .. '%#StatuslineLow#:'
-    sl = sl .. vim.fn.printf('%%#StatusLineLspHint#%%{luaeval("vim.lsp.diagnostic.get_count(%d, [[Hint]]) or 0")}', bufId)
+    sl = sl .. vim.fn.printf('%%#StatusLineLspHint#%%{luaeval("vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT }) or 0")}', bufId)
     sl = sl .. '%#StatuslineLow#:'
-    sl = sl .. vim.fn.printf('%%#StatuslineLspWarn#%%{luaeval("vim.lsp.diagnostic.get_count(%d, [[Warning]]) or 0")}', bufId)
+    sl = sl .. vim.fn.printf('%%#StatuslineLspWarn#%%{luaeval("vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN }) or 0")}', bufId)
     sl = sl .. '%#StatuslineLow#:'
-    sl = sl .. vim.fn.printf('%%#StatusLineLspError#%%{luaeval("vim.lsp.diagnostic.get_count(%d, [[Error]]) or 0")}', bufId)
+    sl = sl .. vim.fn.printf('%%#StatusLineLspError#%%{luaeval("vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR }) or 0")}', bufId)
     sl = sl .. '%#StatuslineLow#]'
   else
       sl = sl .. '%#MyStatuslineLow#lsp-off'

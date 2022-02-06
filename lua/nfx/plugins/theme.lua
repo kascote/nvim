@@ -1,6 +1,7 @@
 vim.o.background = "dark"
 
-local clrFloat = "#15161E"
+-- local clrFloat = "#15161E"
+local clrFloat = "#111111"
 
 vim.g.tokyonight_style = "night"
 vim.g.tokyonight_sidebars = {
@@ -23,7 +24,7 @@ vim.cmd [[hi! TabLineModNone guifg=#bb9af7]]
 
 vim.cmd [[hi! link markdownError Error]]
 
-
+vim.cmd [[hi! Pmenu guibg=#111111]]
 
 vim.cmd(string.format("hi TelescopeNormal guibg=%s", clrFloat))
 vim.cmd(string.format("hi TelescopeBorder guibg=%s", clrFloat))
