@@ -3,22 +3,60 @@ if not has_lsp then
   vim.notify("missing lspconfig", vim.log.levels.WARN)
   return
 end
-local U = require('nfx.plugins.lsp.utils')
+local U = require "nfx.plugins.lsp.utils"
 local lspconfig_util = require "lspconfig.util"
 
 local vim = vim
 local vimLsp = vim.lsp
 -- vim.lsp.set_log_level "debug"
 
-vimLsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vimLsp.diagnostic.on_publish_diagnostics, {
-  underline = true,
-  virtual_text = false,
-  signs = true,
+-- vimLsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vimLsp.diagnostic.on_publish_diagnostics, {
+--   underline = true,
+--   virtual_text = false,
+--   signs = true,
+--   update_in_insert = true,
+-- })
+
+local signs = {
+  { name = "DiagnosticSignError", text = " " }, -- 
+  { name = "DiagnosticSignWarn", text = " " }, -- 
+  { name = "DiagnosticSignHint", text = " " }, -- 
+  { name = "DiagnosticSignInfo", text = " " }, -- 
+}
+for _, sign in ipairs(signs) do
+  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+end
+
+local config = {
+  virtual_text = true,
+  signs = {
+    active = signs,
+  },
   update_in_insert = true,
+  underline = true,
+  severity_sort = true,
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  },
+}
+
+vim.diagnostic.config(config)
+
+vimLsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
+
+vimLsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = "rounded",
 })
 
 lspconfig.vimls.setup {
-  on_init = function(client, buff) 
+  on_init = function(client, buff)
     U.custom_init(client)
     U.set_keymap(buff)
   end,
@@ -74,21 +112,14 @@ lspconfig.dartls.setup {
   settings = {
     dart = {
       lineLength = 120,
-    }
+    },
   },
 }
 
 require "nfx.plugins.lsp.null-ls"
--- require("lspconfig")["null-ls"].setup {
---   on_init = U.custom_init,
---   on_attach = U.custom_attach,
---   capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
--- }
 
-
-
-local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
-for type, icon in pairs(signs) do
+local dsigns = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+for type, icon in pairs(dsigns) do
   local hl = "LspDiagnosticsSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end

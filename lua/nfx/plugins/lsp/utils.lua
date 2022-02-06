@@ -51,16 +51,16 @@ function M.custom_init(client)
 end
 
 function M.custom_attach(client, bufnr)
-  local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+  -- local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
 
   require("lsp_signature").on_attach()
 
-  if vim.tbl_contains({ "go", "rust" }, filetype) then
-    vim.cmd [[autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting_sync()]]
-  end
-
   if client.name == "typescript" or client.name == "tsserver" then
     require("nfx.plugins.lsp.ts-utils").setup(client)
+  end
+
+  if client.resolved_capabilities.document_formatting then
+    vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
   end
 
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
