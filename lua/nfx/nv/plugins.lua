@@ -56,20 +56,23 @@ packer.startup(function(use)
   }
 
   use {
-    {
-      "hrsh7th/nvim-cmp",
-      config = function()
-        require "nfx.plugins.completion"
-      end,
-    },
-    { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
-    { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-    { "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
-    { "hrsh7th/vim-vsnip", after = "nvim-cmp" },
-    { "hrsh7th/vim-vsnip-integ", after = "nvim-cmp" },
-    { "hrsh7th/cmp-path", after = "nvim-cmp" },
-    { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
+    "L3MON4D3/LuaSnip",
+    config = function()
+      require "nfx.plugins.luasnip"
+    end,
   }
+
+  use {
+    "hrsh7th/nvim-cmp",
+    config = function()
+      require "nfx.plugins.completion"
+    end,
+  }
+  use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
+  use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
+  use { "hrsh7th/cmp-path", after = "nvim-cmp" }
+  use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
+  use { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" }
 
   use {
     "rcarriga/nvim-notify",
@@ -82,7 +85,9 @@ packer.startup(function(use)
     "ruifm/gitlinker.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = function()
-      require("gitlinker").setup()
+      require("gitlinker").setup {
+        mappings = nil,
+      }
     end,
   }
   use {
@@ -147,7 +152,7 @@ packer.startup(function(use)
   use {
     "chentau/marks.nvim",
     config = function()
-      require("marks").setup {}
+      require "nfx.plugins.marks"
     end,
   }
   use { "moll/vim-bbye" }
@@ -221,7 +226,6 @@ packer.startup(function(use)
       require "nfx.plugins.theme"
     end,
   }
-  use "marko-cerovac/material.nvim"
 
   -- use {'mlopes/vim-farin'}
   -- use {'endel/vim-github-colorscheme'}
@@ -238,7 +242,6 @@ packer.startup(function(use)
     https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     https://github.com/akinsho/flutter-tools.nvim
     https://github.com/lukas-reineke/indent-blankline.nvim
-    https://github.com/L3MON4D3/LuaSnip
     https://github.com/vhyrro/neorg
     https://github.com/ray-x/navigator.lua
     https://github.com/numToStr/Comment.nvim

@@ -1,13 +1,14 @@
-local utils = require('nfx/utils')
-local npm = require('nfx/npm')
+local utils = require "nfx/utils"
+local npm = require "nfx/npm"
+local ls = require "luasnip"
 
 P = function(...)
-  local objects = vim.tbl_map(vim.inspect, {...})
+  local objects = vim.tbl_map(vim.inspect, { ... })
   print(unpack(objects))
 end
 
-if pcall(require, 'plenary') then
-  RELOAD = require('plenary.reload').reload_module
+if pcall(require, "plenary") then
+  RELOAD = require("plenary.reload").reload_module
 
   R = function(name)
     RELOAD(name)
@@ -24,13 +25,20 @@ end
 function nfx.npm_versions(findstart, base)
   return npm.lookupPackage(findstart, base)
 end
-
--- NOTE: no need to optimize this
-function nfx._create(f)
-  table.insert(nfx._store, f)
-  return #nfx._store
+function nfx.snip_jump_previous()
+  if ls.jumpable(-1) then
+    ls.jump(-1)
+  end
 end
 
-function nfx._execute(id, args)
-  nfx._store[id](args)
+function nfx.snip_jump_next()
+  if ls.expand_or_jumpable() then
+    ls.expand_or_jump()
+  end
+end
+
+function nfx.snip_choice()
+  if ls.choice_active() then
+    ls.change_choice(1)
+  end
 end

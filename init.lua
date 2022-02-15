@@ -5,6 +5,8 @@ require('nfx/nv/mappings')
 require('nfx/nv/mappings2')
 require('nfx/nv/plugins')
 
+require 'nfx.plugins.snipets'
+
 
 -- vim.g.tokyonight_style='night'
 -- vim.cmd('colorscheme tokyonight')

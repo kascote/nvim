@@ -1,16 +1,21 @@
 local cmp = require "cmp"
 local lspkind = require "lspkind"
+local luasnip = require "luasnip"
 
+local check_backspace = function()
+  local col = vim.fn.col "." - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+end
+
+---@diagnostic disable-next-line: redundant-parameter
 cmp.setup {
   snippet = {
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
-      -- require('luasnip').lsp_expand(args.body)
-      -- vim.fn["UltiSnips#Anon"](args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   mapping = {
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
@@ -18,23 +23,54 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
+    -- ["<C-k>"] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_next_item()
+    --   elseif luasnip.expandable() then
+    --     luasnip.expand()
+    --   elseif luasnip.expand_or_jumpable() then
+    --     luasnip.expand_or_jump()
+    --   elseif check_backspace() then
+    --     fallback()
+    --   else
+    --     fallback()
+    --   end
+    -- end, {
+    --   "i",
+    --   "s",
+    -- }),
+    -- ["<C-j>"] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_prev_item()
+    --   elseif luasnip.jumpable(-1) then
+    --     luasnip.jump(-1)
+    --   else
+    --     fallback()
+    --   end
+    -- end, {
+    --   "i",
+    --   "s",
+    -- }),
   },
-  -- can configure:
-  -- keyword_length
-  -- priority
-  -- max_item_count
+  --[[
+          can configure:
+            keyword_length
+            priority
+            max_item_count
+  --]]
   sources = {
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
-    { name = "vsnip" },
-    -- { name = 'luasnip' },
-    -- { name = 'ultisnips' },
+    { name = "luasnip" },
     { name = "path" },
     { name = "buffer", keyword_length = 5 },
   },
   experimental = {
     native_menu = false,
     ghost_text = true,
+  },
+  documentation = {
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
   },
   formatting = {
     format = lspkind.cmp_format {
@@ -45,7 +81,7 @@ cmp.setup {
         nvim_lsp = "[LSP]",
         nvim_lua = "[api]",
         path = "[path]",
-        vsnip = "[vsnip]",
+        luasnip = "[snip]",
       },
     },
   },
@@ -109,10 +145,3 @@ cmp.setup {
 --     -- { name = "buffer", keyword_length = 5 },
 --   }),
 -- })
-
-vim.g.vsnip_snippet_dir = vim.fn.stdpath "config" .. "/mysnips"
-
-vim.g.vsnip_filetypes = {
-  javascriptreact = { "javascript" },
-  typescriptreact = { "typescript" },
-}
