@@ -159,3 +159,7 @@ G.foldlevelstart = 99                     -- where start to fold a new buffer. 9
 O.foldlevel      = 1                      -- Don't autofold anything (but I can still fold manually)
 G.foldclose      = 'all'                  -- Autoclose folds, when moving out of them
 G.inccommand     = 'split'                -- incremental command live feedback
+
+-- do not create default mappings for endwise
+vim.g.endwise_no_mappings=1
+-- vim.g.kommentary_create_default_mappings = false

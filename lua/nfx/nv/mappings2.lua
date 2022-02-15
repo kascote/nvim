@@ -1,5 +1,10 @@
 local wk = require "which-key"
 
+-- unmap <Cmd>nohlsearch|diffupdate<CR><C-L>
+vim.cmd [[nunmap <c-l>]]
+-- unmap <C-G>u<C-U> -[[ remove to beggining of line]]
+vim.cmd [[iunmap <c-u>]]
+
 wk.setup {
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
@@ -40,7 +45,9 @@ wk.register({
   ["gV"] = { "`[v`]", "Visually select the text that was last edited/pasted" },
   ["<C-p>"] = { '<cmd>lua R("nfx.plugins.telescope")["find_files"]()<cr>', "Open Telescope to select files" },
   ["z="] = { "<cmd>Telescope spell_suggest<cr>", "Suggest spell word under cursor" },
-  ["tt"] = { '<cmd>lua R("nfx.alternate").alternate()<cr>', "Switch to alternate file" },
+  t = {
+    t = { '<cmd>lua R("nfx.alternate").alternate()<cr>', "Switch to alternate file" },
+  },
 }, {
   mode = "n", -- NORMAL mode
   prefix = "",
@@ -61,18 +68,44 @@ wk.register({
   nowait = true, -- use `nowait` when creating keymaps
 })
 
---[[ INSERT MODE ]]
+-- ["<C-j>"] = { "<C-o>J", "Join lines in insert mode" },
+-- [[ INSERT MODE ]]
 wk.register({
-  ["<C-u>"] = { "<C-k>", "Remap digraphs" },
-  ["<C-j>"] = { "<C-o>J", "Join lines in insert mode" },
+ ["<C-u>"] = { "<C-k>", "Remap digraphs" },
+  ["<C-j>"] = {
+    function()
+      _G.nfx.snip_jump_previous()
+    end,
+    "Jump to previous place on snippets",
+  },
+  ["<C-k>"] = {
+    function()
+      _G.nfx.snip_jump_next()
+    end,
+    "Expand or Jump Snipets",
+  },
+  ["<C-l>"] = {
+    function()
+      _G.nfx.snip_choice()
+    end,
+    "Snippet choice",
+  },
 }, {
   mode = "i", -- NORMAL mode
-  prefix = "",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
+  -- prefix = "",
+  -- buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  -- silent = true, -- use `silent` when creating keymaps
+  -- noremap = true, -- use `noremap` when creating keymaps
+  -- nowait = true, -- use `nowait` when creating keymaps
 })
+
+-- wk.register({
+--   ["<C-k>"] = { function() _G.nfx.snip_jump_next() end, 'Expand or Jump Snipets'},
+--   ["<C-j>"] = { function() _G.nfx.snip_jump_previous() end, "Join lines in insert mode" },
+-- }, {
+--   mode = "s",
+--   silent = true, -- use `silent` when creating keymaps
+-- })
 
 --[[ VISUAL MODE ]]
 wk.register({
@@ -102,6 +135,7 @@ wk.register({
   ["x"] = { '<cmd>lua R("nfx.plugins.telescope").buffers()<cr>', "List buffers" },
   ["a"] = { '<cmd>lua R("nfx.plugins.telescope").live_grep()<cr>', "Live grep" },
   ["<leader>"] = { "<cmd>b#<cr>", "Switch to last used buffer" },
+  ["s"] = { "<cmd>source ~/.config/nvim/lua/nfx/plugins/snipets.lua<cr>", "Reload snippets" },
   ["h"] = { '<cmd>exec "vertical resize " . ((&columns/4)*3)<CR>', "Resize current pane to 3/4" },
   ["w"] = { "<cmd>Bdelete<cr>", "Close current buffer without close pane" },
   t = {
@@ -138,6 +172,7 @@ wk.register({
     bl = { '<cmd>lua require"gitsigns".blame_line()<cr>', "Blame Line" },
     m = { "<cmd>GitMessenger<cr>", "Toggle GitMessenger" },
     y = { '<cmd>lua require"gitlinker".get_buf_range_url("n")<cr>', "Github url to current line" },
+    Y = { '<cmd>lua require"gitlinker".get_repo_url()<cr>', "Github url to repository" },
   },
   m = { '<cmd>call quickhl#manual#this("n")<cr>', "Mark word under cursor" },
   M = { "<cmd>call quickhl#manual#reset()<cr>", "Clear all marks" },
@@ -153,7 +188,7 @@ wk.register({
 --[[ LOCAL LEADER ]]
 wk.register({
   ["0"] = { '<cmd>lua R("nfx.utils").syn_stack()<cr>', "Show color syntax stack" },
-  l = { "<cmd>nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>", "Reset syntax" },
+  -- l = { "<cmd>nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>", "Reset syntax" },
   t = { '<cmd>lua require("nfx.utils").trim_white_spaces()<cr>', "Trim white spaces on file" },
   ["nn"] = { "<cmd>set wildignore-=*/node_modules/*<cr>", "Remove node_modules from wildignore" },
   x = {

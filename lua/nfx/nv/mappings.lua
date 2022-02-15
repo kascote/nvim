@@ -1,4 +1,4 @@
-local u = require('nfx.utils')
+local u = require "nfx.utils"
 
 -- u.remap('n', '<Up>',      ':cprevious<CR>')
 -- u.remap('n', '<Down>',    ':cnext<CR>')
@@ -24,15 +24,15 @@ local u = require('nfx.utils')
 -- u.remap('n', '<C-p>',     '<cmd>lua R("nfx.plugins.telescope")["find_files"]()<CR>')
 -- u.remap('n', 'z=',        ':Telescope spell_suggest<cr>')
 
-vim.cmd([[
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-]])
+-- vim.cmd([[
+-- inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+-- imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+-- smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+-- imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+-- smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+-- imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+-- smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+-- ]])
 
 -- u.remap("n", "--", "<Plug>kommentary_line_default", { noremap = false })
 -- u.remap('n', 'tt', '<cmd>lua R("nfx.alternate").alternate()<CR>')
@@ -52,17 +52,17 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 
 -----------------------------------------------------------------=[ COMMAND ]=--
 -- Allow saving of files as sudo when I forgot to start vim using sudo.
-u.remap('c', 'w!!', 'w !sudo tee > /dev/null %')
+u.remap("c", "w!!", "w !sudo tee > /dev/null %")
 -- use C-j and C-k for search
-u.remap('c', '<c-j>', '<Down>', { silent = false})
-u.remap('c', '<c-k>', '<Up>', { silent = false})
-u.remap('c', '<c-h>', '<Left>', { silent = false})
-u.remap('c', '<c-l>', '<Right>', { silent = false})
+u.remap("c", "<c-j>", "<Down>", { silent = false })
+u.remap("c", "<c-k>", "<Up>", { silent = false })
+u.remap("c", "<c-h>", "<Left>", { silent = false })
+u.remap("c", "<c-l>", "<Right>", { silent = false })
 
-u.remap('c', '$h', [[<C-R>=expand('%:h:p')<CR><space>]])
-u.remap('c', '$t', [[<C-R>=expand('%:t')<CR>]])
-u.remap('c', '$p', [[<C-R>=expand('%:p')<CR>]])
-u.remap('c', '<c-r><c-r>', '<Plug>(TelescopeFuzzyCommandSearch)', { noremap = false, nowait = true })
+u.remap("c", "$h", [[<C-R>=expand('%:h:p')<CR><space>]])
+u.remap("c", "$t", [[<C-R>=expand('%:t')<CR>]])
+u.remap("c", "$p", [[<C-R>=expand('%:p')<CR>]])
+u.remap("c", "<c-r><c-r>", "<Plug>(TelescopeFuzzyCommandSearch)", { noremap = false, nowait = true })
 
 ------------------------------------------------------------------=[ LEADER ]=--
 -- u.remap('n', '<Leader>p',        '+p')
@@ -141,4 +141,3 @@ u.remap('c', '<c-r><c-r>', '<Plug>(TelescopeFuzzyCommandSearch)', { noremap = fa
 -- u.remap('n', '<LocalLeader>f9', '<cmd>lua vim.wo.foldlevel=9<CR>')
 
 ------------------------------------------------------------------=[ SELECT ]=--
-

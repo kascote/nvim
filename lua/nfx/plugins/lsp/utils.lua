@@ -59,9 +59,9 @@ function M.custom_attach(client, bufnr)
     require("nfx.plugins.lsp.ts-utils").setup(client)
   end
 
-  if client.resolved_capabilities.document_formatting then
-    vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
-  end
+  -- if client.resolved_capabilities.document_formatting then
+  --   vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
+  -- end
 
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
