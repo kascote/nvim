@@ -139,7 +139,7 @@ local config = {
   tabline = {
     lualine_a = {},
     lualine_b = { "branch" },
-    lualine_c = { { lsp_progress, separator = "" }, { middle, separator = "" }, { filename } },
+    lualine_c = { { middle, separator = "" }, { filename } },
     lualine_x = { "filetype" },
     lualine_y = { "encoding" },
     lualine_z = {},

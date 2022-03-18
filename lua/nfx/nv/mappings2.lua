@@ -135,9 +135,13 @@ wk.register({
   ["x"] = { '<cmd>lua R("nfx.plugins.telescope").buffers()<cr>', "List buffers" },
   ["a"] = { '<cmd>lua R("nfx.plugins.telescope").live_grep()<cr>', "Live grep" },
   ["<leader>"] = { "<cmd>b#<cr>", "Switch to last used buffer" },
-  ["s"] = { "<cmd>source ~/.config/nvim/lua/nfx/plugins/snipets.lua<cr>", "Reload snippets" },
   ["h"] = { '<cmd>exec "vertical resize " . ((&columns/4)*3)<CR>', "Resize current pane to 3/4" },
   ["w"] = { "<cmd>Bdelete<cr>", "Close current buffer without close pane" },
+  s = {
+    name = 'Snippets',
+    e = { "<cmd>e ~/.config/nvim/lua/nfx/plugins/snipets.lua<cr>", "Edit snippets" },
+    r = { "<cmd>source ~/.config/nvim/lua/nfx/plugins/snipets.lua<cr>", "Reload snippets" },
+  },
   t = {
     name = "Telescope",
     g = { '<cmd>lua R("nfx.plugins.telescope").git_files()<cr>', "Git files" },

@@ -205,6 +205,13 @@ packer.startup(function(use)
     end,
   }
 
+  use {
+    'j-hui/fidget.nvim',
+    config = function()
+      require('fidget').setup {}
+    end
+  }
+
   --=[ Syntax ]=--
   use {
     "norcalli/nvim-colorizer.lua",

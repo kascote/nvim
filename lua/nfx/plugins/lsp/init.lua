@@ -8,7 +8,8 @@ local lspconfig_util = require "lspconfig.util"
 
 local vim = vim
 local vimLsp = vim.lsp
--- vim.lsp.set_log_level "debug"
+-- vim.lsp.set_log_level "DEBUG"
+-- print(vim.lsp.get_log_path())
 
 -- vimLsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vimLsp.diagnostic.on_publish_diagnostics, {
 --   underline = true,
