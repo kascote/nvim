@@ -71,7 +71,7 @@ wk.register({
 -- ["<C-j>"] = { "<C-o>J", "Join lines in insert mode" },
 -- [[ INSERT MODE ]]
 wk.register({
- ["<C-u>"] = { "<C-k>", "Remap digraphs" },
+  ["<C-u>"] = { "<C-k>", "Remap digraphs" },
   ["<C-j>"] = {
     function()
       _G.nfx.snip_jump_previous()
@@ -138,7 +138,7 @@ wk.register({
   ["h"] = { '<cmd>exec "vertical resize " . ((&columns/4)*3)<CR>', "Resize current pane to 3/4" },
   ["w"] = { "<cmd>Bdelete<cr>", "Close current buffer without close pane" },
   s = {
-    name = 'Snippets',
+    name = "Snippets",
     e = { "<cmd>e ~/.config/nvim/lua/nfx/plugins/snipets.lua<cr>", "Edit snippets" },
     r = { "<cmd>source ~/.config/nvim/lua/nfx/plugins/snipets.lua<cr>", "Reload snippets" },
   },
