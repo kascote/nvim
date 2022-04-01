@@ -212,6 +212,8 @@ packer.startup(function(use)
     end
   }
 
+  use { 'khaveesh/vim-fish-syntax' }
+
   --=[ Syntax ]=--
   use {
     "norcalli/nvim-colorizer.lua",
