@@ -82,6 +82,7 @@ require("telescope").setup {
 }
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "file_browser"
+require("telescope").load_extension "harpoon"
 
 function M.buffers()
   local opts = themes.get_dropdown {
@@ -137,7 +138,7 @@ function M.git_files()
     path_display = { "absolute" },
     layout_config = {
       prompt_position = "top",
-    }
+    },
   }
   require("telescope.builtin").git_files(opts)
 end
@@ -186,7 +187,7 @@ function M.file_browser_relative()
   -- vim.api.nvim_buf_get_name(0)
   -- vim.fn.expand('%:h')
   -- vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':h')
-  require("telescope").extensions.file_browser.file_browser({ path = vim.fn.expand('%:h') })
+  require("telescope").extensions.file_browser.file_browser { path = vim.fn.expand "%:h" }
 end
 
 return setmetatable({}, {

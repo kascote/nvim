@@ -135,7 +135,13 @@ wk.register({
   ["x"] = { '<cmd>lua R("nfx.plugins.telescope").buffers()<cr>', "List buffers" },
   ["a"] = { '<cmd>lua R("nfx.plugins.telescope").live_grep()<cr>', "Live grep" },
   ["<leader>"] = { "<cmd>b#<cr>", "Switch to last used buffer" },
-  ["h"] = { '<cmd>exec "vertical resize " . ((&columns/4)*3)<CR>', "Resize current pane to 3/4" },
+  h = {
+    h = { '<cmd>exec "vertical resize " . ((&columns/4)*3)<CR>', "Resize current pane to 3/4" },
+    a = { '<cmd>lua require("harpoon.mark").add_file()<CR>', "Harpoon mark file" },
+    l = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>', "Toggle Harpoon quick menu" },
+    n = { '<cmd>lua require("harpoon.ui").nav_next()<CR>', "Next Harpoon mark" },
+    p = { '<cmd>lua require("harpoon.ui").nav_prev()<CR>', "Previous Harpoon mark" },
+  },
   ["w"] = { "<cmd>Bdelete<cr>", "Close current buffer without close pane" },
   s = {
     name = "Snippets",
