@@ -16,6 +16,7 @@ vim.cmd [[
 ]]
 
 local packer = require "packer"
+
 packer.startup(function(use)
   use { "nvim-lua/popup.nvim" }
   use { "nvim-lua/plenary.nvim" }
@@ -125,7 +126,8 @@ packer.startup(function(use)
 
   use { "vim-scripts/LargeFile" }
 
-  use { "tpope/vim-endwise" }
+  -- use { "tpope/vim-endwise" }
+  use { "RRethy/nvim-treesitter-endwise" }
   use { "tpope/vim-repeat" }
   use { "tpope/vim-surround" }
   use { "tpope/vim-characterize" }
@@ -206,13 +208,13 @@ packer.startup(function(use)
   }
 
   use {
-    'j-hui/fidget.nvim',
+    "j-hui/fidget.nvim",
     config = function()
-      require('fidget').setup {}
-    end
+      require("fidget").setup {}
+    end,
   }
 
-  use { 'khaveesh/vim-fish-syntax' }
+  use { "khaveesh/vim-fish-syntax" }
 
   --=[ Syntax ]=--
   use {
