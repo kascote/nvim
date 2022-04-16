@@ -3,6 +3,10 @@ local lspkind = require "lspkind"
 local luasnip = require "luasnip"
 
 local function isEnabled()
+  local bt = vim.api.nvim_buf_get_option(0, "buftype")
+  if bt == "prompt" then
+    return false
+  end
   -- disable completion in comments
   local context = require "cmp.config.context"
   -- keep command mode completion enabled when cursor is in a comment
@@ -21,7 +25,7 @@ cmp.setup {
     end,
   },
   enabled = isEnabled,
-  mapping = {
+  mapping = cmp.mapping.preset.insert {
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
@@ -44,12 +48,16 @@ cmp.setup {
     { name = "path" },
     { name = "buffer", keyword_length = 5 },
   },
+  view = {
+    entries = "native",
+  },
   experimental = {
-    native_menu = false,
+    -- native_menu = false,
     ghost_text = true,
   },
-  documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  window = {
+    completion = cmp.config.window.bordered(), -- { border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, },
+    documentation = cmp.config.window.bordered(),
   },
   formatting = {
     format = lspkind.cmp_format {
@@ -91,36 +99,3 @@ cmp.setup {
     },
   },
 }
-
--- cmp.setup.cmdline(":", {
---   completion = {
---     autocomplete = true,
---   },
-
---   sources = cmp.config.sources({
---     {
---       name = "path",
---     },
---   }, {
---     {
---       name = "cmdline",
---       max_item_count = 20,
---       keyword_length = 4,
---     },
---   }),
--- })
-
--- cmp.setup.cmdline("/", {
---   completion = {
---     -- Might allow this later, but I don't like it right now really.
---     -- Although, perhaps if it just triggers w/ @ then we could.
---     --
---     -- I will have to come back to this.
---     autocomplete = false,
---   },
---   sources = cmp.config.sources({
---     { name = "nvim_lsp_document_symbol" },
---   }, {
---     -- { name = "buffer", keyword_length = 5 },
---   }),
--- })
