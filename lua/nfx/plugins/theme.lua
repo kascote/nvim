@@ -13,20 +13,21 @@ vim.g.tokyonight_sidebars = {
 vim.g.tokyonight_colors = {
   bg_float = clrFloat,
 }
+local hc = vim.highlight.create
+local hl = vim.highlight.link
 
 vim.cmd [[colorscheme tokyonight]]
 
-vim.cmd [[hi! link TabLineSel Special]]
-vim.cmd [[hi! TabLine guifg=#545c7e]]
-vim.cmd [[hi! TabLineMod guifg=#f7768e]]
-vim.cmd [[hi! TabLineModBuf guifg=#9ece6a]]
-vim.cmd [[hi! TabLineModNone guifg=#bb9af7]]
+hl("TabLineSel", "Special", true)
+hc("TabLine", { guifg = "#545c7e" })
+hc("TabLineMod", { guifg = "#f7768e" })
+hc("TabLineModBuf", { guifg = "#9ece6a" })
+hc("TabLineModNone", { guifg = "#bb9af7" })
 
-vim.cmd [[hi! link markdownError Error]]
+hl("markdownError", "Error", true)
+hc("Pmenu", { guibg = "#111111" })
 
-vim.cmd [[hi! Pmenu guibg=#111111]]
+hc("TelescopeNormal", { guibg = clrFloat })
+hc("TelescopeBorder", { guibg = clrFloat })
 
-vim.cmd(string.format("hi TelescopeNormal guibg=%s", clrFloat))
-vim.cmd(string.format("hi TelescopeBorder guibg=%s", clrFloat))
-
--- vim.cmd('colorscheme tokyonight')
+hc("VertSplit", { guifg = "#414868" })

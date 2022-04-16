@@ -118,7 +118,7 @@ O.sidescrolloff  = 3                      -- same as scrolloff, but for columns
 G.visualbell     = false                  -- don't blink
 G.errorbells     = false                  -- no noises
 G.belloff        = 'all'                  -- shut up!
-G.laststatus     = 2                      -- always show the status line
+G.laststatus     = 3                      -- always show the status line (is set with LuaLine plugin)
 O.conceallevel   = 2
 O.concealcursor  = ''
 
