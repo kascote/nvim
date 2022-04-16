@@ -13,8 +13,13 @@ vim.g.tokyonight_sidebars = {
 vim.g.tokyonight_colors = {
   bg_float = clrFloat,
 }
+
+-- local config = require("tokyonight.config")
+-- local colors = require("tokyonight.colors")
 local hc = vim.highlight.create
 local hl = vim.highlight.link
+-- local c = colors.setup(config)
+
 
 vim.cmd [[colorscheme tokyonight]]
 

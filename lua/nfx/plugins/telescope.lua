@@ -79,6 +79,16 @@ require("telescope").setup {
       -- },
     },
   },
+  pickers = {
+    lsp_references = { theme = 'dropdown' },
+    lsp_code_actions = { theme = 'dropdown' },
+    lsp_definitions = { theme = 'dropdown' },
+    lsp_implementations = { theme = 'dropdown' },
+    buffers = {
+      sort_lastused = true,
+      previewer = false,
+    },
+  },
 }
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "file_browser"
@@ -169,14 +179,6 @@ end
 
 function M.lsp_workspace_symbols()
   require("telescope.builtin").lsp_workspace_symbols()
-end
-
-function M.lsp_document_diagnostics()
-  require("telescope.builtin").lsp_document_diagnostics()
-end
-
-function M.lsp_workspace_diagnostics()
-  require("telescope.builtin").lsp_workspace_diagnostics()
 end
 
 function M.file_browser()

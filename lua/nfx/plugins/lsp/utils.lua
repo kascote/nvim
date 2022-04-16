@@ -8,15 +8,15 @@ function M.set_keymap(bufnr)
     l = {
       name = "LSP",
       D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "search Declarations" },
-      d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "search Definitions" },
-      i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "search Implementations" },
-      t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "search Type Definitions" },
+      d = { "<cmd>Telescope lsp_definitions<cr>", "search Definitions" }, -- lua vim.lsp.buf.definition()
+      i = { "<cmd>Telescope lsp_implementations<cr>", "search Implementations" }, -- lua vim.lsp.buf.implementation()
+      t = { "<cmd>Telescope lsp_type_definitions<cr>", "search Type Definitions" }, -- lua vim.lsp.buf.type_definition()
       r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename identifier" },
-      x = { "<cmd>lua vim.lsp.buf.references()<cr>", "search References" },
+      x = { "<cmd>Telescope lsp_references<cr>", "search References" }, -- lua vim.lsp.buf.references()
       q = { "<cmd>lua vim.diagnostic.open_float()<cr>", "show Diagnostics on current line" },
       n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Goto Next Diagnostic" },
       p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Goto previous Diagnostic" },
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Show Code Actions" },
+      a = { "<cmd>Telescope lsp_code_actions<cr>", "Show Code Actions" }, -- lua vim.lsp.buf.code_action()
       f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format current file" },
       c = { "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", "Show Incoming calls" },
       o = { "<cmd>lua vim.lsp.buf.outgoing_calls()<cr>", "Show Outgoing calls" },
@@ -24,10 +24,8 @@ function M.set_keymap(bufnr)
       wa = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", "Add Workspace folder" },
       wr = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", "Remove Workspace folder" },
       wl = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", "Show workspace folders" },
-      wg = { '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_diagnostics()<cr>', "Show workspace diagnostics" },
       ws = { '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_symbols()<cr>', "Show Workspace Symbols" },
-      ds = { '<cmd>lua R("nfx.plugins.telescope").lsp_document_symbols()<cr>', "Show Document Symbols" },
-      dd = { '<cmd>lua R("nfx.plugins.telescope").lsp_document_diagnostics()<cr>', "Show Document Diagnostics" },
+      us = { '<cmd>lua R("nfx.plugins.telescope").lsp_document_symbols()<cr>', "Show Document Symbols" },
       rr = {
         "<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>",
         "Stop Clients and restart LSP",
