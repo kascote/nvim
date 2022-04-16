@@ -1,3 +1,7 @@
+-- disable filetype.vim and use only lua one
+vim.g.do_filetype_lua = 1 
+vim.g.did_load_filetypes = 0
+
 --  require('nfx/nv/colors')
 require('nfx/nv/settings')
 require('nfx/globals')
