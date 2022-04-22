@@ -5,9 +5,9 @@ vim.g.did_load_filetypes = 0
 --  require('nfx/nv/colors')
 require('nfx/nv/settings')
 require('nfx/globals')
-require('nfx/nv/mappings')
 require('nfx/nv/mappings2')
 require('nfx/nv/plugins')
+require('nfx/filetype')
 
 require 'nfx.plugins.snipets'
 
