@@ -64,11 +64,14 @@ function M.custom_attach(client, bufnr)
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
   if client.resolved_capabilities.document_highlight then
-    vimApi.nvim_command "augroup lsp_document_highlight"
-    vimApi.nvim_command " autocmd! * <buffer>"
-    vimApi.nvim_command " autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()"
-    vimApi.nvim_command " autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()"
-    vimApi.nvim_command "augroup END"
+    local doc_highlight = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+    vim.api.nvim_create_autocmd("CursorHold", { group = doc_highlight, buffer = 0, callback = vim.lsp.buf.document_highlight })
+    vim.api.nvim_create_autocmd("CursorMoved", { group = doc_highlight, buffer = 0, callback = vim.lsp.buf.clear_references})
+    -- vimApi.nvim_command "augroup lsp_document_highlight"
+    -- vimApi.nvim_command " autocmd! * <buffer>"
+    -- vimApi.nvim_command " autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()"
+    -- vimApi.nvim_command " autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()"
+    -- vimApi.nvim_command "augroup END"
   end
 end
 

@@ -217,3 +217,11 @@ wk.register({
   noremap = true, -- use `noremap` when creating keymaps
   nowait = true, -- use `nowait` when creating keymaps
 })
+
+local km = vim.keymap
+km.set({ "c" }, "<c-j>", "<Down>", { silent = false })
+km.set({ "c" }, "<c-k>", "<Up>", { silent = false })
+km.set({ "c" }, "<c-h>", "<Left>", { silent = false })
+km.set({ "c" }, "<c-l>", "<Right>", { silent = false })
+
+km.set({ "c" }, "<c-r><c-r>", "<Plug>(TelescopeFuzzyCommandSearch)", { noremap = false, nowait = true })
