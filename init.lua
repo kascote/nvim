@@ -8,6 +8,7 @@ require('nfx/globals')
 require('nfx/nv/mappings2')
 require('nfx/nv/plugins')
 require('nfx/filetype')
+require('nfx/autocmds')
 
 require 'nfx.plugins.snipets'
 

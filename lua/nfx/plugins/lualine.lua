@@ -90,8 +90,6 @@ local function filename()
   return label .. formatBufferName(bufName) .. currentMod
 end
 
--- vim.cmd [[autocmd User LspProgressUpdate let &ro = &ro]]
-
 local function mydiff()
   local ok, res = pcall(vim.api.nvim_buf_get_var, 0, "gitsigns_status_dict")
   local diff = {}

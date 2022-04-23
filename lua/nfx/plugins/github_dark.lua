@@ -147,9 +147,11 @@ function M.apply(use_lua_api)
     ns = api.nvim_create_namespace('github_dark')
     api.nvim_set_hl_ns(ns)
 
-    vim.cmd('augroup github_dark')
-    vim.cmd('autocmd ColorSchemePre * ++once call nvim_set_hl_ns(0)')
-    vim.cmd('augroup END')
+    local githubDark = vim.api.nvim_create_augroup("githubDark", { clear = true })
+    vim.api.nvim_create_autocmd(
+      "ColorSchemePre", 
+      { command = [[call nvim_set_hl_ns(0)]], group = githubDark, pattern = "*", once = true }
+    )
   end
 
   local function hi(def)
