@@ -51,7 +51,15 @@ end
 function M.custom_attach(client, bufnr)
   -- local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
 
-  require("lsp_signature").on_attach()
+  require("lsp_signature").on_attach({
+    bind = true, -- This is mandatory, otherwise border config won't get registered.
+    floating_window_above_cur_line = true,
+    handler_opts = {
+      border = "rounded",
+    },
+    toggle_key = '<C-x>',
+    zindex = 49,
+  }, bufnr)
 
   if client.name == "typescript" or client.name == "tsserver" then
     require("nfx.plugins.lsp.ts-utils").setup(client)
@@ -65,8 +73,14 @@ function M.custom_attach(client, bufnr)
 
   if client.resolved_capabilities.document_highlight then
     local doc_highlight = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-    vim.api.nvim_create_autocmd("CursorHold", { group = doc_highlight, buffer = 0, callback = vim.lsp.buf.document_highlight })
-    vim.api.nvim_create_autocmd("CursorMoved", { group = doc_highlight, buffer = 0, callback = vim.lsp.buf.clear_references})
+    vim.api.nvim_create_autocmd(
+      "CursorHold",
+      { group = doc_highlight, buffer = 0, callback = vim.lsp.buf.document_highlight }
+    )
+    vim.api.nvim_create_autocmd(
+      "CursorMoved",
+      { group = doc_highlight, buffer = 0, callback = vim.lsp.buf.clear_references }
+    )
   end
 end
 
