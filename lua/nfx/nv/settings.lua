@@ -107,7 +107,7 @@ O.showmatch      = true                   -- show matching brackets
 G.matchtime      = 5                      -- how many tenths of a second to blink matching brackets for
 G.hlsearch       = true                   -- highlight searchs
 G.incsearch      = true                   -- BUT do highlight as you type you search phrase
-O.list          = true                   -- show whitespace
+O.list           = false                  -- show whitespace
 O.listchars      = { tab = '▷┅', trail = '•', extends = '…', precedes = '…', eol = '↲', nbsp = '⦸' } -- " what to show when I hit :set list
 
 G.showbreak      = '↳  '
