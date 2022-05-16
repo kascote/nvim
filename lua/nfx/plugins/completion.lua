@@ -49,10 +49,9 @@ cmp.setup {
     { name = "buffer", keyword_length = 5 },
   },
   view = {
-    entries = "native",
+    -- entries = "native",
   },
   experimental = {
-    -- native_menu = false,
     ghost_text = true,
   },
   window = {

@@ -20,7 +20,6 @@ local hc = vim.highlight.create
 local hl = vim.highlight.link
 -- local c = colors.setup(config)
 
-
 vim.cmd [[colorscheme tokyonight]]
 
 hl("TabLineSel", "Special", true)
