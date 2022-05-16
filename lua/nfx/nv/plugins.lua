@@ -152,7 +152,7 @@ packer.startup(function(use)
   use { "milisims/nvim-luaref" }
 
   use {
-    "chentau/marks.nvim",
+    "chentoast/marks.nvim",
     config = function()
       require "nfx.plugins.marks"
     end,
