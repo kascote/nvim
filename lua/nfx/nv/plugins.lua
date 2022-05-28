@@ -29,6 +29,13 @@ packer.startup(function(use)
   }
 
   use {
+    "stevearc/dressing.nvim",
+    config = function()
+      require("dressing").setup()
+    end,
+  }
+
+  use {
     {
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
@@ -258,6 +265,11 @@ packer.startup(function(use)
     https://github.com/numToStr/Comment.nvim
     https://github.com/AckslD/nvim-neoclip.lua
     https://github.com/folke/zen-mode.nvim
+
+    https://github.com/ziontee113/syntax-tree-surfer
+    https://github.com/b0o/SchemaStore.nvim
+    https://github.com/SmiteshP/nvim-gps
+    https://github.com/UserNobody14/tree-sitter-dart
 
     https://github.com/captainko/ckovim/blob/70d09e50320de74fb3f9b9314e2e9cf70d570f86/lua/cko/plugins/cmp.lua
 

@@ -12,6 +12,7 @@ vim.g.tokyonight_sidebars = {
 }
 vim.g.tokyonight_colors = {
   bg_float = clrFloat,
+  bg = "#12131a", -- "#0a0a0f" -- orig #1a1b26
 }
 
 -- local config = require("tokyonight.config")

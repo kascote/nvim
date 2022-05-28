@@ -6,16 +6,16 @@ require("telescope").setup {
     prompt_prefix = "❯ ",
     selection_caret = "❯ ",
 
-    winblend = 0,
+    winblend = 10,
     selection_strategy = "reset",
-    sorting_strategy = "descending",
+    sorting_strategy = "ascending",
     scroll_strategy = "cycle",
     layout_strategy = "horizontal",
     layout_config = {
-      width = 0.95,
+      width = 0.80,
       height = 0.85,
       -- preview_cutoff = 120,
-      prompt_position = "bottom",
+      prompt_position = "top",
 
       horizontal = {
         preview_width = function(_, cols, _)
@@ -38,30 +38,6 @@ require("telescope").setup {
         },
       },
     },
-    -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-
-    -- previewer = false,
-    -- border = true,
-    -- set_env = { ["COLORTERM"] = "truecolor" },
-    -- sorting_strategy = "ascending",
-    -- file_ignore_patterns = { "node_modules", "dist" },
-
-    -- layout_strategy = "vertical",
-    -- layout_config = {
-    --   preview_cutoff = 120,
-    --   prompt_position = "top",
-    --   horizontal = {
-    --     width_padding = 0.1,
-    --     height_padding = 0.1,
-    --     preview_width = 0.6,
-    --   },
-    --   vertical = {
-    --     width_padding = 0.15,
-    --     height_padding = 1,
-    --     preview_height = 0.4,
-    --     mirror = true,
-    --   },
-    -- },
   },
   extensions = {
     fzf = {
@@ -93,6 +69,10 @@ require("telescope").setup {
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "file_browser"
 require("telescope").load_extension "harpoon"
+
+function M.find_files()
+  require("telescope.builtin").find_files()
+end
 
 function M.buffers()
   local opts = themes.get_dropdown {

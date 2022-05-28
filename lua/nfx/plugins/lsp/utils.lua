@@ -16,7 +16,8 @@ function M.set_keymap(bufnr)
       q = { "<cmd>lua vim.diagnostic.open_float()<cr>", "show Diagnostics on current line" },
       n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Goto Next Diagnostic" },
       p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Goto previous Diagnostic" },
-      a = { "<cmd>Telescope lsp_code_actions<cr>", "Show Code Actions" }, -- lua vim.lsp.buf.code_action()
+      -- a = { "<cmd>Telescope lsp_code_actions<cr>", "Show Code Actions" },
+      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Show Code Actions" }, -- 
       f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format current file" },
       c = { "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", "Show Incoming calls" },
       o = { "<cmd>lua vim.lsp.buf.outgoing_calls()<cr>", "Show Outgoing calls" },

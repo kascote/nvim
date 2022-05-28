@@ -43,7 +43,7 @@ wk.register({
   ["<C-k>"] = { "<C-w>k", "Move to one pane up" },
   ["<C-l>"] = { "<C-w>l", "Move to one pane rigth" },
   ["gV"] = { "`[v`]", "Visually select the text that was last edited/pasted" },
-  ["<C-p>"] = { '<cmd>lua R("nfx.plugins.telescope")["find_files"]()<cr>', "Open Telescope to select files" },
+  ["<C-p>"] = { '<cmd>lua R("nfx.plugins.telescope").find_files()<cr>', "Open Telescope to select files" },
   ["z="] = { "<cmd>Telescope spell_suggest<cr>", "Suggest spell word under cursor" },
   t = {
     t = { '<cmd>lua R("nfx.alternate").alternate()<cr>', "Switch to alternate file" },
