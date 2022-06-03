@@ -135,14 +135,6 @@ O.tabstop       = 2                       -- tab spacing (settings below are jus
 O.shiftwidth    = 2                       -- unify
 O.softtabstop   = -1                      -- use 'shiftwidth' for tab/bs at end of line
 -- https://github.com/neovim/neovim/issues/12978
-O.autoindent    = true
-O.expandtab     = true
-O.shiftwidth    = 2
-O.smartindent   = true
-G.shiftround    = true
-O.cindent       = true
-O.softtabstop   = -1
-O.tabstop       = 2
 O.wrap          = false                   -- do not wrap lines
 G.smarttab      = true                    -- use tabs at the start of a line, spaces elsewhere
 G.scrolljump    = 3                       -- Jump 5 lines when running out of the screen
