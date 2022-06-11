@@ -223,6 +223,13 @@ packer.startup(function(use)
 
   use { "khaveesh/vim-fish-syntax" }
 
+  use {
+    "lewis6991/spellsitter.nvim",
+    config = function()
+      require("spellsitter").setup()
+    end,
+  }
+
   --=[ Syntax ]=--
   use {
     "norcalli/nvim-colorizer.lua",
@@ -249,25 +256,20 @@ packer.startup(function(use)
     "catppuccin/nvim",
     as = "catppuccin",
     config = function()
-      require("catppuccin").setup({
+      require("catppuccin").setup {
         integrations = {
           lsp_trouble = true,
           which_key = true,
-        }
-      })
+        },
+      }
     end,
   }
-
-  -- use {'mlopes/vim-farin'}
-  -- use {'endel/vim-github-colorscheme'}
-  -- use {'lewis6991/github_dark.nvim'}
 
   --[[ to review
 
     chaoren/vim-wordmotion
     alok/notational-fzf-vim
     charlesmallah/lua-profiler
-    lewis6991/spellsitter.nvim
     windwp/nvim-spectre
 
     https://github.com/nvim-treesitter/nvim-treesitter-textobjects
