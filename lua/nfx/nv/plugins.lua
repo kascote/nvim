@@ -245,6 +245,19 @@ packer.startup(function(use)
     end,
   }
 
+  use {
+    "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
+      require("catppuccin").setup({
+        integrations = {
+          lsp_trouble = true,
+          which_key = true,
+        }
+      })
+    end,
+  }
+
   -- use {'mlopes/vim-farin'}
   -- use {'endel/vim-github-colorscheme'}
   -- use {'lewis6991/github_dark.nvim'}
