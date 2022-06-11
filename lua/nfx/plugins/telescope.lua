@@ -47,13 +47,6 @@ require("telescope").setup {
       case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       -- the default case_mode is "smart_case"
     },
-    file_browser = {
-      theme = "ivy",
-      -- mappings = {
-      --   ["i"] = {}, -- your custom insert mode mappings
-      --   ["n"] = {}, -- your custom normal mode mappings
-      -- },
-    },
   },
   pickers = {
     lsp_references = { theme = 'dropdown' },
@@ -67,7 +60,6 @@ require("telescope").setup {
   },
 }
 require("telescope").load_extension "fzf"
-require("telescope").load_extension "file_browser"
 require("telescope").load_extension "harpoon"
 
 function M.find_files()
@@ -159,17 +151,6 @@ end
 
 function M.lsp_workspace_symbols()
   require("telescope.builtin").lsp_workspace_symbols()
-end
-
-function M.file_browser()
-  require("telescope").extensions.file_browser.file_browser()
-end
-
-function M.file_browser_relative()
-  -- vim.api.nvim_buf_get_name(0)
-  -- vim.fn.expand('%:h')
-  -- vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':h')
-  require("telescope").extensions.file_browser.file_browser { path = vim.fn.expand "%:h" }
 end
 
 return setmetatable({}, {

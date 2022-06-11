@@ -178,7 +178,6 @@ packer.startup(function(use)
     end,
   }
 
-  use { "nvim-telescope/telescope-file-browser.nvim" }
   use { "elianiva/telescope-npm.nvim" }
   use {
     "nvim-telescope/telescope.nvim",
@@ -228,6 +227,21 @@ packer.startup(function(use)
     config = function()
       require("spellsitter").setup()
     end,
+  }
+
+  use {
+    "SmiteshP/nvim-gps",
+    config = function()
+      require("nvim-gps").setup()
+    end,
+  }
+
+  vim.g.lf_map_keys = 0
+  use {
+    "ptzz/lf.vim",
+    requires = {
+      "voldikss/vim-floaterm",
+    },
   }
 
   --=[ Syntax ]=--
@@ -285,6 +299,7 @@ packer.startup(function(use)
     https://github.com/b0o/SchemaStore.nvim
     https://github.com/SmiteshP/nvim-gps
     https://github.com/UserNobody14/tree-sitter-dart
+    https://github.com/hrsh7th/vscode-langservers-extracted
 
     https://github.com/captainko/ckovim/blob/70d09e50320de74fb3f9b9314e2e9cf70d570f86/lua/cko/plugins/cmp.lua
 

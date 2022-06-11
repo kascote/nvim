@@ -155,8 +155,10 @@ wk.register({
     h = { '<cmd>lua R("nfx.plugins.telescope").help_tags()<cr>', "Help tags" },
     t = { '<cmd>lua R("nfx.plugins.telescope").todo()<cr>', "ToDo" },
     l = { '<cmd>lua R("nfx.plugins.telescope").grep_last_search()<cr>', "Last searches" },
-    d = { '<cmd>lua R("nfx.plugins.telescope").file_browser()<cr>', "File Browser" },
-    r = { '<cmd>lua R("nfx.plugins.telescope").file_browser_relative()<CR>', "File Browser relative to current file" },
+    -- d = { '<cmd>lua R("nfx.plugins.telescope").file_browser()<cr>', "File Browser" },
+    -- r = { '<cmd>lua R("nfx.plugins.telescope").file_browser_relative()<CR>', "File Browser relative to current file" },
+    d = { '<cmd>LfWorkingDirectory<cr>', "File Browser" },
+    r = { '<cmd>Lf<cr>', "File Browser" },
   },
   f = {
     name = "Fold",

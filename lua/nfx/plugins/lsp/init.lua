@@ -1,28 +1,23 @@
-local has_lsp, lspconfig = pcall(require, "lspconfig")
-if not has_lsp then
-  vim.notify("missing lspconfig", vim.log.levels.WARN)
+local status_ok, _ = pcall(require, "lspconfig")
+if not status_ok then
   return
 end
-local U = require "nfx.plugins.lsp.utils"
-local lspconfig_util = require "lspconfig.util"
 
 local vim = vim
 local vimLsp = vim.lsp
--- vim.lsp.set_log_level "DEBUG"
--- print(vim.lsp.get_log_path())
 
--- vimLsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vimLsp.diagnostic.on_publish_diagnostics, {
---   underline = true,
---   virtual_text = false,
---   signs = true,
---   update_in_insert = true,
--- })
+local diagIcons = {
+  error = ' ', -- 
+  warn = ' ', -- 
+  hint = ' ', -- 
+  info = ' ', -- 
+}
 
 local signs = {
-  { name = "DiagnosticSignError", text = " " }, -- 
-  { name = "DiagnosticSignWarn", text = " " }, -- 
-  { name = "DiagnosticSignHint", text = " " }, -- 
-  { name = "DiagnosticSignInfo", text = " " }, -- 
+  { name = "DiagnosticSignError", text = diagIcons.error },
+  { name = "DiagnosticSignWarn", text = diagIcons.warn },
+  { name = "DiagnosticSignHint", text = diagIcons.hint },
+  { name = "DiagnosticSignInfo", text = diagIcons.info },
 }
 for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
@@ -56,73 +51,21 @@ vimLsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.si
   border = "rounded",
 })
 
-lspconfig.vimls.setup {
-  on_init = function(client, buff)
-    U.custom_init(client)
-    U.set_keymap(buff)
-  end,
-  on_attach = U.custom_attach,
-  capabilities = U.capabilities(),
-}
-
-lspconfig.tsserver.setup {
-  on_init = function(client, buff)
-    U.disable_formatting(client)
-    U.custom_init(client)
-    U.set_keymap(buff)
-  end,
-  on_attach = U.custom_attach,
-  capabilities = U.capabilities(),
-}
-
-local sumneko_root_path = vim.fn.stdpath "cache" .. "/lua-language-server"
-local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
-
-require("nlua.lsp.nvim").setup(lspconfig, {
-  on_init = function(client, buff)
-    U.custom_init(client)
-    U.set_keymap(buff)
-  end,
-  on_attach = U.custom_attach,
-  capabilities = U.capabilities(),
-  cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
-
-  root_dir = function(fname)
-    if string.find(vim.fn.fnamemodify(fname, ":p"), ".config/nvim/") then
-      return vim.fn.expand "~/.config/nvim/"
-    end
-
-    return lspconfig_util.find_git_ancestor(fname) or lspconfig_util.path.dirname(fname)
-  end,
-
-  globals = { "P", "R", "RELOAD" },
-})
-
-lspconfig.dartls.setup {
-  on_init = function(client, buff)
-    U.custom_init(client)
-    U.set_keymap(buff)
-  end,
-  on_attach = U.custom_attach,
-  capabilities = U.capabilities(),
-  cmd = {
-    "dart",
-    "/usr/local/opt/dart/libexec/bin/snapshots/analysis_server.dart.snapshot",
-    "--lsp",
-  },
-  settings = {
-    dart = {
-      lineLength = 120,
-    },
-  },
-}
-
+require "nfx.plugins.lsp.vimls"
+require "nfx.plugins.lsp.tsserver"
+require "nfx.plugins.lsp.nlua"
+require "nfx.plugins.lsp.dart"
 require "nfx.plugins.lsp.null-ls"
 
-local dsigns = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+local dsigns = { 
+  Error = diagIcons.error,
+  Warning = diagIcons.warn,
+  Hint = diagIcons.hint,
+  Information = diagIcons.Info 
+}
 for type, icon in pairs(dsigns) do
-  local hl = "LspDiagnosticsSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+  local hlLsp = "LspDiagnosticsSign" .. type
+  vim.fn.sign_define(hlLsp, { text = icon, texthl = hlLsp, numhl = "" })
 end
 
 vim.cmd "hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646"

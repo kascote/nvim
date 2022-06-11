@@ -1,5 +1,5 @@
 local wk = require "which-key"
-local vimApi = vim.api
+-- local vimApi = vim.api
 
 local M = {}
 
@@ -91,6 +91,29 @@ function M.capabilities()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
 
   return require("cmp_nvim_lsp").update_capabilities(capabilities)
+end
+
+function M.enable_format_on_save()
+  vim.cmd [[
+    augroup format_on_save
+      autocmd! 
+      autocmd BufWritePre * lua vim.lsp.buf.formatting()
+    augroup end
+  ]]
+  vim.notify "Enabled format on save"
+end
+
+function M.disable_format_on_save()
+  M.remove_augroup "format_on_save"
+  vim.notify "Disabled format on save"
+end
+
+function M.toggle_format_on_save()
+  if vim.fn.exists "#format_on_save#BufWritePre" == 0 then
+    M.enable_format_on_save()
+  else
+    M.disable_format_on_save()
+  end
 end
 
 return M
