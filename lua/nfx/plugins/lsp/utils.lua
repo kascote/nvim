@@ -66,13 +66,9 @@ function M.custom_attach(client, bufnr)
     require("nfx.plugins.lsp.ts-utils").setup(client)
   end
 
-  -- if client.resolved_capabilities.document_formatting then
-  --   vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
-  -- end
-
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     local doc_highlight = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
     vim.api.nvim_create_autocmd(
       "CursorHold",
@@ -86,8 +82,8 @@ function M.custom_attach(client, bufnr)
 end
 
 function M.disable_formatting(client)
-  client.resolved_capabilities.document_formatting = false
-  client.resolved_capabilities.document_range_formatting = false
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
 end
 
 function M.capabilities()

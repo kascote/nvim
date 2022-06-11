@@ -1,9 +1,9 @@
+local U = require "nfx.plugins.lsp.utils"
+
 return {
   setup = function(client)
     local ts = require "nvim-lsp-ts-utils"
-    -- disable tsserver formatting
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    U.disable_formatting(client)
  
     ts.setup {
       debug = false,
