@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd(
 
 vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
   callback = function()
-    require("nfx.plugins.winbar").get_winbar()
+    require("nv.plugins.winbar").get_winbar()
   end,
 })
 

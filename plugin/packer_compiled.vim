@@ -41,12 +41,12 @@ _G.packer_plugins = {
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/LargeFile"
   },
   LuaSnip = {
-    config = { "\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24nfx.plugins.luasnip\frequire\0" },
+    config = { "\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23nv.plugins.luasnip\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/LuaSnip"
   },
   catppuccin = {
-    config = { "\27LJ\2\no\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\17integrations\1\0\0\1\0\2\14which_key\2\16lsp_trouble\2\nsetup\15catppuccin\frequire\0" },
+    config = { "\27LJ\2\no\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\17integrations\1\0\0\1\0\2\16lsp_trouble\2\14which_key\2\nsetup\15catppuccin\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/catppuccin"
   },
@@ -117,7 +117,7 @@ _G.packer_plugins = {
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/harpoon"
   },
   kommentary = {
-    config = { "\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25nfx.plugins.comments\frequire\0" },
+    config = { "\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24nv.plugins.comments\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/kommentary"
   },
@@ -139,7 +139,7 @@ _G.packer_plugins = {
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
   },
   ["lualine.nvim"] = {
-    config = { "\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24nfx.plugins.lualine\frequire\0" },
+    config = { "\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23nv.plugins.lualine\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
@@ -148,7 +148,7 @@ _G.packer_plugins = {
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/luv-vimdocs"
   },
   ["marks.nvim"] = {
-    config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22nfx.plugins.marks\frequire\0" },
+    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21nv.plugins.marks\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/marks.nvim"
   },
@@ -170,7 +170,7 @@ _G.packer_plugins = {
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp_luasnip", "cmp-buffer", "cmp-nvim-lsp", "cmp-nvim-lua", "cmp-path" },
+    after = { "cmp-buffer", "cmp-nvim-lua", "cmp-nvim-lsp", "cmp_luasnip", "cmp-path" },
     only_config = true
   },
   ["nvim-colorizer.lua"] = {
@@ -179,7 +179,7 @@ _G.packer_plugins = {
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
   ["nvim-gps"] = {
-    config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rnvim-gps\frequire\0" },
+    config = { "\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19nv.plugins.gps\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-gps"
   },
@@ -188,7 +188,7 @@ _G.packer_plugins = {
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-lsp-ts-utils"
   },
   ["nvim-lspconfig"] = {
-    config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20nfx.plugins.lsp\frequire\0" },
+    config = { "\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19nv.plugins.lsp\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
@@ -203,7 +203,7 @@ _G.packer_plugins = {
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/nvim-notify"
   },
   ["nvim-treesitter"] = {
-    after = { "nvim-ts-autotag", "playground", "nvim-treesitter-refactor", "nvim-ts-context-commentstring" },
+    after = { "playground", "nvim-ts-autotag", "nvim-treesitter-refactor", "nvim-ts-context-commentstring" },
     only_config = true
   },
   ["nvim-treesitter-endwise"] = {
@@ -270,7 +270,7 @@ _G.packer_plugins = {
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/todo-comments.nvim"
   },
   ["tokyonight.nvim"] = {
-    config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22nfx.plugins.theme\frequire\0" },
+    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21nv.plugins.theme\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
   },
@@ -304,7 +304,7 @@ _G.packer_plugins = {
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-floaterm"
   },
   ["vim-markdown"] = {
-    config = { "\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25nfx.plugins.markdown\frequire\0" },
+    config = { "\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24nv.plugins.markdown\frequire\0" },
     loaded = true,
     path = "/Users/fernandezn/.local/share/nvim/site/pack/packer/start/vim-markdown"
   },
@@ -336,62 +336,62 @@ _G.packer_plugins = {
   }
 }
 
--- Config for: trouble.nvim
-try_loadstring("\27LJ\2\n^\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\nicons\1\tmode\26workspace_diagnostics\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
--- Config for: nvim-cmp
-try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27nfx.plugins.completion\frequire\0", "config", "nvim-cmp")
+-- Config for: nvim-gps
+try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19nv.plugins.gps\frequire\0", "config", "nvim-gps")
 -- Config for: fidget.nvim
 try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vfidget\frequire\0", "config", "fidget.nvim")
--- Config for: catppuccin
-try_loadstring("\27LJ\2\no\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\17integrations\1\0\0\1\0\2\14which_key\2\16lsp_trouble\2\nsetup\15catppuccin\frequire\0", "config", "catppuccin")
--- Config for: todo-comments.nvim
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
--- Config for: kommentary
-try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25nfx.plugins.comments\frequire\0", "config", "kommentary")
 -- Config for: lspkind-nvim
 try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\tinit\flspkind\frequire\0", "config", "lspkind-nvim")
--- Config for: harpoon
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fharpoon\frequire\0", "config", "harpoon")
--- Config for: nvim-autopairs
-try_loadstring("\27LJ\2\n¸\1\0\0\a\0\t\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0\18\2\0\0009\0\5\0'\3\6\0006\4\0\0'\6\a\0B\4\2\0029\4\b\4B\4\1\0A\0\2\1K\0\1\0\20on_confirm_done\"nvim-autopairs.completion.cmp\17confirm_done\aon\nevent\bcmp\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+-- Config for: catppuccin
+try_loadstring("\27LJ\2\no\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\17integrations\1\0\0\1\0\2\16lsp_trouble\2\14which_key\2\nsetup\15catppuccin\frequire\0", "config", "catppuccin")
+-- Config for: kommentary
+try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24nv.plugins.comments\frequire\0", "config", "kommentary")
+-- Config for: LuaSnip
+try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23nv.plugins.luasnip\frequire\0", "config", "LuaSnip")
 -- Config for: gitsigns.nvim
 try_loadstring("\27LJ\2\nM\0\0\4\0\5\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\0\0=\3\4\2B\0\2\1K\0\1\0\fkeymaps\1\0\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
 -- Config for: vim-markdown
-try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25nfx.plugins.markdown\frequire\0", "config", "vim-markdown")
--- Config for: nvim-treesitter
-try_loadstring("\27LJ\2\n<\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0!nfx.plugins.treesitter_setup\frequire\0", "config", "nvim-treesitter")
--- Config for: LuaSnip
-try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24nfx.plugins.luasnip\frequire\0", "config", "LuaSnip")
--- Config for: nvim-colorizer.lua
-try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
+try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24nv.plugins.markdown\frequire\0", "config", "vim-markdown")
 -- Config for: spellsitter.nvim
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16spellsitter\frequire\0", "config", "spellsitter.nvim")
+-- Config for: todo-comments.nvim
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
 -- Config for: gitlinker.nvim
 try_loadstring("\27LJ\2\n>\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\0\nsetup\14gitlinker\frequire\0", "config", "gitlinker.nvim")
--- Config for: marks.nvim
-try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22nfx.plugins.marks\frequire\0", "config", "marks.nvim")
--- Config for: nvim-gps
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rnvim-gps\frequire\0", "config", "nvim-gps")
 -- Config for: dressing.nvim
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rdressing\frequire\0", "config", "dressing.nvim")
--- Config for: nvim-notify
-try_loadstring("\27LJ\2\n2\0\0\4\0\3\0\0066\0\0\0006\1\2\0'\3\1\0B\1\2\2=\1\1\0K\0\1\0\frequire\vnotify\bvim\0", "config", "nvim-notify")
+-- Config for: nvim-cmp
+try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26nv.plugins.completion\frequire\0", "config", "nvim-cmp")
+-- Config for: trouble.nvim
+try_loadstring("\27LJ\2\n^\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\nicons\1\tmode\26workspace_diagnostics\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+-- Config for: nvim-autopairs
+try_loadstring("\27LJ\2\n¸\1\0\0\a\0\t\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0\18\2\0\0009\0\5\0'\3\6\0006\4\0\0'\6\a\0B\4\2\0029\4\b\4B\4\1\0A\0\2\1K\0\1\0\20on_confirm_done\"nvim-autopairs.completion.cmp\17confirm_done\aon\nevent\bcmp\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+-- Config for: harpoon
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fharpoon\frequire\0", "config", "harpoon")
+-- Config for: nvim-colorizer.lua
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
 -- Config for: lualine.nvim
-try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24nfx.plugins.lualine\frequire\0", "config", "lualine.nvim")
+try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23nv.plugins.lualine\frequire\0", "config", "lualine.nvim")
+-- Config for: nvim-treesitter
+try_loadstring("\27LJ\2\n;\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0 nv.plugins.treesitter_setup\frequire\0", "config", "nvim-treesitter")
 -- Config for: package-info.nvim
 try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17package-info\frequire\0", "config", "package-info.nvim")
+-- Config for: nvim-notify
+try_loadstring("\27LJ\2\n2\0\0\4\0\3\0\0066\0\0\0006\1\2\0'\3\1\0B\1\2\2=\1\1\0K\0\1\0\frequire\vnotify\bvim\0", "config", "nvim-notify")
 -- Config for: tokyonight.nvim
-try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22nfx.plugins.theme\frequire\0", "config", "tokyonight.nvim")
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21nv.plugins.theme\frequire\0", "config", "tokyonight.nvim")
+-- Config for: marks.nvim
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21nv.plugins.marks\frequire\0", "config", "marks.nvim")
 -- Load plugins in order defined by `after`
-vim.cmd [[ packadd cmp_luasnip ]]
-vim.cmd [[ packadd cmp-path ]]
-vim.cmd [[ packadd cmp-nvim-lua ]]
-vim.cmd [[ packadd cmp-buffer ]]
-vim.cmd [[ packadd cmp-nvim-lsp ]]
-vim.cmd [[ packadd nvim-treesitter-refactor ]]
-vim.cmd [[ packadd playground ]]
 vim.cmd [[ packadd nvim-ts-context-commentstring ]]
 vim.cmd [[ packadd nvim-ts-autotag ]]
+vim.cmd [[ packadd playground ]]
+vim.cmd [[ packadd nvim-treesitter-refactor ]]
+vim.cmd [[ packadd cmp-buffer ]]
+vim.cmd [[ packadd cmp_luasnip ]]
+vim.cmd [[ packadd cmp-nvim-lua ]]
+vim.cmd [[ packadd cmp-path ]]
+vim.cmd [[ packadd cmp-nvim-lsp ]]
 
 -- Command lazy-loads
 vim.cmd [[command! -nargs=* -range -bang -complete=file GitMessenger lua require("packer.load")({'git-messenger.vim'}, { cmd = "GitMessenger", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]

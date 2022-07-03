@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-local U = require "nfx.plugins.lsp.utils"
+local U = require "nv.plugins.lsp.utils"
 
 lspconfig.dartls.setup {
   on_init = function(client, buff)

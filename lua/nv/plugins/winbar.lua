@@ -48,7 +48,7 @@ local get_filename = function()
     end
 
     return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#LineNr#" .. filename .. "%*" ]]
-    return " " .. "%#LineNr#" .. filename .. "%*"
+    return " " .. "%#Comment#" .. filename .. "%*"
   end
 end
 
@@ -68,11 +68,9 @@ local get_gps = function()
   end
 
   if not isempty(gps_location) then
-    -- return require("user.icons").ui.ChevronRight .. " " .. gps_location
-    return "> " .. gps_location
-  else
-    return ""
+    return require("nv.icons").codicon.chevronRight .. " " .. gps_location
   end
+  return ""
 end
    
 local excludes = function()

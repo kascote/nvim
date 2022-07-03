@@ -43,7 +43,7 @@ wk.register({
   ["<C-k>"] = { "<C-w>k", "Move to one pane up" },
   ["<C-l>"] = { "<C-w>l", "Move to one pane rigth" },
   ["gV"] = { "`[v`]", "Visually select the text that was last edited/pasted" },
-  ["<C-p>"] = { '<cmd>lua R("nfx.plugins.telescope").find_files()<cr>', "Open Telescope to select files" },
+  ["<C-p>"] = { '<cmd>lua R("nv.plugins.telescope").find_files()<cr>', "Open Telescope to select files" },
   ["z="] = { "<cmd>Telescope spell_suggest<cr>", "Suggest spell word under cursor" },
   t = {
     t = { '<cmd>lua R("nfx.alternate").alternate()<cr>', "Switch to alternate file" },
@@ -129,11 +129,11 @@ wk.register({
   ["1"] = { "<cmd>set cursorline!<cr>", "Toggle cursor line" },
   ["2"] = { "<cmd>set cursorcolumn!<cr>", "Toggle column line" },
   ["8"] = { "<cmd>set invlist<cr>", "Toggle special chars" },
-  ["9"] = { '<cmd>lua require"nfx.utils".cycle_line_numbers()<cr>', "Cycle between line numbers" },
-  ["i"] = { '<cmd>lua require"nfx.utils".adjust_file_indent()<CR>', "Adjust indent lines" },
+  ["9"] = { '<cmd>lua require"nv.utils".cycle_line_numbers()<cr>', "Cycle between line numbers" },
+  ["i"] = { '<cmd>lua require"nv.utils".adjust_file_indent()<CR>', "Adjust indent lines" },
   ["<cr>"] = { "<cmd>noh<cr>", "Clear search hightlight" },
-  ["x"] = { '<cmd>lua R("nfx.plugins.telescope").buffers()<cr>', "List buffers" },
-  ["a"] = { '<cmd>lua R("nfx.plugins.telescope").live_grep()<cr>', "Live grep" },
+  ["x"] = { '<cmd>lua R("nv.plugins.telescope").buffers()<cr>', "List buffers" },
+  ["a"] = { '<cmd>lua R("nv.plugins.telescope").live_grep()<cr>', "Live grep" },
   ["<leader>"] = { "<cmd>b#<cr>", "Switch to last used buffer" },
   h = {
     h = { '<cmd>exec "vertical resize " . ((&columns/4)*3)<CR>', "Resize current pane to 3/4" },
@@ -145,18 +145,18 @@ wk.register({
   ["w"] = { "<cmd>Bdelete<cr>", "Close current buffer without close pane" },
   s = {
     name = "Snippets",
-    e = { "<cmd>e ~/.config/nvim/lua/nfx/plugins/snipets.lua<cr>", "Edit snippets" },
-    r = { "<cmd>source ~/.config/nvim/lua/nfx/plugins/snipets.lua<cr>", "Reload snippets" },
+    e = { "<cmd>e ~/.config/nvim/lua/nv/plugins/snipets.lua<cr>", "Edit snippets" },
+    r = { "<cmd>source ~/.config/nvim/lua/nv/plugins/snipets.lua<cr>", "Reload snippets" },
   },
   t = {
     name = "Telescope",
-    g = { '<cmd>lua R("nfx.plugins.telescope").git_files()<cr>', "Git files" },
-    s = { '<cmd>lua R("nfx.plugins.telescope").git_status()<cr>', "Git files modified" },
-    h = { '<cmd>lua R("nfx.plugins.telescope").help_tags()<cr>', "Help tags" },
-    t = { '<cmd>lua R("nfx.plugins.telescope").todo()<cr>', "ToDo" },
-    l = { '<cmd>lua R("nfx.plugins.telescope").grep_last_search()<cr>', "Last searches" },
-    -- d = { '<cmd>lua R("nfx.plugins.telescope").file_browser()<cr>', "File Browser" },
-    -- r = { '<cmd>lua R("nfx.plugins.telescope").file_browser_relative()<CR>', "File Browser relative to current file" },
+    g = { '<cmd>lua R("nv.plugins.telescope").git_files()<cr>', "Git files" },
+    s = { '<cmd>lua R("nv.plugins.telescope").git_status()<cr>', "Git files modified" },
+    h = { '<cmd>lua R("nv.plugins.telescope").help_tags()<cr>', "Help tags" },
+    t = { '<cmd>lua R("nv.plugins.telescope").todo()<cr>', "ToDo" },
+    l = { '<cmd>lua R("nv.plugins.telescope").grep_last_search()<cr>', "Last searches" },
+    -- d = { '<cmd>lua R("nv.plugins.telescope").file_browser()<cr>', "File Browser" },
+    -- r = { '<cmd>lua R("nv.plugins.telescope").file_browser_relative()<CR>', "File Browser relative to current file" },
     d = { '<cmd>LfWorkingDirectory<cr>', "File Browser" },
     r = { '<cmd>Lf<cr>', "File Browser" },
   },
@@ -199,9 +199,9 @@ wk.register({
 
 --[[ LOCAL LEADER ]]
 wk.register({
-  ["0"] = { '<cmd>lua R("nfx.utils").syn_stack()<cr>', "Show color syntax stack" },
+  ["0"] = { '<cmd>lua R("nv.utils").syn_stack()<cr>', "Show color syntax stack" },
   -- l = { "<cmd>nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>", "Reset syntax" },
-  t = { '<cmd>lua require("nfx.utils").trim_white_spaces()<cr>', "Trim white spaces on file" },
+  t = { '<cmd>lua require("nv.utils").trim_white_spaces()<cr>', "Trim white spaces on file" },
   ["nn"] = { "<cmd>set wildignore-=*/node_modules/*<cr>", "Remove node_modules from wildignore" },
   x = {
     name = "Trouble",
@@ -209,7 +209,7 @@ wk.register({
     q = { "<cmd>TroubleToggle quickfix<cr>", "on QuickFix" },
     l = { "<cmd>TroubleToggle loclist<cr>", "on LockList" },
     r = { "<cmd>TroubleToggle lsp_references<cr>", "on LspReference" },
-    n = { '<cmd>lua R("nfx.plugins.telescope").edit_neovim()<cr>', "Edit Neovim files" },
+    n = { '<cmd>lua R("nv.plugins.telescope").edit_neovim()<cr>', "Edit Neovim files" },
   },
 }, {
   mode = "n", -- NORMAL mode

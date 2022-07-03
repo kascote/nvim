@@ -1,4 +1,4 @@
-local u = require('nfx.utils')
+local u = require('nv.utils')
 local O = vim.opt
 local G = vim.opt_global
 

@@ -15,7 +15,7 @@ vim.g.tokyonight_sidebars = {
 }
 vim.g.tokyonight_colors = {
   bg_float = clrFloat,
-  bg = "#12131a", -- "#0a0a0f" -- orig #1a1b26
+  bg = "#0a0a0f" -- "#12131a", -- orig #1a1b26
 }
 
 -- local config = require("tokyonight.config")
@@ -37,6 +37,7 @@ hc("TelescopeNormal", { guibg = clrFloat })
 hc("TelescopeBorder", { guibg = clrFloat })
 
 hc("VertSplit", { guifg = "#414868" })
+hc("CursorLine", { guibg = '#12121C'})
 
 --[[ Catppuccin ]]
 --

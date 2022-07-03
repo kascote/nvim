@@ -24,7 +24,7 @@ for _, sign in ipairs(signs) do
 end
 
 local config = {
-  virtual_text = true,
+  virtual_text = false,
   signs = {
     active = signs,
   },
@@ -51,11 +51,11 @@ vimLsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.si
   border = "rounded",
 })
 
-require "nfx.plugins.lsp.vimls"
-require "nfx.plugins.lsp.tsserver"
-require "nfx.plugins.lsp.nlua"
-require "nfx.plugins.lsp.dart"
-require "nfx.plugins.lsp.null-ls"
+require "nv.plugins.lsp.vimls"
+require "nv.plugins.lsp.tsserver"
+require "nv.plugins.lsp.nlua"
+require "nv.plugins.lsp.dart"
+require "nv.plugins.lsp.null-ls"
 
 local dsigns = { 
   Error = diagIcons.error,

@@ -25,8 +25,8 @@ function M.set_keymap(bufnr)
       wa = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", "Add Workspace folder" },
       wr = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", "Remove Workspace folder" },
       wl = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", "Show workspace folders" },
-      ws = { '<cmd>lua R("nfx.plugins.telescope").lsp_workspace_symbols()<cr>', "Show Workspace Symbols" },
-      us = { '<cmd>lua R("nfx.plugins.telescope").lsp_document_symbols()<cr>', "Show Document Symbols" },
+      ws = { '<cmd>lua R("nv.plugins.telescope").lsp_workspace_symbols()<cr>', "Show Workspace Symbols" },
+      us = { '<cmd>lua R("nv.plugins.telescope").lsp_document_symbols()<cr>', "Show Document Symbols" },
       rr = {
         "<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>",
         "Stop Clients and restart LSP",
@@ -63,7 +63,7 @@ function M.custom_attach(client, bufnr)
   }, bufnr)
 
   if client.name == "typescript" or client.name == "tsserver" then
-    require("nfx.plugins.lsp.ts-utils").setup(client)
+    require("nv.plugins.lsp.ts-utils").setup(client)
   end
 
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"

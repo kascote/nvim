@@ -40,7 +40,7 @@ packer.startup(function(use)
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
       config = function()
-        require "nfx.plugins.treesitter_setup"
+        require "nv.plugins.treesitter_setup"
       end,
     },
     { "nvim-treesitter/playground", after = "nvim-treesitter" },
@@ -53,7 +53,7 @@ packer.startup(function(use)
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     config = function()
-      require "nfx.plugins.lsp"
+      require "nv.plugins.lsp"
     end,
   }
 
@@ -66,14 +66,14 @@ packer.startup(function(use)
   use {
     "L3MON4D3/LuaSnip",
     config = function()
-      require "nfx.plugins.luasnip"
+      require "nv.plugins.luasnip"
     end,
   }
 
   use {
     "hrsh7th/nvim-cmp",
     config = function()
-      require "nfx.plugins.completion"
+      require "nv.plugins.completion"
     end,
   }
   use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
@@ -124,7 +124,7 @@ packer.startup(function(use)
   use {
     "hoob3rt/lualine.nvim",
     config = function()
-      require "nfx.plugins.lualine"
+      require "nv.plugins.lualine"
     end,
   }
 
@@ -161,7 +161,7 @@ packer.startup(function(use)
   use {
     "chentoast/marks.nvim",
     config = function()
-      require "nfx.plugins.marks"
+      require "nv.plugins.marks"
     end,
   }
   use { "moll/vim-bbye" }
@@ -201,7 +201,7 @@ packer.startup(function(use)
   use {
     "b3nj5m1n/kommentary",
     config = function()
-      require "nfx.plugins.comments"
+      require "nv.plugins.comments"
     end,
   }
 
@@ -232,7 +232,7 @@ packer.startup(function(use)
   use {
     "SmiteshP/nvim-gps",
     config = function()
-      require("nvim-gps").setup()
+      require "nv.plugins.gps"
     end,
   }
 
@@ -254,7 +254,7 @@ packer.startup(function(use)
   use {
     "plasticboy/vim-markdown",
     config = function()
-      require "nfx.plugins.markdown"
+      require "nv.plugins.markdown"
     end,
   } -- tpope/vim-markdown
 
@@ -262,7 +262,7 @@ packer.startup(function(use)
   use {
     "folke/tokyonight.nvim",
     config = function()
-      require "nfx.plugins.theme"
+      require "nv.plugins.theme"
     end,
   }
 
@@ -302,6 +302,9 @@ packer.startup(function(use)
     https://github.com/hrsh7th/vscode-langservers-extracted
 
     https://github.com/captainko/ckovim/blob/70d09e50320de74fb3f9b9314e2e9cf70d570f86/lua/cko/plugins/cmp.lua
+
+    https://vale.sh/
+    https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/
 
     html cssls jsonls LSPs
 

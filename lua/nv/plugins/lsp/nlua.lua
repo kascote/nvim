@@ -1,6 +1,6 @@
 local lspconfig = require("lspconfig")
 local lspconfig_util = require "lspconfig.util"
-local U = require "nfx.plugins.lsp.utils"
+local U = require "nv.plugins.lsp.utils"
 
 local sumneko_root_path = vim.fn.stdpath "cache" .. "/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"

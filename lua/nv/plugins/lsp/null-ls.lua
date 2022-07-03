@@ -1,5 +1,23 @@
 local nls = require "null-ls"
-local U = require('nfx.plugins.lsp.utils')
+local U = require "nv.plugins.lsp.utils"
+
+local function projectSetup(params)
+  local cfgFile = "nvprojectrc.json"
+  local cfgDir = vim.fn.expand(vim.env.XDG_CONFIG_HOME or "~/")
+  local json = {}
+  if vim.fn.filereadable(cfgDir .. '/' .. cfgFile) > 0 then
+    json = vim.fn.json_decode(vim.fn.readfile(cfgFile))
+  end
+  local cwd = vim.fn.getcwd()
+
+  if json[cwd] then
+    print "found"
+  else
+    print "not found"
+  end
+
+  return { "-c", "config/linters/.eslintrc.js", "-f", "json", "--stdin", "--stdin-filename", "$FILENAME" }
+end
 
 nls.setup {
   debounce = 250,
@@ -14,6 +32,10 @@ nls.setup {
       command = "node_modules/.bin/eslint",
     },
     nls.builtins.diagnostics.shellcheck,
+    nls.builtins.diagnostics.eslint.with {
+      command = "node_modules/.bin/eslint",
+      args = projectSetup,
+    },
     -- nls.builtins.diagnostics.markdownlint,
     -- nls.builtins.diagnostics.selene,
     nls.builtins.code_actions.gitsigns,

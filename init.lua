@@ -1,17 +1,16 @@
 -- disable filetype.vim and use only lua one
-vim.g.do_filetype_lua = 1 
+vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
 
 --  require('nfx/nv/colors')
-require('nfx/nv/settings')
-require('nfx/globals')
-require('nfx/nv/mappings2')
-require('nfx/nv/plugins')
-require('nfx/filetype')
-require('nfx/autocmds')
+require "nv.settings"
+require "nv.globals"
+require "nv.mappings"
+require "nv.plugins"
+require "nv.filetype"
+require "nv.autocmds"
 
-require 'nfx.plugins.snipets'
-
+require "nv.plugins.snipets"
 
 -- vim.g.tokyonight_style='night'
 -- vim.cmd('colorscheme tokyonight')
@@ -30,4 +29,3 @@ require 'nfx.plugins.snipets'
 --]]
 -- vim.cmd('set nofixendofline')
 -- vim.cmd('set noeol')
-

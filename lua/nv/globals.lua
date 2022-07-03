@@ -1,5 +1,5 @@
-local utils = require "nfx/utils"
-local npm = require "nfx/npm"
+local utils = require "nv.utils"
+local npm = require "nfx.npm"
 local ls = require "luasnip"
 
 P = function(...)
