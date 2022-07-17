@@ -34,7 +34,7 @@ nls.setup {
     nls.builtins.diagnostics.shellcheck,
     nls.builtins.diagnostics.eslint.with {
       command = "node_modules/.bin/eslint",
-      args = projectSetup,
+      -- args = projectSetup,
     },
     -- nls.builtins.diagnostics.markdownlint,
     -- nls.builtins.diagnostics.selene,
