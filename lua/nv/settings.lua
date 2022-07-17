@@ -17,6 +17,8 @@ vim.g.loaded_vimball           = 1
 vim.g.loaded_vimballPlugin     = 1
 vim.g.loaded_man               = 1
 
+vim.g.loaded_perl_provider     = 0
+
 --=[ General ]=--
 vim.g.mapleader      = u.termcodes('<Space>')
 vim.g.maplocalleader = u.termcodes("<BS>")
