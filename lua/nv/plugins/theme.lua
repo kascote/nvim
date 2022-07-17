@@ -1,5 +1,4 @@
-local hc = vim.highlight.create
-local hl = vim.highlight.link
+local hl = vim.api.nvim_set_hl
 
 vim.o.background = "dark"
 
@@ -24,20 +23,20 @@ vim.g.tokyonight_colors = {
 
 vim.cmd "colorscheme tokyonight"
 
-hl("TabLineSel", "Special", true)
-hc("TabLine", { guifg = "#545c7e" })
-hc("TabLineMod", { guifg = "#f7768e" })
-hc("TabLineModBuf", { guifg = "#9ece6a" })
-hc("TabLineModNone", { guifg = "#bb9af7" })
+hl(0, "TabLineSel", { link = "Special" })
+hl(0, "TabLine", { fg = "#545c7e" })
+hl(0, "TabLineMod", { fg = "#f7768e" })
+hl(0, "TabLineModBuf", { fg = "#9ece6a" })
+hl(0, "TabLineModNone", { fg = "#bb9af7" })
 
-hl("markdownError", "Error", true)
-hc("Pmenu", { guibg = "#111111" })
+hl(0, "markdownError", { link = "Error" })
+hl(0, "Pmenu", { bg = "#111111" })
 
-hc("TelescopeNormal", { guibg = clrFloat })
-hc("TelescopeBorder", { guibg = clrFloat })
+hl(0, "TelescopeNormal", { bg = clrFloat })
+hl(0, "TelescopeBorder", { bg = clrFloat })
 
-hc("VertSplit", { guifg = "#414868" })
-hc("CursorLine", { guibg = '#12121C'})
+hl(0, "VertSplit", { fg = "#414868" })
+hl(0, "CursorLine", { bg = '#12121C'})
 
 --[[ Catppuccin ]]
 --
@@ -45,4 +44,4 @@ hc("CursorLine", { guibg = '#12121C'})
 --[[ vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 vim.cmd "colorscheme catppuccin"
 
-hc("CursorLine", { guibg = '#12121C'}) ]]
+hl(0, "CursorLine", { guibg = '#12121C'}) ]]
