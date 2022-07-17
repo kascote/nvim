@@ -10,7 +10,7 @@ lspconfig.dartls.setup {
   capabilities = U.capabilities(),
   cmd = {
     "dart",
-    "/usr/local/opt/dart/libexec/bin/snapshots/analysis_server.dart.snapshot",
+    "/opt/homebrew/opt/dart-sdk/libexec/bin/snapshots/analysis_server.dart.snapshot",
     "--lsp",
   },
   settings = {
