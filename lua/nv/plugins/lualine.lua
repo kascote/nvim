@@ -111,8 +111,8 @@ end
 
 local config = {
   options = {
-    theme = "tokyonight",
-    -- theme = "catppuccin",
+    -- theme = "tokyonight",
+    theme = "catppuccin",
     -- section_separators = { "", "" },
     -- component_separators = { "", "" },
     section_separators = { left = "", right = "" },
