@@ -1,7 +1,7 @@
 local nls = require "null-ls"
 local U = require "nv.plugins.lsp.utils"
 
-local function projectSetup(params)
+--[[ local function projectSetup(params)
   local cfgFile = "nvprojectrc.json"
   local cfgDir = vim.fn.expand(vim.env.XDG_CONFIG_HOME or "~/")
   local json = {}
@@ -17,7 +17,7 @@ local function projectSetup(params)
   end
 
   return { "-c", "config/linters/.eslintrc.js", "-f", "json", "--stdin", "--stdin-filename", "$FILENAME" }
-end
+end ]]
 
 nls.setup {
   debounce = 250,
@@ -28,19 +28,25 @@ nls.setup {
     },
     nls.builtins.formatting.stylua,
     nls.builtins.formatting.json_tool,
-    nls.builtins.formatting.eslint.with {
+    nls.builtins.formatting.eslint_d,
+    nls.builtins.formatting.fish_indent,
+    --[[ nls.builtins.formatting.eslint.with {
       command = "node_modules/.bin/eslint",
-    },
+    }, ]]
+    nls.builtins.formatting.dart_format,
     nls.builtins.diagnostics.shellcheck,
-    nls.builtins.diagnostics.eslint.with {
+    nls.builtins.diagnostics.eslint_d,
+    --[[ nls.builtins.diagnostics.eslint.with {
       command = "node_modules/.bin/eslint",
       -- args = projectSetup,
-    },
+    }, ]]
     -- nls.builtins.diagnostics.markdownlint,
     -- nls.builtins.diagnostics.selene,
+    nls.builtins.diagnostics.fish,
     nls.builtins.code_actions.gitsigns,
+    nls.builtins.code_actions.eslint_d,
   },
-  debug = false,
+  debug = true,
   log = {
     enable = false,
     level = "error", -- trace
