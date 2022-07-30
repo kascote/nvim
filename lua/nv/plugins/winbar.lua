@@ -31,14 +31,14 @@ local function get_buf_option(opt)
 end
 
 local get_filename = function()
-  local filename = vim.fn.expand "%:t"
-  -- local extension = vim.fn.expand "%:e"
+  local filename = vim.fn.expand("%:t")
 
   if isempty(filename) then
     return ""
   end
 
-  return " " .. "%#Comment#" .. filename .. "%*"
+  -- return " " .. "%#NavicFileName#" .. filename .. "%*"
+  return " " .. "%#NavicFileName#" .. filename .. "%*"
 end
 
 local get_location = function()
@@ -67,14 +67,16 @@ M.get_winbar = function()
   local location = {}
 
   table.insert(location, get_filename())
-  table.insert(location, get_location())
 
   if #location > 0 and get_buf_option "mod" then
-    table.insert(location, "%#LineNr#●%*")
+    table.insert(location, "%#DiffDelete#●%*")
   end
 
+  table.insert(location, get_location())
+
   -- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-  vim.o.winbar = table.concat(location, " ")
+  -- vim.api.nvim_set_option_value( 'winbar', table.concat(location, " "), { scope = 'local' })
+  pcall(vim.api.nvim_set_option_value, 'winbar', table.concat(location, " "), { scope = 'local' })
 end
 
 return M
