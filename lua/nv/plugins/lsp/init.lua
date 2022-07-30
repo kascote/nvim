@@ -56,6 +56,7 @@ require "nv.plugins.lsp.tsserver"
 require "nv.plugins.lsp.nlua"
 require "nv.plugins.lsp.dart"
 require "nv.plugins.lsp.null-ls"
+require "nv.plugins.lsp.pyright"
 
 local dsigns = { 
   Error = diagIcons.error,
