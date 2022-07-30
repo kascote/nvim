@@ -1,4 +1,4 @@
-local api = vim.api
+--[[ local api = vim.api
 
 -- The lua api currently doesn't modify the :highlight namespace so by default
 -- we use vim.cmd to call the :highlight command. Note however the lua api code
@@ -150,7 +150,7 @@ function M.apply(use_lua_api)
     local githubDark = vim.api.nvim_create_augroup("githubDark", { clear = true })
     vim.api.nvim_create_autocmd(
       "ColorSchemePre", 
-      { command = [[call nvim_set_hl_ns(0)]], group = githubDark, pattern = "*", once = true }
+      { command = "call nvim_set_hl_ns(0)", group = githubDark, pattern = "*", once = true }
     )
   end
 
@@ -292,4 +292,4 @@ function M.apply(use_lua_api)
 end
 
 return M
-
+ ]]
