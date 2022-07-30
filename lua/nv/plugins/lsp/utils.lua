@@ -68,6 +68,10 @@ function M.custom_attach(client, bufnr)
 
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
+  -- do not show error when LSP do not support documentSymbols
+  vim.g.navic_silence = true
+  require("nvim-navic").attach(client, bufnr)
+
   if client.server_capabilities.documentHighlightProvider then
     local doc_highlight = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
     vim.api.nvim_create_autocmd(

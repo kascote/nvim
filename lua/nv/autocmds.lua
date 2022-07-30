@@ -63,9 +63,11 @@ vim.api.nvim_create_autocmd(
 
 -- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
-  callback = function()
-    require("nv.plugins.winbar").get_winbar()
-  end,
-})
-
+vim.api.nvim_create_autocmd(
+  { "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" }, 
+  {
+    callback = function()
+      require("nv.plugins.winbar").get_winbar()
+    end,
+  }
+)

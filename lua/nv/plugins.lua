@@ -229,8 +229,16 @@ packer.startup(function(use)
     end,
   }
 
-  use {
+  --[[ use {
     "SmiteshP/nvim-gps",
+    config = function()
+      require "nv.plugins.gps"
+    end,
+  } ]]
+
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig",
     config = function()
       require "nv.plugins.gps"
     end,
@@ -269,11 +277,21 @@ packer.startup(function(use)
   use {
     "catppuccin/nvim",
     as = "catppuccin",
+    -- run = ":CatppuccinCompile",
     config = function()
       require("catppuccin").setup {
         integrations = {
           lsp_trouble = true,
           which_key = true,
+        },
+        compile = {
+          enabled = true,
+          path = vim.fn.stdpath "cache" .. "/catppuccin",
+        },
+        color_overrides = {
+          mocha = {
+            base = "#07070a",
+          },
         },
       }
     end,
@@ -297,9 +315,14 @@ packer.startup(function(use)
 
     https://github.com/ziontee113/syntax-tree-surfer
     https://github.com/b0o/SchemaStore.nvim
+
     https://github.com/SmiteshP/nvim-gps
+    https://github.com/SmiteshP/nvim-navic
+
     https://github.com/UserNobody14/tree-sitter-dart
     https://github.com/hrsh7th/vscode-langservers-extracted
+
+    https://github.com/jose-elias-alvarez/typescript.nvim
 
     https://github.com/captainko/ckovim/blob/70d09e50320de74fb3f9b9314e2e9cf70d570f86/lua/cko/plugins/cmp.lua
 
