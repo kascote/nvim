@@ -2,8 +2,10 @@ local lspconfig = require("lspconfig")
 local lspconfig_util = require "lspconfig.util"
 local U = require "nv.plugins.lsp.utils"
 
-local sumneko_root_path = vim.fn.stdpath "cache" .. "/lua-language-server"
-local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
+-- local sumneko_root_path = vim.fn.stdpath "cache" .. "/lua-language-server"
+-- local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
+local sumneko_root_path = "/opt/homebrew/opt/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
 require("nlua.lsp.nvim").setup(lspconfig, {
   on_init = function(client, buff)
@@ -12,7 +14,7 @@ require("nlua.lsp.nvim").setup(lspconfig, {
   end,
   on_attach = U.custom_attach,
   capabilities = U.capabilities(),
-  cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+  cmd = { sumneko_binary, "-E", sumneko_root_path .. "/libexec/main.lua" },
 
   root_dir = function(fname)
     if string.find(vim.fn.fnamemodify(fname, ":p"), ".config/nvim/") then
