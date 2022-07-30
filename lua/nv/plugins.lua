@@ -57,7 +57,6 @@ packer.startup(function(use)
     end,
   }
 
-  use { "jose-elias-alvarez/nvim-lsp-ts-utils" }
   use {
     "jose-elias-alvarez/null-ls.nvim",
     requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
@@ -251,6 +250,9 @@ packer.startup(function(use)
       "voldikss/vim-floaterm",
     },
   }
+
+  -- use { "jose-elias-alvarez/nvim-lsp-ts-utils" }
+  use { "jose-elias-alvarez/typescript.nvim" }
 
   --=[ Syntax ]=--
   use {

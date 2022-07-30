@@ -62,9 +62,9 @@ function M.custom_attach(client, bufnr)
     zindex = 49,
   }, bufnr)
 
-  if client.name == "typescript" or client.name == "tsserver" then
+  --[[ if client.name == "typescript" or client.name == "tsserver" then
     require("nv.plugins.lsp.ts-utils").setup(client)
-  end
+  end ]]
 
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
