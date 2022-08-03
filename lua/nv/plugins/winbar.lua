@@ -3,6 +3,7 @@ local navic = require "nvim-navic"
 local M = {}
 
 M.winbar_filetype_exclude = {
+  "",
   "help",
   "startify",
   "dashboard",
@@ -15,6 +16,8 @@ M.winbar_filetype_exclude = {
   "Outline",
   "spectre_panel",
   "toggleterm",
+  "TelescopePrompt",
+  "floaterm",
 }
 
 local function isempty(s)
@@ -31,7 +34,7 @@ local function get_buf_option(opt)
 end
 
 local get_filename = function()
-  local filename = vim.fn.expand("%:t")
+  local filename = vim.fn.expand "%:t"
 
   if isempty(filename) then
     return ""
@@ -76,7 +79,7 @@ M.get_winbar = function()
 
   -- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
   -- vim.api.nvim_set_option_value( 'winbar', table.concat(location, " "), { scope = 'local' })
-  pcall(vim.api.nvim_set_option_value, 'winbar', table.concat(location, " "), { scope = 'local' })
+  pcall(vim.api.nvim_set_option_value, "winbar", table.concat(location, " "), { scope = "local" })
 end
 
 return M
