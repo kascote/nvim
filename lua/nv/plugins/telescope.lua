@@ -1,5 +1,6 @@
 local M = {}
 local themes = require "telescope.themes"
+local actions = require("telescope.actions")
 
 require("telescope").setup {
   defaults = {
@@ -38,6 +39,17 @@ require("telescope").setup {
         },
       },
     },
+    mappings = {
+      i = {
+        ["<C-h>"] = "which_key",
+        ["<esc>"] = actions.close,
+        ["<C-f>"] = function(prompt_bufnr)
+          local orig_value = require("telescope.config").values.path_display
+          P(orig_value)
+          orig_value = { "shorten" }
+        end,
+      },
+    },
   },
   extensions = {
     fzf = {
@@ -49,10 +61,10 @@ require("telescope").setup {
     },
   },
   pickers = {
-    lsp_references = { theme = 'dropdown' },
-    lsp_code_actions = { theme = 'dropdown' },
-    lsp_definitions = { theme = 'dropdown' },
-    lsp_implementations = { theme = 'dropdown' },
+    lsp_references = { theme = "dropdown" },
+    lsp_code_actions = { theme = "dropdown" },
+    lsp_definitions = { theme = "dropdown" },
+    lsp_implementations = { theme = "dropdown" },
     buffers = {
       sort_lastused = true,
       previewer = false,
@@ -63,7 +75,19 @@ require("telescope").load_extension "fzf"
 require("telescope").load_extension "harpoon"
 
 function M.find_files()
-  require("telescope.builtin").find_files()
+  local opts = {
+    mappings = {
+      n = {
+        ["ff"] = function(prompt_bufnr)
+          P('hola')
+          local action_state = require "telescope.actions.state"
+          local picker = action_state.get_current_picker(prompt_bufnr)
+          P(picker)
+        end,
+      },
+    },
+  }
+  require("telescope.builtin").find_files(opts)
 end
 
 function M.buffers()
