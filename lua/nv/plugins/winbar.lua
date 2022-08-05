@@ -79,7 +79,8 @@ M.get_winbar = function()
 
   -- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
   -- vim.api.nvim_set_option_value( 'winbar', table.concat(location, " "), { scope = 'local' })
-  pcall(vim.api.nvim_set_option_value, "winbar", table.concat(location, " "), { scope = "local" })
+  -- pcall(vim.api.nvim_set_option_value, "winbar", table.concat(location, " "), { scope = "local" })
+  -- vim.opt_local.winbar = table.concat(location, " ")
 end
 
 return M
