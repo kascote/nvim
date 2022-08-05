@@ -310,7 +310,6 @@ M.codicon = {
 	debugBreakpointFunctionUnverified = ' ', -- eb87
 	debugBreakpointFunction = ' ', -- eb88
 	debugStackframeActive = ' ', -- eb89
-	debugStackframeDot = ' ', -- eb8a
 	debugStackframe = ' ', -- eb8b
 	debugBreakpointUnsupported = ' ', -- eb8c
 	symbolString = ' ', -- eb8d
@@ -430,7 +429,17 @@ M.codicon = {
 	arrowCircleDown = ' ', -- ebfc
 	arrowCircleLeft = ' ', -- ebfd
 	arrowCircleRight = ' ', -- ebfe
-	arrowCircleUp = ' ' -- ebff
+	arrowCircleUp = ' ', -- ebff
+  gitPullRequestGotoChange = ' ', -- ec0b
+  gitPullRequestNewChange = ' ', -- ec0c
+  bellSlashDot = ' ', -- ec09
+  commentUnresolved = ' ', -- ec0a
+  circleSmallFilled = ' ', -- eb8a
+  circleSmall = ' ', -- ec07
+  bellSlash = ' ', -- ec08
+  mapFilled = ' ', -- ec06
+  map = ' ', -- ec05
+  heartFilled = ' ', -- ec04
 }
 
 return M

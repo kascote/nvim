@@ -133,6 +133,7 @@ packer.startup(function(use)
         integrations = {
           lsp_trouble = true,
           which_key = true,
+          navic = true,
         },
         compile = {
           enabled = true,
@@ -286,13 +287,43 @@ packer.startup(function(use)
     end,
   }
 
-  vim.g.lf_map_keys = 0
+  --[[ vim.g.lf_map_keys = 0
   use {
     "ptzz/lf.vim",
     requires = {
       "voldikss/vim-floaterm",
     },
+  } ]]
+
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = "v2.*",
+    config = function()
+      require("toggleterm").setup()
+    end,
   }
+
+  use(
+    {
+        "lmburns/lf.nvim",
+        config = function()
+          -- This feature will not work if the plugin is lazy-loaded
+          -- vim.g.lf_netrw = 1
+
+          require("lf").setup(
+              {
+                  escape_quit = false,
+                  border = "rounded",
+                  focus_on_open = false,
+                  -- highlights = {FloatBorder = {guifg = require("kimbox.palette").colors.magenta}}
+              }
+          )
+
+          -- vim.keymap.set("n", "<C-o>", ":Lf<CR>")
+        end,
+        requires = {"plenary.nvim", "toggleterm.nvim"}
+    }
+)
 
   --[[ use {
     "vuki656/package-info.nvim",

@@ -56,7 +56,7 @@ hl(0, "WinBar", { link = "StatusLine" })
 -- hl(0, "WinBar", { bg = "#313244", fg = "#11111B" })
 -- hl(0, "WinBarNC", { bg = "#11111B", fg = "#323244" })
 
-hl(0, "NavicIconsFile", { link = "CmpItemKindFile" })
+--[[ hl(0, "NavicIconsFile", { link = "CmpItemKindFile" })
 hl(0, "NavicIconsModule", { link = "CmpItemKindModule" })
 hl(0, "NavicIconsNamespace", { link = "CmpItemKindUnit" })
 hl(0, "NavicIconsPackage", { link = "CmpItemKindUnit" })
@@ -84,7 +84,7 @@ hl(0, "NavicIconsOperator", { link = "CmpItemKindOperator" })
 hl(0, "NavicIconsTypeParameter", { link = "CmpItemKindTypeParameter" })
 hl(0, "NavicText", { link = "Normal" })
 hl(0, "NavicSeparator", { link = "Normal" })
-hl(0, "NavicFileName", { fg = "#7f849c", bg="#181825", italic=true })
+hl(0, "NavicFileName", { fg = "#7f849c", bg="#181825", italic=true }) ]]
 
 hl(0, "StatusLineDiffAdd", { fg="#a6e3a1", bg="#313244" })
 hl(0, "StatusLineDiffDel", { fg="#f38ba8", bg="#313244" })
