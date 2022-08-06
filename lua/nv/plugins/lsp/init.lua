@@ -7,10 +7,10 @@ local vim = vim
 local vimLsp = vim.lsp
 
 local diagIcons = {
-  error = ' ', -- 
-  warn = ' ', -- 
-  hint = ' ', -- 
-  info = ' ', -- 
+  error = " ", -- 
+  warn = " ", -- 
+  hint = " ", -- 
+  info = " ", -- 
 }
 
 local signs = {
@@ -42,6 +42,7 @@ local config = {
 }
 
 vim.diagnostic.config(config)
+-- vim.lsp.set_log_level "info"
 
 vimLsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
@@ -58,11 +59,11 @@ require "nv.plugins.lsp.dart"
 require "nv.plugins.lsp.null-ls"
 require "nv.plugins.lsp.pyright"
 
-local dsigns = { 
+local dsigns = {
   Error = diagIcons.error,
   Warning = diagIcons.warn,
   Hint = diagIcons.hint,
-  Information = diagIcons.Info 
+  Information = diagIcons.Info,
 }
 for type, icon in pairs(dsigns) do
   local hlLsp = "LspDiagnosticsSign" .. type

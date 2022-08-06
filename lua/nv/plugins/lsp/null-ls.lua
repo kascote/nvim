@@ -33,7 +33,7 @@ nls.setup {
     --[[ nls.builtins.formatting.eslint.with {
       command = "node_modules/.bin/eslint",
     }, ]]
-    nls.builtins.formatting.dart_format,
+    -- nls.builtins.formatting.dart_format,
     nls.builtins.diagnostics.shellcheck,
     nls.builtins.diagnostics.eslint_d,
     --[[ nls.builtins.diagnostics.eslint.with {
@@ -46,7 +46,7 @@ nls.setup {
     nls.builtins.code_actions.gitsigns,
     nls.builtins.code_actions.eslint_d,
   },
-  debug = true,
+  debug = false,
   log = {
     enable = false,
     level = "error", -- trace
