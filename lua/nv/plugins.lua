@@ -33,7 +33,12 @@ packer.startup(function(use)
   use { "vim-scripts/LargeFile" }
   -- use { "tpope/vim-endwise" }
   use { "tpope/vim-repeat" }
-  use { "tpope/vim-surround" }
+  use {
+    "kylechui/nvim-surround",
+    config = function()
+      require("nvim-surround").setup()
+    end,
+  } -- use { "tpope/vim-surround" }
   use { "tpope/vim-characterize" }
   use { "wincent/loupe" }
   -- use { "t9md/vim-quickhl" }
@@ -303,27 +308,23 @@ packer.startup(function(use)
     end,
   }
 
-  use(
-    {
-        "lmburns/lf.nvim",
-        config = function()
-          -- This feature will not work if the plugin is lazy-loaded
-          -- vim.g.lf_netrw = 1
+  use {
+    "lmburns/lf.nvim",
+    config = function()
+      -- This feature will not work if the plugin is lazy-loaded
+      -- vim.g.lf_netrw = 1
 
-          require("lf").setup(
-              {
-                  escape_quit = false,
-                  border = "rounded",
-                  focus_on_open = false,
-                  -- highlights = {FloatBorder = {guifg = require("kimbox.palette").colors.magenta}}
-              }
-          )
+      require("lf").setup {
+        escape_quit = false,
+        border = "rounded",
+        focus_on_open = false,
+        -- highlights = {FloatBorder = {guifg = require("kimbox.palette").colors.magenta}}
+      }
 
-          -- vim.keymap.set("n", "<C-o>", ":Lf<CR>")
-        end,
-        requires = {"plenary.nvim", "toggleterm.nvim"}
-    }
-)
+      -- vim.keymap.set("n", "<C-o>", ":Lf<CR>")
+    end,
+    requires = { "plenary.nvim", "toggleterm.nvim" },
+  }
 
   --[[ use {
     "vuki656/package-info.nvim",
