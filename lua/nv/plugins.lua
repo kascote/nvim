@@ -285,8 +285,15 @@ packer.startup(function(use)
   }
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
-  use {
+  --[[ use {
     "b3nj5m1n/kommentary",
+    config = function()
+      require "nv.plugins.comments"
+    end,
+  } ]]
+
+  use {
+    "numToStr/Comment.nvim",
     config = function()
       require "nv.plugins.comments"
     end,

@@ -95,6 +95,8 @@ require("nvim-treesitter.configs").setup {
   },
   context_commentstring = {
     enable = true,
+    -- disabled for integration with Commet plugin
+    enable_autocmd = false,
   },
   NONO_ensure_installed = { "javascript", "typescript", "ruby", "html", "lua", "json", "jsdoc", "bash", "tsx" },
   playground = {

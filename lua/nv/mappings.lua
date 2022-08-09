@@ -58,7 +58,7 @@ wk.register({
 })
 
 wk.register({
-  ["--"] = { "<Plug>kommentary_line_default", "Change comments on current line" },
+  ["--"] = { "gcc", "Change comments on current line" },
 }, {
   mode = "n", -- NORMAL mode
   prefix = "",
