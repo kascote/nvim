@@ -45,9 +45,6 @@ wk.register({
   ["gV"] = { "`[v`]", "Visually select the text that was last edited/pasted" },
   ["<C-p>"] = { '<cmd>lua R("nv.plugins.telescope").find_files()<cr>', "Open Telescope to select files" },
   ["z="] = { "<cmd>Telescope spell_suggest<cr>", "Suggest spell word under cursor" },
-  t = {
-    t = { '<cmd>lua R("nfx.alternate").alternate()<cr>', "Switch to alternate file" },
-  },
 }, {
   mode = "n", -- NORMAL mode
   prefix = "",
@@ -157,8 +154,8 @@ wk.register({
     l = { '<cmd>lua R("nv.plugins.telescope").grep_last_search()<cr>', "Last searches" },
     -- d = { '<cmd>lua R("nv.plugins.telescope").file_browser()<cr>', "File Browser" },
     -- r = { '<cmd>lua R("nv.plugins.telescope").file_browser_relative()<CR>', "File Browser relative to current file" },
-    d = { '<cmd>LfWorkingDirectory<cr>', "File Browser" },
-    r = { '<cmd>Lf<cr>', "File Browser" },
+    d = { "<cmd>LfWorkingDirectory<cr>", "File Browser" },
+    r = { "<cmd>Lf<cr>", "File Browser" },
   },
   f = {
     name = "Fold",
@@ -188,6 +185,7 @@ wk.register({
   },
   m = { '<cmd>call quickhl#manual#this("n")<cr>', "Mark word under cursor" },
   M = { "<cmd>call quickhl#manual#reset()<cr>", "Clear all marks" },
+  N = { "<cmd>messages<cr>", "Show messages" },
 }, {
   mode = "n", -- NORMAL mode
   prefix = "<leader>",
