@@ -25,24 +25,22 @@ local js_snippets = {
   ps(
     "jdesc",
     [[
-describe("$1", ()=> {
+describe('$1', () => {
   $2
-});
-  ]]
+});]]
   ),
 
   ps(
     "jit",
     [[
-it("$1", () => {
+it('$1', () => {
   $2
-})
-  ]]
+});]]
   ),
 
   s(
     "import",
-    fmt([[import {1} from "{2}";]], {
+    fmt([[import {1} from '{2}';]], {
       i(1, ""),
       i(2, "path"),
     })
