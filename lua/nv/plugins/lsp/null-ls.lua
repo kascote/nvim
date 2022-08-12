@@ -20,7 +20,7 @@ local U = require "nv.plugins.lsp.utils"
 end ]]
 
 nls.setup {
-  debounce = 250,
+  debounce = 500,
   save_after_format = false,
   sources = {
     nls.builtins.formatting.prettier.with {
