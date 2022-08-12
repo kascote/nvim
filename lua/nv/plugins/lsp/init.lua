@@ -2,31 +2,12 @@ local status_ok, _ = pcall(require, "lspconfig")
 if not status_ok then
   return
 end
-
-local vim = vim
-local vimLsp = vim.lsp
-
-local diagIcons = {
-  error = " ", -- 
-  warn = " ", -- 
-  hint = " ", -- 
-  info = " ", -- 
-}
-
-local signs = {
-  { name = "DiagnosticSignError", text = diagIcons.error },
-  { name = "DiagnosticSignWarn", text = diagIcons.warn },
-  { name = "DiagnosticSignHint", text = diagIcons.hint },
-  { name = "DiagnosticSignInfo", text = diagIcons.info },
-}
-for _, sign in ipairs(signs) do
-  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-end
+local U = require('nv.plugins.lsp.utils')
 
 local config = {
   virtual_text = false,
   signs = {
-    active = signs,
+    active = U.diagnosticHighliter,
   },
   update_in_insert = true,
   underline = true,
@@ -44,13 +25,9 @@ local config = {
 vim.diagnostic.config(config)
 -- vim.lsp.set_log_level "info"
 
-vimLsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-})
-
-vimLsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "rounded",
-})
+U.setupDiagnosticHighlihters()
+U.setupDiagnosticSigns()
+U.setupGlobalHandlers()
 
 require "nv.plugins.lsp.vimls"
 require "nv.plugins.lsp.tsserver"
@@ -58,21 +35,6 @@ require "nv.plugins.lsp.nlua"
 require "nv.plugins.lsp.dart"
 require "nv.plugins.lsp.null-ls"
 require "nv.plugins.lsp.pyright"
-
-local dsigns = {
-  Error = diagIcons.error,
-  Warning = diagIcons.warn,
-  Hint = diagIcons.hint,
-  Information = diagIcons.Info,
-}
-for type, icon in pairs(dsigns) do
-  local hlLsp = "LspDiagnosticsSign" .. type
-  vim.fn.sign_define(hlLsp, { text = icon, texthl = hlLsp, numhl = "" })
-end
-
-vim.cmd "hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646"
-vim.cmd "hi LspReferenceText cterm=bold ctermbg=red guibg=#164646"
-vim.cmd "hi LspReferenceWrite cterm=bold ctermbg=red guibg=#964646"
 
 -- ###########################################################################
 --[[

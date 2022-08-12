@@ -1,7 +1,28 @@
 local wk = require "which-key"
--- local vimApi = vim.api
+local vimLsp = vim.lsp
 
 local M = {}
+
+M.diagIcons = {
+  error = " ", -- 
+  warn = " ", -- 
+  hint = " ", -- 
+  info = " ", -- 
+}
+
+M.diagnosticHighliter = {
+  { name = "DiagnosticSignError", text = M.diagIcons.error },
+  { name = "DiagnosticSignWarn", text = M.diagIcons.warn },
+  { name = "DiagnosticSignHint", text = M.diagIcons.hint },
+  { name = "DiagnosticSignInfo", text = M.diagIcons.info },
+}
+
+M.diagnosticSigns = {
+  Error = M.diagIcons.error,
+  Warning = M.diagIcons.warn,
+  Hint = M.diagIcons.hint,
+  Information = M.diagIcons.Info,
+}
 
 function M.set_keymap(bufnr)
   wk.register({
@@ -17,7 +38,7 @@ function M.set_keymap(bufnr)
       n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Goto Next Diagnostic" },
       p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Goto previous Diagnostic" },
       -- a = { "<cmd>Telescope lsp_code_actions<cr>", "Show Code Actions" },
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Show Code Actions" }, -- 
+      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Show Code Actions" }, --
       f = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 2000 })<cr>", "Format current file" },
       c = { "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", "Show Incoming calls" },
       o = { "<cmd>lua vim.lsp.buf.outgoing_calls()<cr>", "Show Outgoing calls" },
@@ -58,7 +79,7 @@ function M.custom_attach(client, bufnr)
     handler_opts = {
       border = "rounded",
     },
-    toggle_key = '<C-x>',
+    toggle_key = "<C-x>",
     zindex = 49,
   }, bufnr)
 
@@ -95,6 +116,29 @@ function M.capabilities()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
 
   return require("cmp_nvim_lsp").update_capabilities(capabilities)
+end
+
+function M.setupDiagnosticHighlihters()
+  for _, sign in ipairs(M.diagnosticHighliter) do
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+  end
+end
+
+function M.setupDiagnosticSigns()
+  for type, icon in pairs(M.diagnosticSigns) do
+    local hlLsp = "LspDiagnosticsSign" .. type
+    vim.fn.sign_define(hlLsp, { text = icon, texthl = hlLsp, numhl = "" })
+  end
+end
+
+function M.setupGlobalHandlers()
+  vimLsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  })
+
+  vimLsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+  })
 end
 
 function M.enable_format_on_save()
