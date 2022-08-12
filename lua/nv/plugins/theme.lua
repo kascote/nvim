@@ -46,7 +46,7 @@ vim.cmd "colorscheme catppuccin"
 hl(0, "Normal", { bg = "#11111B" }) -- 07070a
 hl(0, "CursorLine", { bg = "#11111B" })
 hl(0, "SignColumn", { bg = "#11111B" })
-hl(0, "Cursor", { fg="#000000", bg = "#f38ba8" })
+hl(0, "Cursor", { fg = "#000000", bg = "#f38ba8" })
 
 hl(0, "TelescopePreviewNormal", { bg = "#11111B" })
 hl(0, "TelescopeResultsNormal", { bg = "#11111B" })
@@ -86,8 +86,12 @@ hl(0, "NavicText", { link = "Normal" })
 hl(0, "NavicSeparator", { link = "Normal" })
 hl(0, "NavicFileName", { fg = "#7f849c", bg="#181825", italic=true }) ]]
 
-hl(0, "StatusLineDiffAdd", { fg="#a6e3a1", bg="#313244" })
-hl(0, "StatusLineDiffDel", { fg="#f38ba8", bg="#313244" })
-hl(0, "StatusLineDiffChg", { fg="#f9e2af", bg="#313244" })
-hl(0, "StatusLineFilename", { fg="#6c7086" })
-hl(0, "StatusLineFilenameHi", { fg="#f9e2af" })
+hl(0, "StatusLineDiffAdd", { fg = "#a6e3a1", bg = "#313244" })
+hl(0, "StatusLineDiffDel", { fg = "#f38ba8", bg = "#313244" })
+hl(0, "StatusLineDiffChg", { fg = "#f9e2af", bg = "#313244" })
+hl(0, "StatusLineFilename", { fg = "#6c7086" })
+hl(0, "StatusLineFilenameHi", { fg = "#f9e2af" })
+
+hl(0, "LspReferenceRead", { bg = "#464646" })
+hl(0, "LspReferenceText", { bg = "#164646" })
+hl(0, "LspReferenceWrite", { bg = "#964646" })
