@@ -35,6 +35,9 @@ require "nv.plugins.lsp.nlua"
 require "nv.plugins.lsp.dart"
 require "nv.plugins.lsp.null-ls"
 require "nv.plugins.lsp.pyright"
+require "nv.plugins.lsp.cssls"
+require "nv.plugins.lsp.htmlls"
+require "nv.plugins.lsp.jsonls"
 
 -- ###########################################################################
 --[[

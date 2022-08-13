@@ -49,6 +49,7 @@ packer.startup(function(use)
   use { "nanotee/luv-vimdocs" }
   use { "milisims/nvim-luaref" }
   -- use { "machakann/vim-vimhelplint", opt = true }
+  use "b0o/schemastore.nvim"
 
   --=[ Treesitter ]=--
   use {
@@ -355,6 +356,7 @@ packer.startup(function(use)
     charlesmallah/lua-profiler
     windwp/nvim-spectre
 
+    https://github.com/tamago324/nlsp-settings.nvim
     https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     https://github.com/akinsho/flutter-tools.nvim
     https://github.com/lukas-reineke/indent-blankline.nvim
