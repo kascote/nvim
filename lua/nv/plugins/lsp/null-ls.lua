@@ -26,6 +26,7 @@ nls.setup {
     nls.builtins.formatting.prettier.with {
       command = "node_modules/.bin/prettier",
     },
+    --[[ nls.builtins.formatting.prettier, ]]
     nls.builtins.formatting.stylua,
     nls.builtins.formatting.json_tool,
     nls.builtins.formatting.eslint_d,

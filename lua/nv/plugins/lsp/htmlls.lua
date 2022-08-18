@@ -11,6 +11,7 @@ lspconfig.html.setup {
   end,
   on_attach = U.custom_attach,
   capabilities = caps,
+  init_options = { provideFormatter = false },
   settings = {
     css = {
       lint = {

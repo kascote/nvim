@@ -50,6 +50,15 @@ it('$1', () => {
 interface $1 {
   $2
 }]]),
+
+  ps("useState", [[const [$1, set$2] = useState($3);]]),
+  ps("expectt", [[expect($1).toBeTruthy();]]),
+  ps("expectf", [[expect($1).toBeFalsy();]]),
+
+  ps("gtx", [[screen.getByText('$1')]]),
+  ps("gts", [[screen.getByTextId('$1')]]),
+  ps("glb", [[screen.getByLabelText('$1')]]),
+  ps("gpc", [[screen.getByPlaceholderText('$1')]]),
 }
 
 ls.add_snippets("javascript", js_snippets)

@@ -63,11 +63,23 @@ vim.api.nvim_create_autocmd(
 
 -- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+local winbar = vim.api.nvim_create_augroup("au_winbar", { clear = true })
 vim.api.nvim_create_autocmd(
-  { "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" }, 
+  { "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
   {
+    group = winbar,
     callback = function()
       require("nv.plugins.winbar").get_winbar()
     end,
   }
 )
+
+-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+--[[ local colorsch = vim.api.nvim_create_augroup("au_colorscheme", { clear = true }) ]]
+--[[ vim.api.nvim_create_autocmd("ColorScheme", { ]]
+--[[   group = colorsch, ]]
+--[[   callback = function() ]]
+--[[     vim.api.nvim_set_hl(0, "htmlTSURI", {}) ]]
+--[[   end, ]]
+--[[ }) ]]

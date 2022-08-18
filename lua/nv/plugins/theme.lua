@@ -43,6 +43,8 @@ hl(0, "CursorLine", { bg = '#12121C'}) ]]
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 vim.cmd "colorscheme catppuccin"
 
+local mocha = require("catppuccin.palettes").get_palette "mocha"
+
 hl(0, "Normal", { bg = "#11111B" }) -- 07070a
 hl(0, "CursorLine", { bg = "#11111B" })
 hl(0, "SignColumn", { bg = "#11111B" })
@@ -95,3 +97,9 @@ hl(0, "StatusLineFilenameHi", { fg = "#f9e2af" })
 hl(0, "LspReferenceRead", { bg = "#464646" })
 hl(0, "LspReferenceText", { bg = "#164646" })
 hl(0, "LspReferenceWrite", { bg = "#964646" })
+
+hl(0, "htmlTSString", { fg = mocha.blue, underline=false })
+hl(0, "htmlTSText", { fg = mocha.yellow, underline=false })
+vim.defer_fn(function()
+   vim.api.nvim_set_hl(0, "htmlTSURI", {}) -- remove htmlTSURI => TSURI link 
+end, 100)
