@@ -3,9 +3,6 @@ if not status_ok then
   return
 end
 
-local icons = require "nv.icons"
-local space = ""
-
 navic.setup {
 
   disable_icons = false, -- Setting it to true will disable all icons
@@ -46,7 +43,6 @@ navic.setup {
   depth_limit = 0,
   -- indicator used when context is hits depth limit
   depth_limit_indicator = "..",
-  text_hl = "LineNr",
 }
 
 --[[ navic.setup {
