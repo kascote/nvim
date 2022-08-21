@@ -1,7 +1,8 @@
 local fn = vim.fn
+local localPackages = '~/.config/nvim'
 
-local vim_cache = fn.stdpath "config"
-local install_path = vim_cache .. "/pack/packer/opt/packer.nvim"
+local vim_cache = fn.stdpath "data" -- ~/.local/share/nvim
+local install_path = vim_cache .. "/site/pack/packer/opt/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
@@ -18,12 +19,20 @@ vim.cmd [[
 local packer = require "packer"
 
 packer.startup(function(use)
+  use { 'wbthomason/packer.nvim', opt = true }
   -- https://github.com/neovim/neovim/issues/12587
   use {
     "antoinemadec/FixCursorHold.nvim",
     run = function()
       vim.g.curshold_updatime = 1000
     end,
+  }
+
+  --=[ local ]=--
+  use { localPackages .. "/lua/vnav",
+    config = function()
+      require('vnav')
+    end
   }
 
   use { "nvim-lua/popup.nvim" }
