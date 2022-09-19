@@ -59,6 +59,13 @@ interface $1 {
   ps("gts", [[screen.getByTextId('$1')]]),
   ps("glb", [[screen.getByLabelText('$1')]]),
   ps("gpc", [[screen.getByPlaceholderText('$1')]]),
+
+  ps("sleep", [[
+function sleep(timeout: number) {
+  return new Promise((resolve) => setTimeout(resolve, timeout));
+}
+]])
+
 }
 
 ls.add_snippets("javascript", js_snippets)

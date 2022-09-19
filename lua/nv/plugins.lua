@@ -1,5 +1,5 @@
 local fn = vim.fn
-local localPackages = '~/.config/nvim'
+local localPackages = "~/.config/nvim"
 
 local vim_cache = fn.stdpath "data" -- ~/.local/share/nvim
 local install_path = vim_cache .. "/site/pack/packer/opt/packer.nvim"
@@ -19,7 +19,7 @@ vim.cmd [[
 local packer = require "packer"
 
 packer.startup(function(use)
-  use { 'wbthomason/packer.nvim', opt = true }
+  use { "wbthomason/packer.nvim", opt = true }
   -- https://github.com/neovim/neovim/issues/12587
   use {
     "antoinemadec/FixCursorHold.nvim",
@@ -29,10 +29,11 @@ packer.startup(function(use)
   }
 
   --=[ local ]=--
-  use { localPackages .. "/lua/vnav",
+  use {
+    localPackages .. "/lua/vnav",
     config = function()
-      require('vnav')
-    end
+      require "vnav"
+    end,
   }
 
   use { "nvim-lua/popup.nvim" }
@@ -162,13 +163,18 @@ packer.startup(function(use)
           nvimtree = { enabled = false },
         },
         compile = {
-          enabled = true,
+          enabled = false,
           path = vim.fn.stdpath "cache" .. "/catppuccin",
         },
         color_overrides = {
           mocha = {
             base = "#07070a",
           },
+        },
+        dim_inactive = {
+          enabled = true,
+          shade = "dark",
+          percentage = 0.05,
         },
       }
     end,
