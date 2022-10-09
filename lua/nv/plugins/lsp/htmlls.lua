@@ -12,7 +12,19 @@ lspconfig.html.setup {
   on_attach = U.custom_attach,
   capabilities = caps,
   init_options = { provideFormatter = false },
+  flags = { debounce_text_changes = 150 },
   settings = {
+    html = {
+      format = {
+        templating = true,
+        wrapLineLength = 120,
+        wrapAttributes = "auto",
+      },
+      hover = {
+        documentation = true,
+        references = true,
+      },
+    },
     css = {
       lint = {
         validProperties = {},

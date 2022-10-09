@@ -23,9 +23,9 @@ nls.setup {
   debounce = 500,
   save_after_format = false,
   sources = {
-    nls.builtins.formatting.prettier.with {
-      command = "node_modules/.bin/prettier",
-    },
+    --[[ nls.builtins.formatting.prettier.with { ]]
+    --[[   command = "node_modules/.bin/prettier", ]]
+    --[[ }, ]]
     --[[ nls.builtins.formatting.prettier, ]]
     nls.builtins.formatting.stylua,
     nls.builtins.formatting.json_tool,

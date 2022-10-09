@@ -45,8 +45,6 @@ require "nv.plugins.lsp.jsonls"
 -- ###########################################################################
 --[[
 -- some interesting ideas for lsp config
-  https://github.com/ssoriche/dotfiles/blob/neovim_lsp/neovim/lua/lsp/init.lua
-
   https://github.com/disrupted/dotfiles/blob/master/.config/nvim/lua/conf/lsp.lua
 
   https://github.com/MagicDuck/dotfiles

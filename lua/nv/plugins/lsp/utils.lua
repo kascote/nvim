@@ -51,7 +51,6 @@ function M.set_keymap(bufnr)
       q = { "<cmd>lua vim.diagnostic.open_float()<cr>", "show Diagnostics on current line" },
       n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Goto Next Diagnostic" },
       p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Goto previous Diagnostic" },
-      -- a = { "<cmd>Telescope lsp_code_actions<cr>", "Show Code Actions" },
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Show Code Actions" }, --
       f = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 2000 })<cr>", "Format current file" },
       c = { "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", "Show Incoming calls" },
@@ -59,7 +58,7 @@ function M.set_keymap(bufnr)
       s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Show Signature Help" },
       wa = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", "Add Workspace folder" },
       wr = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", "Remove Workspace folder" },
-      wl = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", "Show workspace folders" },
+      wl = { "<cmd>lua P(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", "Show workspace folders" },
       ws = { '<cmd>lua R("nv.plugins.telescope").lsp_workspace_symbols()<cr>', "Show Workspace Symbols" },
       us = { '<cmd>lua R("nv.plugins.telescope").lsp_document_symbols()<cr>', "Show Document Symbols" },
       rr = {

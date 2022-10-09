@@ -11,4 +11,5 @@ lspconfig.cssls.setup {
   end,
   on_attach = U.custom_attach,
   capabilities = caps,
+  flags = { debounce_text_changes = 150 },
 }
