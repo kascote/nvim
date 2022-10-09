@@ -63,16 +63,16 @@ vim.api.nvim_create_autocmd(
 
 -- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local winbar = vim.api.nvim_create_augroup("au_winbar", { clear = true })
-vim.api.nvim_create_autocmd(
-  { "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
-  {
-    group = winbar,
-    callback = function()
-      require("nv.plugins.winbar").get_winbar()
-    end,
-  }
-)
+--[[ local winbar = vim.api.nvim_create_augroup("au_winbar", { clear = true }) ]]
+--[[ vim.api.nvim_create_autocmd( ]]
+--[[   { "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" }, ]]
+--[[   { ]]
+--[[     group = winbar, ]]
+--[[     callback = function() ]]
+--[[       require("nv.plugins.winbar").get_winbar() ]]
+--[[     end, ]]
+--[[   } ]]
+--[[ ) ]]
 
 -- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 

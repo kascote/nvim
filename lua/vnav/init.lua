@@ -5,7 +5,7 @@ local vimNavigate = function(direction)
 end
 
 local kittyNavigate = function(direction)
-  P('kitty @ kitten neighboring_window.py ' .. direction)
+  --[[ P('kitty @ kitten neighboring_window.py ' .. direction) ]]
   vim.fn.system('kitty @ kitten neighboring_window.py ' .. direction)
 end
 

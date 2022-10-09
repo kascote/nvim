@@ -42,13 +42,13 @@ local function countModified(bufName)
   return fn.count( -- cound the modified buffers
     fn.map( -- map to an array with the changed values
       -- fn.filter( -- remove the current buffer from the count
-        fn.filter( -- get only the listed buffers
-          fn.copy( -- get a copy of the buffer
-            fn.getbufinfo()
-          ),
-          "v:val.listed"
+      fn.filter( -- get only the listed buffers
+        fn.copy( -- get a copy of the buffer
+          fn.getbufinfo()
         ),
-        -- "v:val.name !~ '" .. bufName .. "'"
+        "v:val.listed"
+      ),
+      -- "v:val.name !~ '" .. bufName .. "'"
       -- ),
       "v:val.changed"
     ),
@@ -57,7 +57,6 @@ local function countModified(bufName)
 end
 
 local function formatBufferName(bname)
-
   if vim.tbl_contains(filetypeExclude, vim.bo.filetype) then
     return " %#StatusLineFilename#" .. vim.bo.filetype
   end
@@ -82,10 +81,10 @@ end
 local function filename()
   local bufName = api.nvim_buf_get_name(0)
   local modifiedBuffers = countModified(bufName)
-  local label = "%#DiffDelete#" .. " "
+  local label = "%#StatusLineDiffDel#" .. " "
 
   if modifiedBuffers then
-    label = "%#DiffDelete#" .. "●"
+    label = "%#StatusLineDiffDel#" .. "●"
   end
 
   --[[ local currentMod = " "
@@ -116,10 +115,11 @@ local function mydiff()
   end
 end
 
+local colors = require("tokyonight.colors").setup()
 local config = {
   options = {
-    -- theme = "tokyonight",
-    theme = "catppuccin",
+    theme = "tokyonight",
+    --[[ theme = "catppuccin", ]]
     -- section_separators = { "", "" },
     -- component_separators = { "", "" },
     section_separators = { left = "", right = "" },
@@ -133,7 +133,7 @@ local config = {
       {
         "diagnostics",
         sources = { "nvim_diagnostic" },
-        color = { bg = "#313244" },
+        color = { bg = colors.bg_dark },
       },
     },
     lualine_c = { mydiff },
@@ -151,9 +151,9 @@ local config = {
   },
   tabline = {
     lualine_a = {},
-    lualine_b = { { "branch", color = { bg = "#1e1e2e" } } },
+    lualine_b = { { "branch" } },
     lualine_c = { { middle, separator = "" }, { filename } },
-    lualine_x = { { "filetype", color = { fg = "#f2cdcd", gui = "italic" } } },
+    lualine_x = { { "filetype", color = { fg = "#f2cdcd", bg = colors.bg_dark, gui = "italic" } } },
     lualine_y = { { "encoding", color = { bg = "#1e1e2e" } } },
     lualine_z = {},
   },

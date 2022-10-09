@@ -1,6 +1,6 @@
 local wk = require "which-key"
 local vimLsp = vim.lsp
-local navic = require("nvim-navic")
+local navic = require "nvim-navic"
 
 local M = {}
 
@@ -24,6 +24,19 @@ M.diagnosticSigns = {
   Hint = M.diagIcons.hint,
   Information = M.diagIcons.Info,
 }
+
+--[[
+
+TODO: check this option to setup keymapping when LSP is attached to the buffer
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    vim.keymap.set({'n', 'v'}, '<a-CR>', vim.lsp.buf.code_action, { buffer = args.buf, silent = true })
+  end
+})
+
+
+--]]
 
 function M.set_keymap(bufnr)
   wk.register({

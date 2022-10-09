@@ -20,13 +20,6 @@ local packer = require "packer"
 
 packer.startup(function(use)
   use { "wbthomason/packer.nvim", opt = true }
-  -- https://github.com/neovim/neovim/issues/12587
-  use {
-    "antoinemadec/FixCursorHold.nvim",
-    run = function()
-      vim.g.curshold_updatime = 1000
-    end,
-  }
 
   --=[ local ]=--
   use {
@@ -78,14 +71,9 @@ packer.startup(function(use)
 
   use { "RRethy/nvim-treesitter-endwise" }
 
-  use {
-    "lewis6991/spellsitter.nvim",
-    config = function()
-      require("spellsitter").setup()
-    end,
-  }
-
   --=[ Lsp ]=--
+  use "folke/lua-dev.nvim"
+
   use {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
@@ -99,9 +87,6 @@ packer.startup(function(use)
     requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   }
 
-  use { "tjdevries/nlua.nvim" }
-
-  -- use { "jose-elias-alvarez/nvim-lsp-ts-utils" }
   use { "jose-elias-alvarez/typescript.nvim" }
 
   use {
@@ -143,7 +128,7 @@ packer.startup(function(use)
   use {
     "catppuccin/nvim",
     as = "catppuccin",
-    run = ":CatppuccinCompile",
+    --[[ run = ":CatppuccinCompile", ]]
     config = function()
       require("catppuccin").setup {
         integrations = {
@@ -312,27 +297,12 @@ packer.startup(function(use)
   }
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
-  --[[ use {
-    "b3nj5m1n/kommentary",
-    config = function()
-      require "nv.plugins.comments"
-    end,
-  } ]]
-
   use {
     "numToStr/Comment.nvim",
     config = function()
       require "nv.plugins.comments"
     end,
   }
-
-  --[[ vim.g.lf_map_keys = 0
-  use {
-    "ptzz/lf.vim",
-    requires = {
-      "voldikss/vim-floaterm",
-    },
-  } ]]
 
   use {
     "akinsho/toggleterm.nvim",
@@ -360,22 +330,30 @@ packer.startup(function(use)
     requires = { "plenary.nvim", "toggleterm.nvim" },
   }
 
-  --[[ use {
-    "vuki656/package-info.nvim",
-    requires = "MunifTanjim/nui.nvim",
+  use {
+    "nvim-neorg/neorg",
     config = function()
-      require("package-info").setup {}
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {},
+          ["core.norg.dirman"] = {
+            config = {
+              workspaces = {
+                work = "~/Documents/notes/work",
+                home = "~/Documents/notes/home",
+              },
+            },
+          },
+        },
+      }
     end,
-  } ]]
-
-  --[[ use {
-    "SmiteshP/nvim-gps",
-    config = function()
-      require "nv.plugins.gps"
-    end,
-  } ]]
+    requires = "nvim-lua/plenary.nvim",
+  }
 
   --[[ to review
+
+    https://github.com/folke/noice.nvim
+    https://github.com/theHamsta/nvim-semantic-tokens
 
     chaoren/vim-wordmotion
     alok/notational-fzf-vim
@@ -388,27 +366,17 @@ packer.startup(function(use)
     https://github.com/lukas-reineke/indent-blankline.nvim
     https://github.com/vhyrro/neorg
     https://github.com/ray-x/navigator.lua
-    https://github.com/numToStr/Comment.nvim
     https://github.com/AckslD/nvim-neoclip.lua
     https://github.com/folke/zen-mode.nvim
 
     https://github.com/ziontee113/syntax-tree-surfer
-    https://github.com/b0o/SchemaStore.nvim
-
-    https://github.com/SmiteshP/nvim-gps
-    https://github.com/SmiteshP/nvim-navic
 
     https://github.com/UserNobody14/tree-sitter-dart
-    https://github.com/hrsh7th/vscode-langservers-extracted
-
-    https://github.com/jose-elias-alvarez/typescript.nvim
 
     https://github.com/captainko/ckovim/blob/70d09e50320de74fb3f9b9314e2e9cf70d570f86/lua/cko/plugins/cmp.lua
 
     https://vale.sh/
     https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/
-
-    html cssls jsonls LSPs
 
     set foldmethod=expr
     foldexpr=nvim_treesitter#foldexpr()

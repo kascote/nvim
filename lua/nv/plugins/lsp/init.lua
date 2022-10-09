@@ -2,7 +2,10 @@ local status_ok, _ = pcall(require, "lspconfig")
 if not status_ok then
   return
 end
-local U = require('nv.plugins.lsp.utils')
+local U = require "nv.plugins.lsp.utils"
+
+--[[ IMPORTANT: make sure to setup lua-dev BEFORE lspconfig ]]
+require("lua-dev").setup {}
 
 local config = {
   virtual_text = false,

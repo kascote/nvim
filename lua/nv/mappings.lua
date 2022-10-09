@@ -153,8 +153,8 @@ wk.register({
     t = { '<cmd>lua R("nv.plugins.telescope").todo()<cr>', "ToDo" },
     l = { '<cmd>lua R("nv.plugins.telescope").grep_last_search()<cr>', "Last searches" },
     -- d = { '<cmd>lua R("nv.plugins.telescope").file_browser()<cr>', "File Browser" },
-    -- r = { '<cmd>lua R("nv.plugins.telescope").file_browser_relative()<CR>', "File Browser relative to current file" },
-    d = { "<cmd>LfWorkingDirectory<cr>", "File Browser" },
+    q = { '<cmd>lua R("nv.plugins.telescope").find_files_relative()<CR>', "File Browser relative to current file" },
+    --[[ d = { "<cmd>LfWorkingDirectory<cr>", "File Browser" }, ]]
     r = { "<cmd>Lf<cr>", "File Browser" },
   },
   f = {

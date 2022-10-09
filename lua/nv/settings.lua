@@ -124,6 +124,8 @@ G.belloff        = 'all'                  -- shut up!
 G.laststatus     = 3                      -- always show the status line (is set with LuaLine plugin)
 O.conceallevel   = 2
 O.concealcursor  = ''
+G.splitkeep      = 'cursor'               -- scroll behavior when split a window
+G.cmdheight      = 0                      -- set command line height
 
 --=[ Text Formatting/Layout ]=--
 O.formatoptions = 'crqnlMj'               -- See Help (complex) TODO

@@ -1,13 +1,13 @@
 local M = {}
 local themes = require "telescope.themes"
-local actions = require("telescope.actions")
+local actions = require "telescope.actions"
 
 require("telescope").setup {
   defaults = {
     prompt_prefix = "❯ ",
     selection_caret = "❯ ",
 
-    winblend = 10,
+    winblend = 0,
     selection_strategy = "reset",
     sorting_strategy = "ascending",
     scroll_strategy = "cycle",
@@ -21,7 +21,7 @@ require("telescope").setup {
       horizontal = {
         preview_width = function(_, cols, _)
           if cols > 200 then
-            return math.floor(cols * 0.4)
+            return math.floor(cols * 0.5)
           else
             return math.floor(cols * 0.6)
           end
@@ -41,13 +41,8 @@ require("telescope").setup {
     },
     mappings = {
       i = {
-        ["<C-h>"] = "which_key",
         ["<esc>"] = actions.close,
-        ["<C-f>"] = function(prompt_bufnr)
-          local orig_value = require("telescope.config").values.path_display
-          P(orig_value)
-          orig_value = { "shorten" }
-        end,
+        ["<C-h>"] = "which_key",
       },
     },
   },
@@ -73,18 +68,46 @@ require("telescope").setup {
 }
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "harpoon"
+require("telescope").load_extension "notify"
 
 function M.find_files()
-  local opts = {
-    mappings = {
-      n = {
-        ["ff"] = function(prompt_bufnr)
-          P('hola')
-          local action_state = require "telescope.actions.state"
-          local picker = action_state.get_current_picker(prompt_bufnr)
-          P(picker)
-        end,
-      },
+  local opts = themes.get_dropdown {
+    previewer = false,
+    shorthen_path = false,
+    path_display = { "truncate" },
+    layout_config = {
+      preview_cutoff = 1, -- Preview should always show (unless previewer = false)
+
+      width = function(_, max_columns, _)
+        return math.min(max_columns, 120)
+      end,
+
+      height = function(_, _, max_lines)
+        return math.min(max_lines, 20)
+      end,
+    },
+  }
+  require("telescope.builtin").find_files(opts)
+end
+
+function M.find_files_relative()
+  local basename = vim.fn.expand('%:h')
+  local opts = themes.get_dropdown {
+    prompt_title = "~ Relative Files ~",
+    previewer = false,
+    shorthen_path = false,
+    cwd = basename,
+    path_display = { "truncate" },
+    layout_config = {
+      preview_cutoff = 1, -- Preview should always show (unless previewer = false)
+
+      width = function(_, max_columns, _)
+        return math.min(max_columns, 120)
+      end,
+
+      height = function(_, _, max_lines)
+        return math.min(max_lines, 20)
+      end,
     },
   }
   require("telescope.builtin").find_files(opts)
@@ -94,6 +117,7 @@ function M.buffers()
   local opts = themes.get_dropdown {
     previewer = false,
     shorthen_path = false,
+    path_display = { "shorten" },
     layout_config = {
       prompt_position = "top",
     },
@@ -170,7 +194,9 @@ function M.grep_last_search(opts)
 end
 
 function M.live_grep()
-  require("telescope.builtin").live_grep()
+  require("telescope.builtin").live_grep {
+    glob_pattern = { "!package-lock.json", "!yarn.lock" },
+  }
 end
 
 function M.lsp_workspace_symbols()
