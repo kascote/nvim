@@ -5,7 +5,7 @@ end
 local U = require "nv.plugins.lsp.utils"
 
 --[[ IMPORTANT: make sure to setup lua-dev BEFORE lspconfig ]]
-require("lua-dev").setup {}
+require("neodev").setup {}
 
 local config = {
   virtual_text = false,

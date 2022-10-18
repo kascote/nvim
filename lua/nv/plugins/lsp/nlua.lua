@@ -39,12 +39,18 @@ lspconfig.sumneko_lua.setup {
       workspace = {
         library = {
           vim.api.nvim_get_runtime_file("", true),
-          require("lua-dev.sumneko").types(),
+          --[[ require("neodev.sumneko").types(), ]]
+          vimruntime = true, -- runtime path
+          types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
+          plugins = true, -- installed opt or start plugins in packpath
         },
         --[[ maxPreload = 1000, ]]
         --[[ preloadFileSize = 10000, ]]
       },
       telemetry = { enable = true },
+      completion = {
+        callSnippet = "Replace"
+      },
     },
   },
 }

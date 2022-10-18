@@ -29,28 +29,26 @@ packer.startup(function(use)
     end,
   }
 
-  use { "nvim-lua/popup.nvim" }
   use { "nvim-lua/plenary.nvim" }
   use { "dstein64/vim-startuptime", opt = true }
-  use { "junegunn/vim-easy-align" }
+  use { "junegunn/vim-easy-align", opt = true }
   use { "vim-scripts/LargeFile" }
-  -- use { "tpope/vim-endwise" }
   use { "tpope/vim-repeat" }
   use {
     "kylechui/nvim-surround",
     config = function()
       require("nvim-surround").setup()
     end,
-  } -- use { "tpope/vim-surround" }
+  }
   use { "tpope/vim-characterize" }
-  use { "wincent/loupe" }
-  -- use { "t9md/vim-quickhl" }
+  --[[ use { "wincent/loupe" } ]]
+  --[[ use { "t9md/vim-quickhl" } ]]
   use { "moll/vim-bbye" }
   use { "mbbill/undotree" }
   -- use { "junegunn/fzf.vim", opt = true }
 
-  use { "nanotee/luv-vimdocs" }
-  use { "milisims/nvim-luaref" }
+  --[[ use { "nanotee/luv-vimdocs" } ]]
+  --[[ use { "milisims/nvim-luaref" } ]]
   -- use { "machakann/vim-vimhelplint", opt = true }
   use "b0o/schemastore.nvim"
 
@@ -67,19 +65,23 @@ packer.startup(function(use)
     { "nvim-treesitter/nvim-treesitter-refactor", after = "nvim-treesitter" },
     { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
     { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
+    { "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" },
   }
 
-  use { "RRethy/nvim-treesitter-endwise" }
-
   --=[ Lsp ]=--
-  use "folke/lua-dev.nvim"
-
   use {
-    "neovim/nvim-lspconfig",
-    event = "BufReadPre",
-    config = function()
-      require "nv.plugins.lsp"
-    end,
+    {
+      "neovim/nvim-lspconfig",
+      event = "BufReadPre",
+    },
+    {
+      "folke/neodev.nvim",
+      after = "nvim-lspconfig",
+      config = function()
+        require "nv.plugins.lsp"
+      end,
+      --[[ is setup on lsp/init.lua ]]
+    },
   }
 
   use {
@@ -112,10 +114,9 @@ packer.startup(function(use)
     config = function()
       require "nv.plugins.markdown"
     end,
-  } -- tpope/vim-markdown
+  }
 
   use { "khaveesh/vim-fish-syntax" }
-  -- use { "tpope/vim-rails", opt = true }
 
   --=[ Themes ]=--
   use {
@@ -206,6 +207,18 @@ packer.startup(function(use)
 
   use { "ray-x/lsp_signature.nvim" }
 
+  --[[ use { ]]
+  --[[   "folke/noice.nvim", ]]
+  --[[   event = "VimEnter", ]]
+  --[[   config = function() ]]
+  --[[     require("noice").setup() ]]
+  --[[   end, ]]
+  --[[   requires = { ]]
+  --[[     "MunifTanjim/nui.nvim", ]]
+  --[[     "rcarriga/nvim-notify", ]]
+  --[[   }, ]]
+  --[[ } ]]
+
   use {
     "L3MON4D3/LuaSnip",
     config = function()
@@ -258,13 +271,6 @@ packer.startup(function(use)
   }
 
   use {
-    "ThePrimeagen/harpoon",
-    config = function()
-      require("harpoon").setup()
-    end,
-  }
-
-  use {
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup()
@@ -291,7 +297,6 @@ packer.startup(function(use)
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
-      "nvim-lua/popup.nvim",
       "nvim-lua/plenary.nvim",
     },
   }
@@ -302,6 +307,7 @@ packer.startup(function(use)
     config = function()
       require "nv.plugins.comments"
     end,
+    after = { "nvim-ts-context-commentstring" },
   }
 
   use {
@@ -380,6 +386,11 @@ packer.startup(function(use)
 
     set foldmethod=expr
     foldexpr=nvim_treesitter#foldexpr()
+
+
+    -- add an event vim-bbye when close the buffer, 
+    -- nice to update the tabbar when close the buffer
+    https://github.com/romgrk/barbar.nvim/pull/21/files
 
   --]]
 end)
