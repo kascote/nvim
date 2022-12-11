@@ -37,15 +37,16 @@ nls.setup {
     -- nls.builtins.formatting.dart_format,
     nls.builtins.diagnostics.shellcheck,
     nls.builtins.diagnostics.eslint_d,
+    nls.builtins.diagnostics.cspell,
     --[[ nls.builtins.diagnostics.eslint.with {
       command = "node_modules/.bin/eslint",
       -- args = projectSetup,
     }, ]]
     -- nls.builtins.diagnostics.markdownlint,
-    -- nls.builtins.diagnostics.selene,
     nls.builtins.diagnostics.fish,
     nls.builtins.code_actions.gitsigns,
     nls.builtins.code_actions.eslint_d,
+    nls.builtins.code_actions.cspell,
   },
   debug = false,
   log = {

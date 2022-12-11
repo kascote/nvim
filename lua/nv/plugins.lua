@@ -336,26 +336,6 @@ packer.startup(function(use)
     requires = { "plenary.nvim", "toggleterm.nvim" },
   }
 
-  use {
-    "nvim-neorg/neorg",
-    config = function()
-      require("neorg").setup {
-        load = {
-          ["core.defaults"] = {},
-          ["core.norg.dirman"] = {
-            config = {
-              workspaces = {
-                work = "~/Documents/notes/work",
-                home = "~/Documents/notes/home",
-              },
-            },
-          },
-        },
-      }
-    end,
-    requires = "nvim-lua/plenary.nvim",
-  }
-
   --[[ to review
 
     https://github.com/folke/noice.nvim
