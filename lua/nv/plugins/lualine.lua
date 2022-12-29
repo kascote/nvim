@@ -69,7 +69,7 @@ local function formatBufferName(bname)
     label = " %#StatusLineFilename#(empty) "
     labelRaw = " (empty) "
   else
-    label = " %#StatusLineFilename#" .. basePath .. "/" .. "%#StatusLineFilenameHi#" .. baseName .. " %*"
+    label = " %#StatusLineFilename#" .. basePath .. "/" .. "%#StatusLineFilenameHi#" .. baseName -- .. " %*"
     labelRaw = " " .. basePath .. "/" .. baseName .. " "
   end
 
@@ -115,10 +115,10 @@ local function mydiff()
   end
 end
 
-local colors = require("tokyonight.colors").setup()
+-- local colors = require("tokyonight.colors").setup()
 local config = {
   options = {
-    theme = "tokyonight",
+    -- theme = "tokyonight",
     --[[ theme = "catppuccin", ]]
     -- section_separators = { "", "" },
     -- component_separators = { "", "" },
@@ -133,7 +133,7 @@ local config = {
       {
         "diagnostics",
         sources = { "nvim_diagnostic" },
-        color = { bg = colors.bg_dark },
+        -- color = { bg = colors.bg_dark },
       },
     },
     lualine_c = { mydiff },
@@ -153,8 +153,7 @@ local config = {
     lualine_a = {},
     lualine_b = { { "branch" } },
     lualine_c = { { middle, separator = "" }, { filename } },
-    lualine_x = { { "filetype", color = { fg = "#f2cdcd", bg = colors.bg_dark, gui = "italic" } } },
-    lualine_y = { { "encoding", color = { bg = "#1e1e2e" } } },
+    lualine_y = { { "encoding" } },
     lualine_z = {},
   },
   extensions = { "chadtree", "quickfix" },
