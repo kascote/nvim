@@ -60,6 +60,7 @@ require("packer").startup(function(use)
     { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
     { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
     { "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" },
+    { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
   }
 
   --=[ Lsp ]=--
@@ -359,10 +360,7 @@ require("packer").startup(function(use)
     windwp/nvim-spectre
 
     https://github.com/tamago324/nlsp-settings.nvim
-    https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-    https://github.com/akinsho/flutter-tools.nvim
     https://github.com/lukas-reineke/indent-blankline.nvim
-    https://github.com/vhyrro/neorg
     https://github.com/ray-x/navigator.lua
     https://github.com/AckslD/nvim-neoclip.lua
     https://github.com/folke/zen-mode.nvim
@@ -375,9 +373,6 @@ require("packer").startup(function(use)
 
     https://vale.sh/
     https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/
-
-    set foldmethod=expr
-    foldexpr=nvim_treesitter#foldexpr()
 
 
     -- add an event vim-bbye when close the buffer, 

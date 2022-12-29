@@ -156,6 +156,7 @@ wk.register({
     q = { '<cmd>lua R("nv.plugins.telescope").find_files_relative()<CR>', "File Browser relative to current file" },
     --[[ d = { "<cmd>LfWorkingDirectory<cr>", "File Browser" }, ]]
     r = { "<cmd>Lf<cr>", "File Browser" },
+    o = { "<cmd>lua R('telescope.builtin').oldfiles()<cr>", "Find recently opened files" },
   },
   f = {
     name = "Fold",

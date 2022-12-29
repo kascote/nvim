@@ -8,17 +8,17 @@ local i = ls.insert_node
 -- local sn = ls.snippet_node
 
 ls.add_snippets("all", {
-  ps("exp", "-- testing"),
+  ps("exp", "-- testing", {}),
 })
 
 ls.add_snippets("dart", {
-  ps("prn", [[print('$1');]]),
-  ps("prnw", [[stderr.writeln('$1');]]),
-  ps("if", "if ($1) {\n  $2\n}"),
-  ps("while", "while ($1) {\n  $2\n}"),
-  ps("for", "for(var $1; $2 < $3; $4++) {\n $5\n}"),
-  ps("try", "try {\n  $1\n} catch (e) {\n\n} finally {\n}"),
-  ps("sleep", "sleep(Duration(seconds:$1));"),
+  ps("prn", [[print('$1');]], {}),
+  ps("prnw", [[stderr.writeln('$1');]], {}),
+  ps("if", "if ($1) {\n  $2\n}", {}),
+  ps("while", "while ($1) {\n  $2\n}", {}),
+  ps("for", "for(var $1; $2 < $3; $4++, {}) {\n $5\n}", {}),
+  ps("try", "try {\n  $1\n} catch (e) {\n\n} finally {\n}", {}),
+  ps("sleep", "sleep(Duration(seconds:$1));", {}),
 })
 
 local js_snippets = {
@@ -27,7 +27,8 @@ local js_snippets = {
     [[
 describe('$1', () => {
   $2
-});]]
+});]],
+    {}
   ),
 
   ps(
@@ -35,7 +36,8 @@ describe('$1', () => {
     [[
 it('$1', () => {
   $2
-});]]
+});]],
+    {}
   ),
 
   s(
@@ -46,26 +48,33 @@ it('$1', () => {
     })
   ),
 
-  ps("iface", [[
+  ps(
+    "iface",
+    [[
 interface $1 {
   $2
-}]]),
+}]],
+    {}
+  ),
 
-  ps("useState", [[const [$1, set$2] = useState($3);]]),
-  ps("expectt", [[expect($1).toBeTruthy();]]),
-  ps("expectf", [[expect($1).toBeFalsy();]]),
+  ps("useState", [[const [$1, set$2] = useState($3);]], {}),
+  ps("expectt", [[expect($1).toBeTruthy();]], {}),
+  ps("expectf", [[expect($1).toBeFalsy();]], {}),
 
-  ps("gtx", [[screen.getByText('$1')]]),
-  ps("gts", [[screen.getByTextId('$1')]]),
-  ps("glb", [[screen.getByLabelText('$1')]]),
-  ps("gpc", [[screen.getByPlaceholderText('$1')]]),
+  ps("gtx", [[screen.getByText('$1')]], {}),
+  ps("gts", [[screen.getByTextId('$1')]], {}),
+  ps("glb", [[screen.getByLabelText('$1')]], {}),
+  ps("gpc", [[screen.getByPlaceholderText('$1')]], {}),
 
-  ps("sleep", [[
+  ps(
+    "sleep",
+    [[
 function sleep(timeout: number) {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 }
-]])
-
+]],
+    {}
+  ),
 }
 
 ls.add_snippets("javascript", js_snippets)
