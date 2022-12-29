@@ -1,27 +1,24 @@
 --  require('nfx/nv/colors')
 require "nv.settings"
-require "nv.globals"
-require "nv.mappings"
 require "nv.plugins"
+
+-- if we are bootstraping, no need to continue
+if _G.is_bootstrap then
+  return
+end
+
+require "nv.mappings"
+require "nv.globals"
 require "nv.filetype"
 require "nv.autocmds"
 
 require "nv.plugins.snipets"
 
---[[  TODO
-
-  - RPL de una linea
-  - RPL de una seccion
-
---]]
--- vim.cmd('set nofixendofline')
--- vim.cmd('set noeol')
-
+require 'test'
 
 --[[
 
-view server capabilities of current file
-vim.lsp.get_active_clients()[1].server_capabilities
-
+  Neorg compile parsers
+  CC="/opt/homebrew/bin/gcc-12" nvim -c "Neorg sync-parsers"
 
 --]]

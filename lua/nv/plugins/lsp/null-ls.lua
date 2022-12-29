@@ -37,7 +37,13 @@ nls.setup {
     -- nls.builtins.formatting.dart_format,
     nls.builtins.diagnostics.shellcheck,
     nls.builtins.diagnostics.eslint_d,
-    nls.builtins.diagnostics.cspell,
+    nls.builtins.diagnostics.cspell.with {
+      diagnostics_postprocess = function(diagnostic)
+        if diagnostic.severity == vim.diagnostic.severity.ERROR then
+          diagnostic.severity = vim.diagnostic.severity.INFO
+        end
+      end,
+    },
     --[[ nls.builtins.diagnostics.eslint.with {
       command = "node_modules/.bin/eslint",
       -- args = projectSetup,
@@ -59,5 +65,5 @@ nls.setup {
     U.set_keymap(buff)
   end,
 
-  capabilities = U.capabilities()
+  capabilities = U.capabilities(),
 }

@@ -1,25 +1,17 @@
 local fn = vim.fn
-local localPackages = "~/.config/nvim"
-
+local localPackages = fn.stdpath "config"
+_G.is_bootstrap = false
 local vim_cache = fn.stdpath "data" -- ~/.local/share/nvim
-local install_path = vim_cache .. "/site/pack/packer/opt/packer.nvim"
+local install_path = vim_cache .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  vim.cmd("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
+  _G.is_bootstrap = true
+  vim.fn.system { "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
+  vim.cmd [[packadd packer.nvim]]
 end
 
-vim.cmd [[
-  packadd packer.nvim
-  augroup nfxPlugins
-    au!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]]
-
-local packer = require "packer"
-
-packer.startup(function(use)
-  use { "wbthomason/packer.nvim", opt = true }
+require("packer").startup(function(use)
+  use "wbthomason/packer.nvim"
 
   --=[ local ]=--
   use {
@@ -31,7 +23,7 @@ packer.startup(function(use)
 
   use { "nvim-lua/plenary.nvim" }
   use { "dstein64/vim-startuptime", opt = true }
-  use { "junegunn/vim-easy-align", opt = true }
+  use { "junegunn/vim-easy-align" }
   use { "vim-scripts/LargeFile" }
   use { "tpope/vim-repeat" }
   use {
@@ -56,7 +48,9 @@ packer.startup(function(use)
   use {
     {
       "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
+      run = function()
+        pcall(require("nvim-treesitter.install").update { with_sync = true })
+      end,
       config = function()
         require "nv.plugins.treesitter_setup"
       end,
@@ -80,7 +74,6 @@ packer.startup(function(use)
       config = function()
         require "nv.plugins.lsp"
       end,
-      --[[ is setup on lsp/init.lua ]]
     },
   }
 
@@ -119,58 +112,60 @@ packer.startup(function(use)
   use { "khaveesh/vim-fish-syntax" }
 
   --=[ Themes ]=--
-  use {
-    "folke/tokyonight.nvim",
-    config = function()
-      require "nv.plugins.theme"
-    end,
-  }
+  -- use {
+  --   "folke/tokyonight.nvim",
+  --   config = function()
+  --     require "nv.plugins.theme"
+  --   end,
+  -- }
 
-  use {
-    "catppuccin/nvim",
-    as = "catppuccin",
-    --[[ run = ":CatppuccinCompile", ]]
-    config = function()
-      require("catppuccin").setup {
-        integrations = {
-          lsp_trouble = true,
-          which_key = true,
-          navic = true,
-          telescope = true,
-          notify = true,
-          cmp = true,
-          markdown = true,
-          gitsigns = true,
-          treesitter = true,
-          telekasten = false,
-          beacon = false,
-          bufferline = false,
-          dashboard = false,
-          nvimtree = { enabled = false },
-        },
-        compile = {
-          enabled = false,
-          path = vim.fn.stdpath "cache" .. "/catppuccin",
-        },
-        color_overrides = {
-          mocha = {
-            base = "#07070a",
-          },
-        },
-        dim_inactive = {
-          enabled = true,
-          shade = "dark",
-          percentage = 0.05,
-        },
-      }
-    end,
-  }
+  -- use {
+  --   "catppuccin/nvim",
+  --   as = "catppuccin",
+  --   --[[ run = ":CatppuccinCompile", ]]
+  --   config = function()
+  --     require("catppuccin").setup {
+  --       integrations = {
+  --         lsp_trouble = true,
+  --         which_key = true,
+  --         navic = true,
+  --         telescope = true,
+  --         notify = true,
+  --         cmp = true,
+  --         markdown = true,
+  --         gitsigns = true,
+  --         treesitter = true,
+  --         telekasten = false,
+  --         beacon = false,
+  --         bufferline = false,
+  --         dashboard = false,
+  --         nvimtree = { enabled = false },
+  --       },
+  --       compile = {
+  --         enabled = false,
+  --         path = vim.fn.stdpath "cache" .. "/catppuccin",
+  --       },
+  --       color_overrides = {
+  --         mocha = {
+  --           base = "#07070a",
+  --         },
+  --       },
+  --       dim_inactive = {
+  --         enabled = true,
+  --         shade = "dark",
+  --         percentage = 0.05,
+  --       },
+  --     }
+  --   end,
+  -- }
+
+  use "rktjmp/lush.nvim"
 
   --=[ UI ]=--
   use {
     "stevearc/dressing.nvim",
     config = function()
-      require("dressing").setup()
+      require "nv.plugins.dressing"
     end,
   }
 
@@ -336,10 +331,27 @@ packer.startup(function(use)
     requires = { "plenary.nvim", "toggleterm.nvim" },
   }
 
+  use {
+    "nvim-neorg/neorg",
+    run = ":Neorg sync-parsers",
+    config = function()
+      require "nv.plugins.neorg"
+    end,
+    requires = "nvim-lua/plenary.nvim",
+    after = "nvim-treesitter",
+  }
+
   --[[ to review
 
+    https://github.com/akinsho/flutter-tools.nvim
+    https://github.com/rhysd/conflict-marker.vim
+    https://github.com/sindrets/diffview.nvim
+    https://github.com/kevinhwang91/nvim-bqf
+    https://github.com/nvchad/nvim-colorizer.lua
+    https://github.com/MunifTanjim/exrc.nvim
     https://github.com/folke/noice.nvim
     https://github.com/theHamsta/nvim-semantic-tokens
+    https://github.com/rafamadriz/friendly-snippets/
 
     chaoren/vim-wordmotion
     alok/notational-fzf-vim
@@ -373,4 +385,26 @@ packer.startup(function(use)
     https://github.com/romgrk/barbar.nvim/pull/21/files
 
   --]]
+
+  if _G.is_bootstrap then
+    require("packer").sync()
+  end
 end)
+
+if _G.is_bootstrap then
+  print "=================================="
+  print "    Plugins are being installed"
+  print "    Wait until Packer completes,"
+  print "       then restart nvim"
+  print "=================================="
+  return
+end
+
+-- Automatically source and re-compile packer whenever you save this init.lua
+local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+  command = "source <afile> | silent! LspStop | silent! LspStart | PackerCompile",
+  group = packer_group,
+  pattern = localPackages .. "/lua/nv/plugins.lua",
+  -- pattern = vim.fn.expand "$MYVIMRC",
+})
