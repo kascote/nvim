@@ -342,6 +342,7 @@ require("packer").startup(function(use)
 
   --[[ to review
 
+    https://github.com/folke/lazy.nvim
     https://github.com/phaazon/mind.nvim
     https://github.com/akinsho/flutter-tools.nvim
     https://github.com/rhysd/conflict-marker.vim
