@@ -160,8 +160,6 @@ require("packer").startup(function(use)
   --   end,
   -- }
 
-  use "rktjmp/lush.nvim"
-
   --=[ UI ]=--
   use {
     "stevearc/dressing.nvim",
@@ -344,6 +342,7 @@ require("packer").startup(function(use)
 
   --[[ to review
 
+    https://github.com/phaazon/mind.nvim
     https://github.com/akinsho/flutter-tools.nvim
     https://github.com/rhysd/conflict-marker.vim
     https://github.com/sindrets/diffview.nvim
