@@ -14,8 +14,11 @@ vim.g.loaded_2html_plugin      = 1
 vim.g.loaded_vimball           = 1
 vim.g.loaded_vimballPlugin     = 1
 vim.g.loaded_man               = 1
+vim.g.loaded_matchit           = 1
 
 vim.g.loaded_perl_provider     = 0
+
+vim.g.syntax_on                = 1
 
 --=[ General ]=--
 vim.g.mapleader               = u.termcodes('<Space>')
@@ -70,8 +73,8 @@ vim.opt_global.wildignore     = vim.opt_global.wildignore + '*.swp,*~,._*,*.bak'
 vim.opt_global.completeopt    = 'menuone,noinsert,noselect'       -- Set completeopt to have a better completion experience
 vim.opt_global.ruler          = false                  -- Always show current positions along the bottom
 vim.opt_global.cmdheight      = 2                      -- the command bar is 2 high
-vim.opt.number                = true                   -- turn on line numbers
-vim.opt.relativenumber        = true                  -- turn relative numbers on"
+vim.opt.number                = false                   -- turn on line numbers
+vim.opt.relativenumber        = false                  -- turn relative numbers on"
 vim.opt.numberwidth           = 4                      -- staring widh for numbers on gutter
 vim.opt_global.lazyredraw     = false                   -- do not redraw while running macros
 vim.opt_global.backspace      = 'indent,start,eol'     -- allow unrestricted backspacing in insert mode

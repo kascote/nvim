@@ -63,6 +63,25 @@ vim.api.nvim_create_autocmd(
 
 -- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+-- borrow from Folke
+-- close some filetypes with <q>
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "qf",
+    "help",
+    "man",
+    "notify",
+    "tsplayground",
+    "lspinfo",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+  end,
+})
+
+-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
 --[[ local winbar = vim.api.nvim_create_augroup("au_winbar", { clear = true }) ]]
 --[[ vim.api.nvim_create_autocmd( ]]
 --[[   { "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" }, ]]

@@ -43,7 +43,7 @@ wk.register({
   ["<C-k>"] = { "<cmd>VNavUp<cr>", "Move to one pane up" },
   ["<C-l>"] = { "<cmd>VNavRight<cr>", "Move to one pane rigth" },
   ["gV"] = { "`[v`]", "Visually select the text that was last edited/pasted" },
-  ["<C-p>"] = { '<cmd>lua R("nv.plugins.telescope").find_files()<cr>', "Open Telescope to select files" },
+  ["<C-p>"] = { '<cmd>lua R("nv.telescope_utils").find_files()<cr>', "Open Telescope to select files" },
   ["z="] = { "<cmd>Telescope spell_suggest<cr>", "Suggest spell word under cursor" },
 }, {
   mode = "n", -- NORMAL mode
@@ -129,8 +129,8 @@ wk.register({
   ["9"] = { '<cmd>lua require"nv.utils".cycle_line_numbers()<cr>', "Cycle between line numbers" },
   ["i"] = { '<cmd>lua require"nv.utils".adjust_file_indent()<CR>', "Adjust indent lines" },
   ["<cr>"] = { "<cmd>noh<cr>", "Clear search hightlight" },
-  ["x"] = { '<cmd>lua R("nv.plugins.telescope").buffers()<cr>', "List buffers" },
-  ["a"] = { '<cmd>lua R("nv.plugins.telescope").live_grep()<cr>', "Live grep" },
+  ["x"] = { '<cmd>lua R("nv.telescope_utils").buffers()<cr>', "List buffers" },
+  ["a"] = { '<cmd>lua R("nv.telescope_utils").live_grep()<cr>', "Live grep" },
   ["<leader>"] = { "<cmd>b#<cr>", "Switch to last used buffer" },
   h = {
     h = { '<cmd>exec "vertical resize " . ((&columns/4)*3)<CR>', "Resize current pane to 3/4" },
@@ -147,13 +147,13 @@ wk.register({
   },
   t = {
     name = "Telescope",
-    g = { '<cmd>lua R("nv.plugins.telescope").git_files()<cr>', "Git files" },
-    s = { '<cmd>lua R("nv.plugins.telescope").git_status()<cr>', "Git files modified" },
-    h = { '<cmd>lua R("nv.plugins.telescope").help_tags()<cr>', "Help tags" },
-    t = { '<cmd>lua R("nv.plugins.telescope").todo()<cr>', "ToDo" },
-    l = { '<cmd>lua R("nv.plugins.telescope").grep_last_search()<cr>', "Last searches" },
-    -- d = { '<cmd>lua R("nv.plugins.telescope").file_browser()<cr>', "File Browser" },
-    q = { '<cmd>lua R("nv.plugins.telescope").find_files_relative()<CR>', "File Browser relative to current file" },
+    g = { '<cmd>lua R("nv.telescope_utils").git_files()<cr>', "Git files" },
+    s = { '<cmd>lua R("nv.telescope_utils").git_status()<cr>', "Git files modified" },
+    h = { '<cmd>lua R("nv.telescope_utils").help_tags()<cr>', "Help tags" },
+    t = { '<cmd>lua R("nv.telescope_utils").todo()<cr>', "ToDo" },
+    l = { '<cmd>lua R("nv.telescope_utils").grep_last_search()<cr>', "Last searches" },
+    -- d = { '<cmd>lua R("nv.telescope_utils").file_browser()<cr>', "File Browser" },
+    q = { '<cmd>lua R("nv.telescope_utils").find_files_relative()<CR>', "File Browser relative to current file" },
     --[[ d = { "<cmd>LfWorkingDirectory<cr>", "File Browser" }, ]]
     r = { "<cmd>Lf<cr>", "File Browser" },
     o = { "<cmd>lua R('telescope.builtin').oldfiles()<cr>", "Find recently opened files" },
@@ -208,7 +208,7 @@ wk.register({
     q = { "<cmd>TroubleToggle quickfix<cr>", "on QuickFix" },
     l = { "<cmd>TroubleToggle loclist<cr>", "on LockList" },
     r = { "<cmd>TroubleToggle lsp_references<cr>", "on LspReference" },
-    n = { '<cmd>lua R("nv.plugins.telescope").edit_neovim()<cr>', "Edit Neovim files" },
+    n = { '<cmd>lua R("nv.telescope_utils").edit_neovim()<cr>', "Edit Neovim files" },
   },
 }, {
   mode = "n", -- NORMAL mode

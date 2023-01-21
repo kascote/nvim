@@ -12,8 +12,8 @@ local M = {}
 
 local function hex_to_rgb(hex)
   return tonumber(string.sub(hex, 1, 1), 16) * 16 + tonumber(string.sub(hex, 2, 2), 16),
-    tonumber(string.sub(hex, 3, 3), 16) * 16 + tonumber(string.sub(hex, 4, 4), 16),
-    tonumber(string.sub(hex, 5, 5), 16) * 16 + tonumber(string.sub(hex, 6, 6), 16)
+      tonumber(string.sub(hex, 3, 3), 16) * 16 + tonumber(string.sub(hex, 4, 4), 16),
+      tonumber(string.sub(hex, 5, 5), 16) * 16 + tonumber(string.sub(hex, 6, 6), 16)
 end
 
 local function rgb_to_hex(r, g, b)
@@ -107,7 +107,7 @@ function M.setup(colors, config)
   end
   vim.cmd "set termguicolors"
 
-  M.colors = colors or M.colorschemes[vim.env.BASE16_THEME] or M.colorschemes["schemer-dark"]
+  M.colors = colors or M.colorschemes[vim.env.BASE16_THEME] or M.colorschemes["noir"]
   local hi = M.highlight
 
   -- Vim editor colors
@@ -186,7 +186,7 @@ function M.setup(colors, config)
   hi.Debug = { guifg = M.colors.red, guibg = nil, gui = nil, guisp = nil }
   hi.Define = { guifg = M.colors.base05, guibg = nil, gui = "none", guisp = nil }
   hi.Delimiter = { guifg = M.colors.base05, guibg = nil, gui = nil, guisp = nil }
-  hi.Error = { guifg = M.colors.base00, guibg = M.colors.red, gui = nil, guisp = nil }
+  hi.Error = { guifg = M.colors.white, guibg = M.colors.base00, gui = nil, guisp = nil }
   hi.Exception = { guifg = M.colors.red, guibg = nil, gui = nil, guisp = nil }
   hi.Float = { guifg = M.colors.base05, guibg = nil, gui = nil, guisp = nil }
   hi.Function = { guifg = M.colors.base05, guibg = nil, gui = nil, guisp = nil }
@@ -210,6 +210,25 @@ function M.setup(colors, config)
   hi.Type = { guifg = M.colors.base05, guibg = nil, gui = "none", guisp = nil }
   hi.Typedef = { guifg = M.colors.base05, guibg = nil, gui = nil, guisp = nil }
   hi.Underlined = { guifg = M.colors.red, guibg = nil, gui = nil, guisp = nil }
+
+  hi.qfLineNr = { guifg = M.colors.base01 }
+  hi.qfFileName = { guifg = M.colors.base09 }
+
+  hi.htmlH1 = { guifg = M.colors.cyan }
+  hi.htmlH2 = { guifg = M.colors.magenta }
+
+  hi.mkdHeading = { guifg = M.colors.base0A, guibg = nil, gui = "bold", guisp = nil }
+  hi.mkdCode = { guifg = M.colors.base05, guibg = M.colors.base01 }
+  hi.mkdCodeDelimiter = { guifg = M.colors.base05, guibg = M.colors.base01 }
+  hi.mkdCodeStart = { guifg = M.colors.cyan, gui = "bold" }
+  hi.mkdCodeEnd = { guifg = M.colors.cyan, gui = "bold" }
+  hi.mkdLink = { guifg = M.colors.base0A, gui = "underline" }
+  hi.markdownHeadingDelimiter = { guifg = M.colors.orange }
+  hi.markdownCode = { guifg = M.colors.base0A }
+  hi.markdownCodeBlock = { guifg = M.colors.base05 }
+  hi.markdownH1 = { guifg = M.colors.magenta }
+  hi.markdownH2 = { guifg = M.colors.cyan }
+  hi.markdownLinkText = { guifg = M.colors.blue, gui = "underline" }
 
   -- Diff highlighting
   hi.DiffAdd = { guifg = M.colors.green, guibg = M.colors.base00, gui = nil, guisp = nil }
@@ -290,7 +309,7 @@ function M.setup(colors, config)
   hi.TSAttribute = { guifg = M.colors.base04, guibg = nil, gui = "none", guisp = nil }
   hi.TSBoolean = { guifg = M.colors.base09, guibg = nil, gui = "none", guisp = nil }
   hi.TSCharacter = { guifg = M.colors.base05, guibg = nil, gui = "none", guisp = nil }
-  hi.TSComment = { guifg = M.colors.base03, guibg = nil, gui = "italic", guisp = nil }
+  hi.TSComment = { guifg = M.colors.base03 }
   hi.TSConstructor = { guifg = M.colors.base05, guibg = nil, gui = "none", guisp = nil }
   hi.TSConditional = { guifg = M.colors.base05, guibg = nil, gui = "none", guisp = nil }
   hi.TSConstant = { guifg = M.colors.primary, guibg = nil, gui = "none", guisp = nil }
@@ -314,7 +333,7 @@ function M.setup(colors, config)
   hi.TSNumber = { guifg = M.colors.base09, guibg = nil, gui = "none", guisp = nil }
   hi.TSOperator = { guifg = M.colors.base03, guibg = nil, gui = "none", guisp = nil }
   hi.TSParameter = { guifg = M.colors.base05, guibg = nil, gui = "none", guisp = nil }
-  hi.TSParameterReference = { guifg = M.colors.base05, guibg = nil, gui = "none", guisp = nil }
+  hi.TSParameterReference = { guifg = M.colors.base0A, guibg = nil, gui = "none", guisp = nil }
   hi.TSProperty = { guifg = M.colors.base05, guibg = nil, gui = "none", guisp = nil }
   hi.TSPunctDelimiter = { guifg = M.colors.base03, guibg = nil, gui = "none", guisp = nil }
   hi.TSPunctBracket = { guifg = M.colors.base04, guibg = nil, gui = "none", guisp = nil }
@@ -332,8 +351,8 @@ function M.setup(colors, config)
   hi.TSUnderline = { guifg = M.colors.base01, guibg = nil, gui = "underline", guisp = nil }
   hi.TSStrike = { guifg = M.colors.base01, guibg = nil, gui = "strikethrough", guisp = nil }
   hi.TSTitle = { guifg = M.colors.base09, guibg = nil, gui = "none", guisp = nil }
-  hi.TSLiteral = { guifg = M.colors.base05, guibg = nil, gui = "none", guisp = nil }
-  hi.TSURI = { guifg = M.colors.base05, guibg = nil, gui = "underline", guisp = nil }
+  hi.TSLiteral = { guifg = M.colors.base05, guibg = M.colors.base00, gui = "none", guisp = nil }
+  hi.TSUri = { guifg = M.colors.cyan, guibg = nil, gui = "underline", guisp = nil }
   hi.TSType = { guifg = M.colors.base05, guibg = nil, gui = "none", guisp = nil }
   hi.TSTypeBuiltin = { guifg = M.colors.base05, guibg = nil, gui = "italic", guisp = nil }
   hi.TSVariable = { guifg = M.colors.base06, guibg = nil, gui = "none", guisp = nil }
@@ -579,8 +598,9 @@ setmetatable(M.colorschemes, {
 
 -- #16161D is called eigengrau and is kinda-ish the color your see when you
 -- close your eyes. It makes for a really good background.
-M.colorschemes["schemer-dark"] = {
-  base00 = "#16161D",
+M.colorschemes["noir"] = {
+  base00 = "#000000", -- #101010 -- #16161D",
+  base11 = "#1f1f1f",
   base01 = "#3e4451",
   base02 = "#2c313c",
   base03 = "#565c64",
@@ -588,32 +608,16 @@ M.colorschemes["schemer-dark"] = {
   base05 = "#abb2bf",
   base06 = "#9a9bb3",
   base07 = "#c5c8e6",
-  red = "#e06c75",
-  orange = "#d19a66",
-  yellow = "#e5c07b",
-  green = "#98c379",
-  cyan = "#56b6c2",
-  blue = "#0184bc",
-  magenta = "#c678dd",
-  brown = "#a06949",
-}
-M.colorschemes["schemer-medium"] = {
-  base00 = "#212226",
-  base01 = "#3e4451",
-  base02 = "#2c313c",
-  base03 = "#565c64",
-  base04 = "#6c7891",
-  base05 = "#abb2bf",
-  base06 = "#9a9bb3",
-  base07 = "#c5c8e6",
-  red = "#e06c75",
-  orange = "#d19a66",
-  yellow = "#e5c07b",
-  green = "#98c379",
-  cyan = "#56b6c2",
-  blue = "#0184bc",
-  magenta = "#c678dd",
-  brown = "#a06949",
+  base09 = "#e6e6e6",
+  base0A = "#f5f5f5",
+  red = "#ff0000", -- #e06c75",
+  orange = "#ff7800", -- #d19a66", -- "#ffa500"
+  yellow = "#fff700", -- #e5c07b", -- "#cccc00"
+  green = "#88ff00", -- #98c379",
+  cyan = "#00fff7", -- #56b6c2", -- #00e6e6
+  blue = "#0088ff", -- #0184bc",
+  magenta = "#f700ff", -- "#c678dd", -- "#74519b" "#20142d"
+  primary = "#ff0088", -- "#94DC32",
 }
 
 return M

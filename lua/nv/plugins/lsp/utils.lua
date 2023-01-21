@@ -1,6 +1,5 @@
 local wk = require "which-key"
 local vimLsp = vim.lsp
-local navic = require "nvim-navic"
 
 local M = {}
 
@@ -59,8 +58,8 @@ function M.set_keymap(bufnr)
       wa = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", "Add Workspace folder" },
       wr = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", "Remove Workspace folder" },
       wl = { "<cmd>lua P(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", "Show workspace folders" },
-      ws = { '<cmd>lua R("nv.plugins.telescope").lsp_workspace_symbols()<cr>', "Show Workspace Symbols" },
-      us = { '<cmd>lua R("nv.plugins.telescope").lsp_document_symbols()<cr>', "Show Document Symbols" },
+      ws = { '<cmd>lua R("nv.telescope_utils").lsp_workspace_symbols()<cr>', "Show Workspace Symbols" },
+      us = { '<cmd>lua R("nv.telescope_utils").lsp_document_symbols()<cr>', "Show Document Symbols" },
       rr = {
         "<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>",
         "Stop Clients and restart LSP",
@@ -104,7 +103,6 @@ function M.custom_attach(client, bufnr)
 
   -- do not show error when LSP do not support documentSymbols
   vim.g.navic_silence = true
-  navic.attach(client, bufnr)
 
   if client.server_capabilities.documentHighlightProvider then
     local doc_highlight = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
