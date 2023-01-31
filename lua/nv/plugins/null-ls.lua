@@ -49,7 +49,7 @@ function M.config()
     },
     on_attach = function(client, buff)
       U.custom_attach(client, buff)
-      U.set_keymap(buff)
+      U.set_keymap(client, buff)
     end,
 
     capabilities = U.capabilities(),

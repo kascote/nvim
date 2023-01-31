@@ -12,8 +12,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 require("lazy").setup("nv.plugins", {
+  install = { colorscheme = { "tokyonight-night" } },
   performance = {
     cache = {
       enabled = true,
@@ -34,4 +34,3 @@ require("lazy").setup("nv.plugins", {
     },
   },
 })
-

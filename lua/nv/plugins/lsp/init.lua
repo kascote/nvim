@@ -49,15 +49,14 @@ function M.config()
   U.setupDiagnosticSigns()
   U.setupGlobalHandlers()
 
-  require "nv.plugins.lsp.vimls"
-  require "nv.plugins.lsp.tsserver"
-  require "nv.plugins.lsp.nlua"
-  require "nv.plugins.lsp.dart"
-  -- require "nv.plugins.lsp.null-ls"
-  require "nv.plugins.lsp.pyright"
-  require "nv.plugins.lsp.cssls"
-  require "nv.plugins.lsp.htmlls"
-  require "nv.plugins.lsp.jsonls"
+  require("nv.plugins.lsp.servers.cssls").setup()
+  require("nv.plugins.lsp.servers.dart").setup()
+  require("nv.plugins.lsp.servers.htmlls").setup()
+  require("nv.plugins.lsp.servers.jsonls").setup()
+  require("nv.plugins.lsp.servers.nlua").setup()
+  require("nv.plugins.lsp.servers.pyright").setup()
+  require("nv.plugins.lsp.servers.tsserver").setup()
+  require("nv.plugins.lsp.servers.vimls").setup()
 end
 
 return M

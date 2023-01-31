@@ -29,22 +29,8 @@ wk.setup {
 
 --[[ NORMAL MODE ]]
 wk.register({
-  ["<Up>"] = { "<cwd>cprevious<cr>", "Previous quick fix entry" },
-  ["<Down>"] = { "<cwd>cnext<cr>", "Next quick fix entry" },
-  ["<Left>"] = { "<cwd>cpfile<cr>", "Previous quick fix file entry" },
-  ["<Right>"] = { "<cwd>cnfile<cr>", "Next quick fix file entry" },
-  ["<C-Up>"] = { "<cwd>lprevious<cr>", "Previous list fix entry" },
-  ["<C-Down>"] = { "<cwd>lnext<cr>", "Next list fix entry" },
-  ["<C-Left>"] = { "<cwd>lpfile<cr>", "Previous list fix file entry" },
-  ["<C-Right>"] = { "<cwd>lnfile<cr>", "Next list fix file entry" },
   ["<TAB>"] = { "za", "Toggle fold at current position" },
-  ["<C-h>"] = { "<cmd>VNavLeft<cr>", "Move to one pane left" },
-  ["<C-j>"] = { "<cmd>VNavDown<cr>", "Move to one pane down" },
-  ["<C-k>"] = { "<cmd>VNavUp<cr>", "Move to one pane up" },
-  ["<C-l>"] = { "<cmd>VNavRight<cr>", "Move to one pane rigth" },
   ["gV"] = { "`[v`]", "Visually select the text that was last edited/pasted" },
-  ["<C-p>"] = { '<cmd>lua R("nv.telescope_utils").find_files()<cr>', "Open Telescope to select files" },
-  ["z="] = { "<cmd>Telescope spell_suggest<cr>", "Suggest spell word under cursor" },
 }, {
   mode = "n", -- NORMAL mode
   prefix = "",
@@ -65,7 +51,6 @@ wk.register({
   nowait = true, -- use `nowait` when creating keymaps
 })
 
--- ["<C-j>"] = { "<C-o>J", "Join lines in insert mode" },
 -- [[ INSERT MODE ]]
 wk.register({
   ["<C-u>"] = { "<C-k>", "Remap digraphs" },
@@ -89,78 +74,30 @@ wk.register({
   },
 }, {
   mode = "i", -- NORMAL mode
-  -- prefix = "",
-  -- buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  -- silent = true, -- use `silent` when creating keymaps
-  -- noremap = true, -- use `noremap` when creating keymaps
-  -- nowait = true, -- use `nowait` when creating keymaps
-})
-
--- wk.register({
---   ["<C-k>"] = { function() _G.nfx.snip_jump_next() end, 'Expand or Jump Snipets'},
---   ["<C-j>"] = { function() _G.nfx.snip_jump_previous() end, "Join lines in insert mode" },
--- }, {
---   mode = "s",
---   silent = true, -- use `silent` when creating keymaps
--- })
-
---[[ VISUAL MODE ]]
-wk.register({
-  ["<Enter>"] = { "<cmd>EasyAlign<cr>", "Align plugin" },
-  g = {
-    y = { '<cmd>lua require"gitlinker".get_buf_range_url("v")<cr>', "Github url to current range" },
-  },
-}, {
-  mode = "v", -- VISUAL mode
-  prefix = "",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
 })
 
 --[[ LEADER ]]
 wk.register({
-  ["p"] = { "+p", "Paste Special" },
-  ["P"] = { "+P", "Paste Special" },
   ["1"] = { "<cmd>set cursorline!<cr>", "Toggle cursor line" },
   ["2"] = { "<cmd>set cursorcolumn!<cr>", "Toggle column line" },
   ["8"] = { "<cmd>set invlist<cr>", "Toggle special chars" },
   ["9"] = { '<cmd>lua require"nv.utils".cycle_line_numbers()<cr>', "Cycle between line numbers" },
   ["i"] = { '<cmd>lua require"nv.utils".adjust_file_indent()<CR>', "Adjust indent lines" },
   ["<cr>"] = { "<cmd>noh<cr>", "Clear search hightlight" },
-  ["x"] = { '<cmd>lua R("nv.telescope_utils").buffers()<cr>', "List buffers" },
-  ["a"] = { '<cmd>lua R("nv.telescope_utils").live_grep()<cr>', "Live grep" },
   ["<leader>"] = { "<cmd>b#<cr>", "Switch to last used buffer" },
   h = {
     h = { '<cmd>exec "vertical resize " . ((&columns/4)*3)<CR>', "Resize current pane to 3/4" },
-    a = { '<cmd>lua require("harpoon.mark").add_file()<CR>', "Harpoon mark file" },
-    l = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>', "Toggle Harpoon quick menu" },
-    n = { '<cmd>lua require("harpoon.ui").nav_next()<CR>', "Next Harpoon mark" },
-    p = { '<cmd>lua require("harpoon.ui").nav_prev()<CR>', "Previous Harpoon mark" },
   },
-  ["w"] = { "<cmd>Bdelete<cr>", "Close current buffer without close pane" },
   s = {
     name = "Snippets",
     e = { "<cmd>e ~/.config/nvim/lua/nv/plugins/snipets.lua<cr>", "Edit snippets" },
     r = { "<cmd>source ~/.config/nvim/lua/nv/plugins/snipets.lua<cr>", "Reload snippets" },
   },
-  t = {
-    name = "Telescope",
-    g = { '<cmd>lua R("nv.telescope_utils").git_files()<cr>', "Git files" },
-    s = { '<cmd>lua R("nv.telescope_utils").git_status()<cr>', "Git files modified" },
-    h = { '<cmd>lua R("nv.telescope_utils").help_tags()<cr>', "Help tags" },
-    t = { '<cmd>lua R("nv.telescope_utils").todo()<cr>', "ToDo" },
-    l = { '<cmd>lua R("nv.telescope_utils").grep_last_search()<cr>', "Last searches" },
-    -- d = { '<cmd>lua R("nv.telescope_utils").file_browser()<cr>', "File Browser" },
-    q = { '<cmd>lua R("nv.telescope_utils").find_files_relative()<CR>', "File Browser relative to current file" },
-    --[[ d = { "<cmd>LfWorkingDirectory<cr>", "File Browser" }, ]]
-    r = { "<cmd>Lf<cr>", "File Browser" },
-    o = { "<cmd>lua R('telescope.builtin').oldfiles()<cr>", "Find recently opened files" },
-  },
+  g = { name = "Git" },
+  t = { name = "Telescope" },
+  N = { "<cmd>messages<cr>", "Show messages" },
   f = {
     name = "Fold",
-    -- f = { 'toggle fold', 'Toggle folds at level 0?'}, -- TODO: make function to handle toggle
     ["0"] = { "<cmd>lua vim.wo.foldlevel=0<cr>", "fold at level 0" },
     ["1"] = { "<cmd>lua vim.wo.foldlevel=1<cr>", "fold at level 1" },
     ["2"] = { "<cmd>lua vim.wo.foldlevel=2<cr>", "fold at level 2" },
@@ -172,21 +109,13 @@ wk.register({
     ["8"] = { "<cmd>lua vim.wo.foldlevel=8<cr>", "fold at level 8" },
     ["9"] = { "<cmd>lua vim.wo.foldlevel=9<cr>", "fold at level 9" },
   },
-  g = {
-    name = "Git",
-    n = { '<cmd>lua require"gitsigns".next_hunk()<cr>', "Jump to next Hunk" },
-    p = { '<cmd>lua require"gitsigns".prev_hunk()<cr>', "Jump to previous Hunk" },
-    v = { '<cmd>lua require"gitsigns".preview_hunk()<cr>', "Preview Hunk" },
-    a = { '<cmd>lua require"gitsigns".stage_hunk()<cr>', "Stage Hunk" },
-    u = { '<cmd>lua require"gitsigns".reset_hunk()<cr>', "Reset Hunk" },
-    bl = { '<cmd>lua require"gitsigns".blame_line()<cr>', "Blame Line" },
-    m = { "<cmd>GitMessenger<cr>", "Toggle GitMessenger" },
-    y = { '<cmd>lua require"gitlinker".get_buf_range_url("n")<cr>', "Github url to current line" },
-    Y = { '<cmd>lua require"gitlinker".get_repo_url()<cr>', "Github url to repository" },
+  p = {
+    b = { '<cmd>lua R("nfx.custom_tele").tele_seiken({path="/apps/booking"})<cr>', "Booking App" },
+    c = { '<cmd>lua R("nfx.custom_tele").tele_seiken({path="/packages/components-ui"})<cr>', "Components UI" },
+    s = { '<cmd>lua R("nfx.custom_tele").tele_seiken({path="/packages/service-api"})<cr>', "Services API" },
+    t = { '<cmd>lua R("nfx.custom_tele").tele_seiken({path="/packages/tsconfig"})<cr>', "TS config" },
+    e = { '<cmd>lua R("nfx.custom_tele").tele_seiken({path="/packages/eslint-config-custom"})<cr>', "Eslint" },
   },
-  m = { '<cmd>call quickhl#manual#this("n")<cr>', "Mark word under cursor" },
-  M = { "<cmd>call quickhl#manual#reset()<cr>", "Clear all marks" },
-  N = { "<cmd>messages<cr>", "Show messages" },
 }, {
   mode = "n", -- NORMAL mode
   prefix = "<leader>",
@@ -198,18 +127,9 @@ wk.register({
 
 --[[ LOCAL LEADER ]]
 wk.register({
-  ["0"] = { '<cmd>lua R("nv.utils").syn_stack()<cr>', "Show color syntax stack" },
-  -- l = { "<cmd>nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>", "Reset syntax" },
-  t = { '<cmd>lua require("nv.utils").trim_white_spaces()<cr>', "Trim white spaces on file" },
+  ["0"] = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Show color syntax under cursor" },
+  t = { '<cmd>lua require("lazy.util").float_term()<cr>', "Float Terminal" },
   ["nn"] = { "<cmd>set wildignore-=*/node_modules/*<cr>", "Remove node_modules from wildignore" },
-  x = {
-    name = "Trouble",
-    x = { "<cmd>TroubleToggle<cr>", "Toggle Trouble" },
-    q = { "<cmd>TroubleToggle quickfix<cr>", "on QuickFix" },
-    l = { "<cmd>TroubleToggle loclist<cr>", "on LockList" },
-    r = { "<cmd>TroubleToggle lsp_references<cr>", "on LspReference" },
-    n = { '<cmd>lua R("nv.telescope_utils").edit_neovim()<cr>', "Edit Neovim files" },
-  },
 }, {
   mode = "n", -- NORMAL mode
   prefix = "<localleader>",
@@ -224,5 +144,3 @@ km.set({ "c" }, "<c-j>", "<Down>", { silent = false })
 km.set({ "c" }, "<c-k>", "<Up>", { silent = false })
 km.set({ "c" }, "<c-h>", "<Left>", { silent = false })
 km.set({ "c" }, "<c-l>", "<Right>", { silent = false })
-
-km.set({ "c" }, "<c-r><c-r>", "<Plug>(TelescopeFuzzyCommandSearch)", { noremap = false, nowait = true })

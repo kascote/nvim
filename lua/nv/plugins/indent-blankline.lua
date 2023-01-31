@@ -14,9 +14,6 @@ local M = {
       "Trouble",
     },
     char = "▏",
-    char_highlight_list = {
-      "IndentBlanklineIndent1",
-    },
     use_treesitter_scope = false,
     show_trailing_blankline_indent = false,
     show_current_context = true,

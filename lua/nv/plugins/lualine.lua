@@ -124,7 +124,7 @@ function M.config()
   -- local colors = require("tokyonight.colors").setup()
   local config = {
     options = {
-      -- theme = "tokyonight",
+      theme = "tokyonight",
       --[[ theme = "catppuccin", ]]
       -- section_separators = { "", "" },
       -- component_separators = { "", "" },

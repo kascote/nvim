@@ -1,4 +1,3 @@
-local wk = require "which-key"
 local vimLsp = vim.lsp
 
 local M = {}
@@ -24,56 +23,81 @@ M.diagnosticSigns = {
   Information = M.diagIcons.Info,
 }
 
---[[
+function M.getKeyMaps()
+  local prefix = "<leader>l"
+  local format = require("nv.plugins.lsp.format").format
 
-TODO: check this option to setup keymapping when LSP is attached to the buffer
-
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    vim.keymap.set({'n', 'v'}, '<a-CR>', vim.lsp.buf.code_action, { buffer = args.buf, silent = true })
-  end
-})
-
-
---]]
-
-function M.set_keymap(bufnr)
-  wk.register({
-    l = {
-      name = "LSP",
-      D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "search Declarations" },
-      d = { "<cmd>Telescope lsp_definitions<cr>", "search Definitions" }, -- lua vim.lsp.buf.definition()
-      i = { "<cmd>Telescope lsp_implementations<cr>", "search Implementations" }, -- lua vim.lsp.buf.implementation()
-      t = { "<cmd>Telescope lsp_type_definitions<cr>", "search Type Definitions" }, -- lua vim.lsp.buf.type_definition()
-      r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename identifier" },
-      x = { "<cmd>Telescope lsp_references<cr>", "search References" }, -- lua vim.lsp.buf.references()
-      q = { "<cmd>lua vim.diagnostic.open_float()<cr>", "show Diagnostics on current line" },
-      n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Goto Next Diagnostic" },
-      p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Goto previous Diagnostic" },
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Show Code Actions" }, --
-      f = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 2000 })<cr>", "Format current file" },
-      c = { "<cmd>lua vim.lsp.buf.incoming_calls()<cr>", "Show Incoming calls" },
-      o = { "<cmd>lua vim.lsp.buf.outgoing_calls()<cr>", "Show Outgoing calls" },
-      s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Show Signature Help" },
-      wa = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", "Add Workspace folder" },
-      wr = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", "Remove Workspace folder" },
-      wl = { "<cmd>lua P(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", "Show workspace folders" },
-      ws = { '<cmd>lua R("nv.telescope_utils").lsp_workspace_symbols()<cr>', "Show Workspace Symbols" },
-      us = { '<cmd>lua R("nv.telescope_utils").lsp_document_symbols()<cr>', "Show Document Symbols" },
-      rr = {
-        "<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>",
-        "Stop Clients and restart LSP",
-      },
+  return {
+    { prefix .. "a", vim.lsp.buf.code_action, { desc = "Show Code Actions" }, { has = "codeAction" } },
+    { prefix .. "c", vim.lsp.buf.incoming_calls, { desc = "Show Incoming calls" } },
+    { prefix .. "D", vim.lsp.buf.declaration, { desc = "search Declarations" } },
+    { prefix .. "d", "<cmd>Telescope lsp_definitions<cr>", { desc = "search definitions" } }, -- lua vim.lsp.buf.definition()
+    -- { prefix .. "f", "<cmd>lua vim.lsp.buf.format({ timeout_ms = 2000 })<cr>", { desc = "Format current file" } },
+    { prefix .. "f", format, { desc = "Format current file" }, { has = "documentFormatting" } },
+    { prefix .. "f", format, { desc = "Format Range" }, { mode = "v", has = "documentRangeFormatting" } },
+    { prefix .. "i", "<cmd>Telescope lsp_implementations<cr>", { desc = "search Implementations" } }, -- lua vim.lsp.buf.implementation()
+    { "K", vim.lsp.buf.hover, { desc = "toggle Hover on current identifier" } },
+    { prefix .. "o", vim.lsp.buf.outgoing_calls, { desc = "Show Outgoing calls" } },
+    { prefix .. "q", vim.diagnostic.open_float, { desc = "show Diagnostics on current line" } },
+    { prefix .. "r", vim.lsp.buf.rename, { desc = "Rename identifier" }, { has = "rename" } },
+    { prefix .. "s", vim.lsp.buf.signature_help, { desc = "Show Signature Help" }, { has = "signatureHelp" } },
+    { prefix .. "t", "<cmd>Telescope lsp_type_definitions<cr>", { desc = "search Type Definitions" } }, -- lua vim.lsp.buf.type_definition()
+    { prefix .. "x", "<cmd>Telescope lsp_references<cr>", { desc = "search References" } }, -- lua vim.lsp.buf.references()
+    { prefix .. "wa", vim.lsp.buf.add_workspace_folder, { desc = "Add Workspace folder" } },
+    {
+      prefix .. "wl",
+      "<cmd>lua P(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>",
+      { desc = "Show workspace folders" },
     },
-    K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "toggle Hover on current identifier" },
-  }, {
-    mode = "n", -- NORMAL mode
-    prefix = "<leader>",
-    buffer = bufnr, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = true, -- use `nowait` when creating keymaps
-  })
+    { prefix .. "wr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove Workspace folder" } },
+    {
+      prefix .. "ws",
+      "<cmd>lua R('nv.telescope_utils').lsp_workspace_symbols()<cr>",
+      { desc = "Show Workspace Symbols" },
+    },
+    {
+      prefix .. "us",
+      "<cmd>lua R('nv.telescope_utils').lsp_document_symbols()<cr>",
+      { desc = "Show Document Symbols" },
+    },
+    {
+      prefix .. "rr",
+      "<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>",
+      { desc = "Stop Clients and restart LSP" },
+    },
+    { "]d", M.diagnostic_goto(true), { desc = "Next Diagnostic" } },
+    { "[d", M.diagnostic_goto(false), { desc = "Prev Diagnostic" } },
+    { "]e", M.diagnostic_goto(true, "ERROR"), { desc = "Next Error" } },
+    { "[e", M.diagnostic_goto(false, "ERROR"), { desc = "Prev Error" } },
+    { "]w", M.diagnostic_goto(true, "WARN"), { desc = "Next Warning" } },
+    { "[w", M.diagnostic_goto(false, "WARN"), { desc = "Prev Warning" } },
+  }
+end
+
+function M.set_keymap(client, bufnr)
+  local sks = vim.keymap.set
+  local baseOpts = { silent = true, noremap = true, nowait = true, buffer = bufnr }
+  local baseCond = { mode = "n" }
+
+  local setKeyMap = function(lhs, rhs, options, conditions)
+    local opts = vim.tbl_extend("force", baseOpts, options or {})
+    local cndt = vim.tbl_extend("force", baseCond, conditions or {})
+    if not cndt.has or client.server_capabilities[conditions.has .. "Provider"] then
+      sks(cndt.mode, lhs, rhs, opts)
+    end
+  end
+
+  for _, value in ipairs(M.getKeyMaps()) do
+    setKeyMap(value[1], value[2], value[3], value[4])
+  end
+end
+
+function M.diagnostic_goto(next, severity)
+  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go { severity = severity }
+  end
 end
 
 function M.custom_init(client)
@@ -87,7 +111,7 @@ function M.custom_attach(client, bufnr)
 
   require("lsp_signature").on_attach({
     bind = true, -- This is mandatory, otherwise border config won't get registered.
-    floating_window_above_cur_line = true,
+    floating_window_above_cur_line = false,
     handler_opts = {
       border = "rounded",
     },
@@ -100,9 +124,6 @@ function M.custom_attach(client, bufnr)
   end ]]
 
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-
-  -- do not show error when LSP do not support documentSymbols
-  vim.g.navic_silence = true
 
   if client.server_capabilities.documentHighlightProvider then
     local doc_highlight = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
@@ -151,29 +172,6 @@ function M.setupGlobalHandlers()
   vimLsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
   })
-end
-
-function M.enable_format_on_save()
-  vim.cmd [[
-    augroup format_on_save
-      autocmd! 
-      autocmd BufWritePre * lua vim.lsp.buf.formatting()
-    augroup end
-  ]]
-  vim.notify "Enabled format on save"
-end
-
-function M.disable_format_on_save()
-  M.remove_augroup "format_on_save"
-  vim.notify "Disabled format on save"
-end
-
-function M.toggle_format_on_save()
-  if vim.fn.exists "#format_on_save#BufWritePre" == 0 then
-    M.enable_format_on_save()
-  else
-    M.disable_format_on_save()
-  end
 end
 
 return M
