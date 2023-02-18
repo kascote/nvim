@@ -12,9 +12,9 @@ local M = {
 }
 
 function M.config()
-  local cmp = require "cmp"
-  local lspkind = require "lspkind"
-  local luasnip = require "luasnip"
+  local cmp = require("cmp")
+  local lspkind = require("lspkind")
+  local luasnip = require("luasnip")
 
   local function isEnabled()
     local bt = vim.api.nvim_buf_get_option(0, "buftype")
@@ -22,30 +22,33 @@ function M.config()
       return false
     end
     -- disable completion in comments
-    local context = require "cmp.config.context"
+    local context = require("cmp.config.context")
     -- keep command mode completion enabled when cursor is in a comment
     if vim.api.nvim_get_mode().mode == "c" then
       return true
     else
-      return not context.in_treesitter_capture "comment" and not context.in_syntax_group "Comment"
+      return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
     end
   end
 
   ---@diagnostic disable-next-line: redundant-parameter
-  cmp.setup {
+  cmp.setup({
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)
       end,
     },
     enabled = isEnabled,
-    mapping = cmp.mapping.preset.insert {
-      ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    mapping = cmp.mapping.preset.insert({
+      ["<C-b>"] = cmp.mapping.scroll_docs( -4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      ["<C-Space>"] = cmp.mapping.complete {},
+      ["<C-Space>"] = cmp.mapping.complete({}),
       ["<C-e>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm { select = true },
-    },
+      ["<CR>"] = cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = true,
+      }),
+    }),
     --[[
             can configure:
               keyword_length
@@ -53,6 +56,7 @@ function M.config()
               max_item_count
     --]]
     sources = {
+      { name = "copilot" },
       { name = "luasnip" },
       { name = "nvim_lsp" },
       { name = "nvim_lua" },
@@ -73,7 +77,7 @@ function M.config()
       documentation = cmp.config.window.bordered(),
     },
     formatting = {
-      format = lspkind.cmp_format {
+      format = lspkind.cmp_format({
         with_text = true,
         maxwidth = 50,
         menu = {
@@ -82,11 +86,15 @@ function M.config()
           nvim_lsp = "[LSP]",
           nvim_lua = "[api]",
           path = "[path]",
+          copilot = "[Cop]",
         },
-      },
+      }),
     },
     sorting = {
       comparators = {
+        -- require("copilot_cmp.comparators").prioritize,
+        -- require("copilot_cmp.comparators").score,
+
         cmp.config.compare.offset,
         cmp.config.compare.exact,
         cmp.config.compare.score,
@@ -111,7 +119,7 @@ function M.config()
         cmp.config.compare.order,
       },
     },
-  }
+  })
 end
 
 return M

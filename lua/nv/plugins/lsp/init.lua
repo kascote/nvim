@@ -8,13 +8,7 @@ local M = {
     {
       "folke/neodev.nvim",
       opts = {
-        debug = true,
-        experimental = {
-          pathStrict = true,
-        },
-        -- library = {
-        --   runtime = "~/projects/neovim/runtime/",
-        -- },
+        pathStrict = true,
       },
     },
   },

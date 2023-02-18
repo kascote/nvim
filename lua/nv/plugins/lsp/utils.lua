@@ -39,7 +39,7 @@ function M.getKeyMaps()
     { "K", vim.lsp.buf.hover, { desc = "toggle Hover on current identifier" } },
     { prefix .. "o", vim.lsp.buf.outgoing_calls, { desc = "Show Outgoing calls" } },
     { prefix .. "q", vim.diagnostic.open_float, { desc = "show Diagnostics on current line" } },
-    { prefix .. "r", vim.lsp.buf.rename, { desc = "Rename identifier" }, { has = "rename" } },
+    { prefix .. "r", vim.lsp.buf.rename, { desc = "Rename identifier" } }, -- , { has = "rename" }
     { prefix .. "s", vim.lsp.buf.signature_help, { desc = "Show Signature Help" }, { has = "signatureHelp" } },
     { prefix .. "t", "<cmd>Telescope lsp_type_definitions<cr>", { desc = "search Type Definitions" } }, -- lua vim.lsp.buf.type_definition()
     { prefix .. "x", "<cmd>Telescope lsp_references<cr>", { desc = "search References" } }, -- lua vim.lsp.buf.references()
@@ -60,11 +60,11 @@ function M.getKeyMaps()
       "<cmd>lua R('nv.telescope_utils').lsp_document_symbols()<cr>",
       { desc = "Show Document Symbols" },
     },
-    {
-      prefix .. "rr",
-      "<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>",
-      { desc = "Stop Clients and restart LSP" },
-    },
+    -- {
+    --   prefix .. "rr",
+    --   "<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>",
+    --   { desc = "Stop Clients and restart LSP" },
+    -- },
     { "]d", M.diagnostic_goto(true), { desc = "Next Diagnostic" } },
     { "[d", M.diagnostic_goto(false), { desc = "Prev Diagnostic" } },
     { "]e", M.diagnostic_goto(true, "ERROR"), { desc = "Next Error" } },

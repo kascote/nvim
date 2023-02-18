@@ -2,21 +2,20 @@ local lspconfig = require "lspconfig"
 local lspconfig_util = require "lspconfig.util"
 local U = require "nv.plugins.lsp.utils"
 
-local sumneko_root_path = "/opt/homebrew/opt/lua-language-server"
-local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
+local luals_root_path = "/opt/homebrew/opt/lua-language-server"
+local luals_binary = luals_root_path .. "/bin/lua-language-server"
 
 local M = {}
 
 M.setup = function()
-  lspconfig.sumneko_lua.setup {
+  lspconfig.lua_ls.setup {
     on_init = function(client, buff)
       U.custom_init(client)
       U.set_keymap(client, buff)
     end,
     on_attach = U.custom_attach,
     capabilities = U.capabilities(),
-    --[[ cmd = { sumneko_binary, "-E", sumneko_root_path .. "/libexec/main.lua" }, ]]
-    cmd = { sumneko_binary },
+    cmd = { luals_binary },
 
     root_dir = function(fname)
       if string.find(vim.fn.fnamemodify(fname, ":p"), ".config/nvim/") then

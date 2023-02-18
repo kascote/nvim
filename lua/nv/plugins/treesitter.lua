@@ -16,16 +16,16 @@ return {
           {
             "numToStr/Comment.nvim",
             config = function()
-              require("Comment").setup {
+              require("Comment").setup({
                 pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-              }
+              })
             end,
           },
         },
       },
     },
     config = function()
-      require("nvim-treesitter.configs").setup {
+      require("nvim-treesitter.configs").setup({
         highlight = {
           enable = true,
         },
@@ -48,13 +48,13 @@ return {
           highlight_definitions = { enable = true },
           highlight_current_scope = { enable = false },
           smart_rename = {
-            enable = true,
+            enable = false,
             keymaps = {
               smart_rename = "grr",
             },
           },
           navigation = {
-            enable = true,
+            enable = false,
             keymaps = {
               goto_definition = "gnd",
               list_definitions = "gnD",
@@ -174,7 +174,7 @@ return {
         autotag = {
           enable = true,
         },
-      }
+      })
 
       vim.opt.foldmethod = "expr"
       vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

@@ -7,6 +7,9 @@ M.setup = function()
     server = {
       on_attach = U.custom_attach,
       capabilities = U.capabilities(),
+      root_dir = function()
+        return vim.fn.getcwd()
+      end,
     },
   }
 end

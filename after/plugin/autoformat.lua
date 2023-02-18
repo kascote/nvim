@@ -41,8 +41,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return
     end
 
-    -- Tsserver usually works poorly. Sorry you work with bad languages
-    -- You can remove this line if you know what you're doing :)
+    -- Tsserver usually works poorly.
     if client.name == "tsserver" then
       return
     end

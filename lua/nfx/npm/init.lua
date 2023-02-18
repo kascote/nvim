@@ -37,11 +37,18 @@ function M.fetch_package(name)
   end
 
   local handle = io.popen("curl -sL " .. NPM_BASE_URL .. name, "r")
+  if not handle then
+    return nil
+  end
   local result = handle:read("*a")
   handle:close()
 
   if result then
     local js = vim.fn.json_decode(result)
+    if not js then
+      return nil
+    end
+
     M._cache[name] = {
       versions = sort_versions(js.versions),
       time = os.time(),
@@ -53,11 +60,11 @@ function M.fetch_package(name)
 end
 
 function M.lookupPackage(find_start, base)
-  if (find_start > 0) then
-    return vim.fn.col('.')
+  if find_start > 0 then
+    return vim.fn.col(".")
   end
 
-  local mtr2 = vim.fn.matchstr(vim.fn.getline('.'), [[^\s*"\zs[[:alnum:]\-\@\/._]*\ze"]]) -- luacheck: ignore
+  local mtr2 = vim.fn.matchstr(vim.fn.getline("."), [[^\s*"\zs[[:alnum:]\-\@\/._]*\ze"]]) -- luacheck: ignore
   M.fetch_package(mtr2)
   -- local packages = M.fetch_package(mtr2)
   -- if not packages or next(packages) == nil then
