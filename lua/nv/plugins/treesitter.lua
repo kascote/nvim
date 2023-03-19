@@ -6,7 +6,10 @@ return {
     build = ":TSUpdate",
     event = "BufReadPost",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        enabled = false,
+      },
       "nvim-treesitter/nvim-treesitter-refactor",
       "windwp/nvim-ts-autotag",
       "RRethy/nvim-treesitter-endwise",
@@ -28,6 +31,10 @@ return {
       require("nvim-treesitter.configs").setup({
         highlight = {
           enable = true,
+          disable = function(_lang, bufnr)
+            -- disable hightlight if the buffer has more that 50k lines
+            return vim.api.nvim_buf_line_count(bufnr) > 50000
+          end,
         },
         indent = {
           enable = true,
@@ -38,9 +45,9 @@ return {
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "<c-space>", -- "gnn",
-            node_incremental = "<c-space>", -- "grn",
-            scope_incremental = "<c-s>", -- "grc",
+            init_selection = "<c-space>",       -- "gnn",
+            node_incremental = "<c-space>",     -- "grn",
+            scope_incremental = "<c-s>",        -- "grc",
             node_decremental = "<c-backspace>", -- "grm",
           },
         },
@@ -65,7 +72,7 @@ return {
           },
         },
         textobjects = {
-          enable = true,
+          enable = false,
           disable = {},
           select = {
             enable = true,
@@ -168,7 +175,7 @@ return {
         playground = {
           enable = true,
           disable = {},
-          updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+          updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
           persist_queries = false, -- Whether the query persists across vim sessions
         },
         autotag = {

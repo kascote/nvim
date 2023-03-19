@@ -4,9 +4,14 @@ return {
   event = "InsertEnter",
   dependencies = {
     "zbirenbaum/copilot-cmp",
-    opts = {
-      method = "getCompletionsCycling",
-    },
+    config = function(plugin, opts)
+      opts = {
+        formatters = {
+          insert_text = require("copilot_cmp.format").remove_existing,
+        },
+      }
+      require("copilot_cmp").setup(opts)
+    end,
   },
   opts = {
     panel = {
@@ -24,6 +29,14 @@ return {
         prev = "<M-[>",
         dismiss = "<C-]>",
       },
+    },
+    filetypes = {
+      javascript = true,
+      typescript = true,
+      javascriptreact = true,
+      typescriptreact = true,
+      lua = true,
+      fish = true,
     },
   },
 }

@@ -113,6 +113,7 @@
             "/Users/nelson/.config/nvim/after",
             "/Users/nelson/.local/state/nvim/lazy/readme"
         ],
-        "${3rd}/luassert/library"
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
     ]
 }
