@@ -21,6 +21,7 @@ vim.api.nvim_create_autocmd("User", {
 --]]
 --[[ to review
 
+    https://github.com/SmiteshP/nvim-navbuddy
     https://github.com/bennypowers/nvim-regexplainer
     https://github.com/dvoytik/hi-my-words.nvim
     https://github.com/glacambre/firenvim

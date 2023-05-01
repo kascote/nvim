@@ -11,9 +11,9 @@ M.diagIcons = {
 
 M.diagnosticHighliter = {
   { name = "DiagnosticSignError", text = M.diagIcons.error },
-  { name = "DiagnosticSignWarn", text = M.diagIcons.warn },
-  { name = "DiagnosticSignHint", text = M.diagIcons.hint },
-  { name = "DiagnosticSignInfo", text = M.diagIcons.info },
+  { name = "DiagnosticSignWarn",  text = M.diagIcons.warn },
+  { name = "DiagnosticSignHint",  text = M.diagIcons.hint },
+  { name = "DiagnosticSignInfo",  text = M.diagIcons.info },
 }
 
 M.diagnosticSigns = {
@@ -28,22 +28,42 @@ function M.getKeyMaps()
   local format = require("nv.plugins.lsp.format").format
 
   return {
-    { prefix .. "a", vim.lsp.buf.code_action, { desc = "Show Code Actions" }, { has = "codeAction" } },
-    { prefix .. "c", vim.lsp.buf.incoming_calls, { desc = "Show Incoming calls" } },
-    { prefix .. "D", vim.lsp.buf.declaration, { desc = "search Declarations" } },
+    {
+      prefix .. "a",
+      vim.lsp.buf.code_action,
+      { desc = "Show Code Actions" },
+      { has = "codeAction" },
+    },
+    { prefix .. "c", vim.lsp.buf.incoming_calls,           { desc = "Show Incoming calls" } },
+    { prefix .. "C", vim.lsp.buf.outgoing_calls,           { desc = "Show Outgoing calls" } },
+    { prefix .. "D", vim.lsp.buf.declaration,              { desc = "search Declarations" } },
     { prefix .. "d", "<cmd>Telescope lsp_definitions<cr>", { desc = "search definitions" } }, -- lua vim.lsp.buf.definition()
     -- { prefix .. "f", "<cmd>lua vim.lsp.buf.format({ timeout_ms = 2000 })<cr>", { desc = "Format current file" } },
-    { prefix .. "f", format, { desc = "Format current file" }, { has = "documentFormatting" } },
-    { prefix .. "f", format, { desc = "Format Range" }, { mode = "v", has = "documentRangeFormatting" } },
+    {
+      prefix .. "f",
+      format,
+      { desc = "Format current file" },
+      { has = "documentFormatting" },
+    },
+    {
+      prefix .. "f",
+      format,
+      { desc = "Format Range" },
+      { mode = "v",           has = "documentRangeFormatting" },
+    },
     { prefix .. "i", "<cmd>Telescope lsp_implementations<cr>", { desc = "search Implementations" } }, -- lua vim.lsp.buf.implementation()
-    { "K", vim.lsp.buf.hover, { desc = "toggle Hover on current identifier" } },
-    { prefix .. "o", vim.lsp.buf.outgoing_calls, { desc = "Show Outgoing calls" } },
-    { prefix .. "q", vim.diagnostic.open_float, { desc = "show Diagnostics on current line" } },
-    { prefix .. "r", vim.lsp.buf.rename, { desc = "Rename identifier" } }, -- , { has = "rename" }
-    { prefix .. "s", vim.lsp.buf.signature_help, { desc = "Show Signature Help" }, { has = "signatureHelp" } },
-    { prefix .. "t", "<cmd>Telescope lsp_type_definitions<cr>", { desc = "search Type Definitions" } }, -- lua vim.lsp.buf.type_definition()
-    { prefix .. "x", "<cmd>Telescope lsp_references<cr>", { desc = "search References" } }, -- lua vim.lsp.buf.references()
-    { prefix .. "wa", vim.lsp.buf.add_workspace_folder, { desc = "Add Workspace folder" } },
+    { "K",           vim.lsp.buf.hover,                        { desc = "toggle Hover on current identifier" } },
+    { prefix .. "q", vim.diagnostic.open_float,                { desc = "show Diagnostics on current line" } },
+    { prefix .. "r", vim.lsp.buf.rename,                       { desc = "Rename identifier" } }, -- , { has = "rename" }
+    {
+      prefix .. "s",
+      vim.lsp.buf.signature_help,
+      { desc = "Show Signature Help" },
+      { has = "signatureHelp" },
+    },
+    { prefix .. "t",  "<cmd>Telescope lsp_type_definitions<cr>", { desc = "search Type Definitions" } }, -- lua vim.lsp.buf.type_definition()
+    { prefix .. "x",  "<cmd>Telescope lsp_references<cr>",       { desc = "search References" } },      -- lua vim.lsp.buf.references()
+    { prefix .. "wa", vim.lsp.buf.add_workspace_folder,          { desc = "Add Workspace folder" } },
     {
       prefix .. "wl",
       "<cmd>lua P(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>",
@@ -65,12 +85,12 @@ function M.getKeyMaps()
     --   "<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd [[e!]]<CR>",
     --   { desc = "Stop Clients and restart LSP" },
     -- },
-    { "]d", M.diagnostic_goto(true), { desc = "Next Diagnostic" } },
-    { "[d", M.diagnostic_goto(false), { desc = "Prev Diagnostic" } },
-    { "]e", M.diagnostic_goto(true, "ERROR"), { desc = "Next Error" } },
-    { "[e", M.diagnostic_goto(false, "ERROR"), { desc = "Prev Error" } },
-    { "]w", M.diagnostic_goto(true, "WARN"), { desc = "Next Warning" } },
-    { "[w", M.diagnostic_goto(false, "WARN"), { desc = "Prev Warning" } },
+    { "]d",           M.diagnostic_goto(true),             { desc = "Next Diagnostic" } },
+    { "[d",           M.diagnostic_goto(false),            { desc = "Prev Diagnostic" } },
+    { "]e",           M.diagnostic_goto(true, "ERROR"),    { desc = "Next Error" } },
+    { "[e",           M.diagnostic_goto(false, "ERROR"),   { desc = "Prev Error" } },
+    { "]w",           M.diagnostic_goto(true, "WARN"),     { desc = "Next Warning" } },
+    { "[w",           M.diagnostic_goto(false, "WARN"),    { desc = "Prev Warning" } },
   }
 end
 
@@ -96,7 +116,7 @@ function M.diagnostic_goto(next, severity)
   local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
   severity = severity and vim.diagnostic.severity[severity] or nil
   return function()
-    go { severity = severity }
+    go({ severity = severity })
   end
 end
 
@@ -122,7 +142,6 @@ function M.custom_attach(client, bufnr)
   --[[ if client.name == "typescript" or client.name == "tsserver" then
     require("nv.plugins.lsp.ts-utils").setup(client)
   end ]]
-
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
   if client.server_capabilities.documentHighlightProvider then
@@ -146,7 +165,6 @@ end
 function M.capabilities()
   -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
   --[[ local capabilities = vim.lsp.protocol.make_client_capabilities() ]]
-
   --[[ return require("cmp_nvim_lsp").update_capabilities(capabilities) ]]
   return require("cmp_nvim_lsp").default_capabilities()
 end
@@ -172,6 +190,14 @@ function M.setupGlobalHandlers()
   vimLsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
   })
+end
+
+-- local lsp_util = require("vim.lsp.util")
+
+function M.request(method, params, handler)
+  -- local params = lsp_util.make_position_params()
+  vim.validate({ method = { method, "s" }, handler = { handler, "f", true } })
+  return vim.lsp.buf_request(0, method, params, handler)
 end
 
 return M

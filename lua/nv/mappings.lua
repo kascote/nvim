@@ -1,54 +1,54 @@
-local wk = require "which-key"
+local wk = require("which-key")
 
 -- unmap <Cmd>nohlsearch|diffupdate<CR><C-L>
-vim.cmd [[nunmap <c-l>]]
+vim.cmd([[nunmap <c-l>]])
 -- unmap <C-G>u<C-U> -[[ remove to beggining of line]]
-vim.cmd [[iunmap <c-u>]]
+vim.cmd([[iunmap <c-u>]])
 
-wk.setup {
+wk.setup({
   plugins = {
-    marks = true, -- shows a list of your marks on ' and `
-    registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+    marks = true,       -- shows a list of your marks on ' and `
+    registers = false,  -- shows your registers on " in NORMAL or <C-r> in INSERT mode
     spelling = {
-      enabled = false, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+      enabled = false,  -- enabling this will show WhichKey when pressing z= to select spelling suggestions
       suggestions = 20, -- how many suggestions should be shown in the list?
     },
     -- the presets plugin, adds help for a bunch of default keybindings in Neovim
     -- No actual key bindings are created
     presets = {
-      operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-      motions = true, -- adds help for motions
+      operators = true,    -- adds help for operators like d, y, ... and registers them for motion / text object completion
+      motions = true,      -- adds help for motions
       text_objects = true, -- help for text objects triggered after entering an operator
-      windows = true, -- default bindings on <c-w>
-      nav = true, -- misc bindings to work with windows
-      z = true, -- bindings for folds, spelling and others prefixed with z
-      g = true, -- bindings for prefixed with g
+      windows = true,      -- default bindings on <c-w>
+      nav = true,          -- misc bindings to work with windows
+      z = true,            -- bindings for folds, spelling and others prefixed with z
+      g = true,            -- bindings for prefixed with g
     },
   },
-}
+})
 
 --[[ NORMAL MODE ]]
 wk.register({
   ["<TAB>"] = { "za", "Toggle fold at current position" },
   ["gV"] = { "`[v`]", "Visually select the text that was last edited/pasted" },
 }, {
-  mode = "n", -- NORMAL mode
+  mode = "n",     -- NORMAL mode
   prefix = "",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
+  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true,  -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
+  nowait = true,  -- use `nowait` when creating keymaps
 })
 
 wk.register({
   ["--"] = { "gcc", "Change comments on current line" },
 }, {
-  mode = "n", -- NORMAL mode
+  mode = "n",      -- NORMAL mode
   prefix = "",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
+  buffer = nil,    -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true,   -- use `silent` when creating keymaps
   noremap = false, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
+  nowait = true,   -- use `nowait` when creating keymaps
 })
 
 -- [[ INSERT MODE ]]
@@ -110,6 +110,7 @@ wk.register({
     ["9"] = { "<cmd>lua vim.wo.foldlevel=9<cr>", "fold at level 9" },
   },
   p = {
+    a = { '<cmd>lua R("nfx.custom_tele").tele_seiken({path="/apps/admin"})<cr>', "Admin App" },
     b = { '<cmd>lua R("nfx.custom_tele").tele_seiken({path="/apps/booking"})<cr>', "Booking App" },
     c = { '<cmd>lua R("nfx.custom_tele").tele_seiken({path="/packages/components-ui"})<cr>', "Components UI" },
     s = { '<cmd>lua R("nfx.custom_tele").tele_seiken({path="/packages/service-api"})<cr>', "Services API" },
@@ -117,12 +118,12 @@ wk.register({
     e = { '<cmd>lua R("nfx.custom_tele").tele_seiken({path="/packages/eslint-config-custom"})<cr>', "Eslint" },
   },
 }, {
-  mode = "n", -- NORMAL mode
+  mode = "n",     -- NORMAL mode
   prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
+  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true,  -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
+  nowait = true,  -- use `nowait` when creating keymaps
 })
 
 --[[ LOCAL LEADER ]]
@@ -131,12 +132,12 @@ wk.register({
   t = { '<cmd>lua require("lazy.util").float_term()<cr>', "Float Terminal" },
   ["nn"] = { "<cmd>set wildignore-=*/node_modules/*<cr>", "Remove node_modules from wildignore" },
 }, {
-  mode = "n", -- NORMAL mode
+  mode = "n",     -- NORMAL mode
   prefix = "<localleader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
+  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true,  -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
+  nowait = true,  -- use `nowait` when creating keymaps
 })
 
 local km = vim.keymap
